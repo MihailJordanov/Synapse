@@ -1,0 +1,307 @@
+[gd_scene load_steps=11 format=3 uid="uid://cd1a7q1oufv14"]
+
+[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="1_brehn"]
+[ext_resource type="Script" uid="uid://ccdixyf7yyp8q" path="res://Scripts/card.gd" id="1_eumee"]
+[ext_resource type="Texture2D" uid="uid://bkl5kcmo71j34" path="res://Images/Card_Icons/Heros/tile005.png" id="2_brehn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eumee"]
+bg_color = Color(0.215902, 0.215902, 0.215902, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmcdd"]
+bg_color = Color(0.611765, 0.494118, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf8id"]
+bg_color = Color(0.283551, 0.223816, 4.81308e-08, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qqmn"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 20
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brehn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6po8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brehn"]
+size = Vector2(200, 320)
+
+[node name="Card" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_eumee")
+kind = 2
+attack_style = 2
+use_color_target = true
+target_color = 3
+use_kind_target = true
+use_attack_style_target = true
+card_texture = ExtResource("2_brehn")
+
+[node name="MainPanel" type="Panel" parent="."]
+offset_left = -100.0
+offset_top = -160.0
+offset_right = 100.0
+offset_bottom = 160.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eumee")
+
+[node name="KindPanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235
+anchor_top = 0.012
+anchor_right = 0.77
+anchor_bottom = 0.097
+offset_top = 3.16
+offset_right = -1.52588e-05
+offset_bottom = -0.0400009
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmcdd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/KindPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_brehn")
+theme_override_fonts/mono_font = ExtResource("1_brehn")
+theme_override_fonts/italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_font = ExtResource("1_brehn")
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "Hero"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackStylePanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28
+anchor_top = 0.116
+anchor_right = 0.725
+anchor_bottom = 0.175
+offset_top = -0.120003
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wf8id")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/AttackStylePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_brehn")
+theme_override_fonts/mono_font = ExtResource("1_brehn")
+theme_override_fonts/italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_font = ExtResource("1_brehn")
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+bbcode_enabled = true
+text = "Melee"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorPanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.14
+anchor_bottom = 0.087
+offset_bottom = 0.159998
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0qqmn")
+
+[node name="ImagePanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.2
+anchor_right = 0.94
+anchor_bottom = 0.744
+offset_right = -1.52588e-05
+offset_bottom = -0.0800018
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_brehn")
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/ImagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = -7.99998
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AttackingPanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.065
+anchor_top = 0.769
+anchor_right = 0.935
+anchor_bottom = 0.975
+offset_top = -5.08002
+offset_right = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/AttackingPanel"]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 25.0
+theme_override_fonts/normal_font = ExtResource("1_brehn")
+theme_override_fonts/mono_font = ExtResource("1_brehn")
+theme_override_fonts/italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_font = ExtResource("1_brehn")
+bbcode_enabled = true
+text = "Attacking:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/AttackingPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 25.0
+offset_right = 163.0
+offset_bottom = 65.0
+theme_override_constants/separation = 56
+
+[node name="ColorControl" type="Control" parent="MainPanel/AttackingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MainPanel/AttackingPanel/HBoxContainer/ColorControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/AttackingPanel/HBoxContainer/ColorControl/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+
+[node name="KindControl" type="Control" parent="MainPanel/AttackingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MainPanel/AttackingPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/AttackingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 35.0
+offset_bottom = 36.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/AttackingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brehn")
+theme_override_fonts/mono_font = ExtResource("1_brehn")
+theme_override_fonts/italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_font = ExtResource("1_brehn")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+text = "H"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackStyleControl" type="Control" parent="MainPanel/AttackingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MainPanel/AttackingPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/AttackingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainPanel/AttackingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brehn")
+theme_override_fonts/mono_font = ExtResource("1_brehn")
+theme_override_fonts/italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_italics_font = ExtResource("1_brehn")
+theme_override_fonts/bold_font = ExtResource("1_brehn")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+text = "M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-100, -160)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(100, 160)
+shape = SubResource("RectangleShape2D_brehn")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
