@@ -1,17 +1,21 @@
 class_name Card
 extends Node2D
 
-enum CardColor { BLUE, RED, GREEN, YELLOW }
-enum CardKind  { HERO, ORG, ARCHER }
+# --- Enums ---
+enum Element     { AIR, WATER, FIRE, LIGHTNING }
+enum CardKind    { HERO, ORG, WIZARD }
 enum AttackStyle { MELEE, RANGE, TELEPATH }
 
-@export var color: CardColor = CardColor.BLUE : set = set_color
+# --- Exports ---
+@export var id : int = 0
+
+@export var element: Element = Element.AIR : set = set_element
 @export var kind: CardKind = CardKind.HERO : set = set_kind
 @export var attack_style: AttackStyle = AttackStyle.MELEE : set = set_attack_style
 
 @export_category("Attacking On")
-@export var use_color_target := false : set = set_use_color_target
-@export var target_color: CardColor = CardColor.RED : set = set_target_color
+@export var use_element_target := false : set = set_use_element_target
+@export var target_element: Element = Element.WATER : set = set_target_element
 
 @export var use_kind_target := false : set = set_use_kind_target
 @export var target_kind: CardKind = CardKind.ORG : set = set_target_kind
@@ -23,64 +27,73 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 @export var card_texture: Texture2D : set = set_card_texture
 
 # --- UI refs ---
-@onready var texture_rect: TextureRect = $MainPanel/ImagePanel/TextureRect
-@onready var self_kind_panel: Panel = $MainPanel/KindPanel
-@onready var self_kind_text_label: RichTextLabel = $MainPanel/KindPanel/RichTextLabel
-@onready var self_attack_style_panel: Panel = $MainPanel/AttackStylePanel
-@onready var self_attack_style_text_label: RichTextLabel = $MainPanel/AttackStylePanel/RichTextLabel
-@onready var self_color_panel: Panel = $MainPanel/ColorPanel
+@onready var card_texture_rect: TextureRect = $MainPanel/ImagePanel/TextureRect
 
-@onready var attack_color_rect: ColorRect = $MainPanel/AttackingPanel/HBoxContainer/ColorControl/Panel/ColorRect
-@onready var attack_kind_color_rect: ColorRect = $MainPanel/AttackingPanel/HBoxContainer/KindControl/Panel/ColorRect
-@onready var attack_kind_text_label: RichTextLabel = $MainPanel/AttackingPanel/HBoxContainer/KindControl/Panel/RichTextLabel
-@onready var attack_style_color_rect: ColorRect = $MainPanel/AttackingPanel/HBoxContainer/AttackStyleControl/Panel/ColorRect
-@onready var attack_style_text_label: RichTextLabel = $MainPanel/AttackingPanel/HBoxContainer/AttackStyleControl/Panel/RichTextLabel
-@onready var color_control: Control = $MainPanel/AttackingPanel/HBoxContainer/ColorControl
-@onready var kind_control: Control  = $MainPanel/AttackingPanel/HBoxContainer/KindControl
-@onready var style_control: Control = $MainPanel/AttackingPanel/HBoxContainer/AttackStyleControl
+# Self Card Type
+@onready var seld_card_type_element_color_rect: ColorRect   = $MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel/ColorRect
+@onready var seld_card_type_element_texture_rect: TextureRect = $MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel/TextureRect
+@onready var seld_card_type_kind_color_rect: ColorRect      = $MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel/ColorRect
+@onready var seld_card_type_kind_texture_rect: TextureRect  = $MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel/TextureRect
+@onready var seld_card_type_attack_style_color_rect: ColorRect  = $MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel/ColorRect
+@onready var seld_card_type_attack_style_texture_rect: TextureRect = $MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel/TextureRect
 
+# Targets / Connecting
+@onready var connect_wth_element_color_rect: ColorRect      = $MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel/ColorRect
+@onready var connect_wth_element_texture_rect: TextureRect  = $MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel/TextureRect
+@onready var connect_wth_kind_color_rect: ColorRect         = $MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel/ColorRect
+@onready var connect_wth_kind_texture_rect: TextureRect     = $MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel/TextureRect
+@onready var connect_wth_attackStyle_color_rect: ColorRect  = $MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel/ColorRect
+@onready var connect_wth_attack_style_texture_rect: TextureRect = $MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel/TextureRect
+
+@onready var connect_wth_element_control: Control = $MainPanel/ConnectingPanel/HBoxContainer/ElementControl
+@onready var connect_wth_kind_control: Control    = $MainPanel/ConnectingPanel/HBoxContainer/KindControl
+@onready var connect_wth_attack_style_control: Control = $MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl
+
+# --- Display dictionaries ---
 const KIND_DISPLAY := {
-	CardKind.HERO:   {"name":"HERO",   "color": Color("#9c7e00")},
-	CardKind.ORG:    {"name":"ORG",    "color": Color("#84994F")},
-	CardKind.ARCHER: {"name":"ARCHER", "color": Color("#640D5F")},
+	CardKind.HERO:   {"icon": "res://Images/Type_Icons/Kind/knight_icon.png", "color": Color("#9c7e00")},
+	CardKind.ORG:    {"icon": "res://Images/Type_Icons/Kind/orc_icon.png",    "color": Color("#84994F")},
+	CardKind.WIZARD: {"icon": "res://Images/Type_Icons/Kind/wizard_icon.png", "color": Color("#640D5F")},
 }
+
 const STYLE_DISPLAY := {
-	AttackStyle.MELEE:    {"name":"MELEE",    "color": Color("#483900")},
-	AttackStyle.RANGE:    {"name":"RANGE",    "color": Color("#77BEF0")},
-	AttackStyle.TELEPATH: {"name":"TELEPATH", "color": Color("#3D74B6")},
-}
-const CARD_COLORS := {
-	CardColor.BLUE:   Color("#89CFF0"),
-	CardColor.RED:    Color("#F54927"),
-	CardColor.GREEN:  Color("#84994F"),
-	CardColor.YELLOW: Color("#F8FAB4"),
+	AttackStyle.MELEE:    {"icon": "res://Images/Type_Icons/Attack_Type/mele_icon.png",     "color": Color("#483900")},
+	AttackStyle.RANGE:    {"icon": "res://Images/Type_Icons/Attack_Type/range_icon.png",    "color": Color("#77BEF0")},
+	AttackStyle.TELEPATH: {"icon": "res://Images/Type_Icons/Attack_Type/telepathy_icon.png","color": Color("#FF00FF")},
 }
 
-# --- Константа за целеви размер на картинката ---
-const SPRITE_SIZE := Vector2(88, 88)
+const ELEMENT_DISPLAY := {
+	Element.WATER:     {"icon": "res://Images/Type_Icons/Element/water_icon.png",     "color": Color("#3A86FF")},
+	Element.FIRE:      {"icon": "res://Images/Type_Icons/Element/fire_icon.png",      "color": Color("#E63946")},
+	Element.AIR:       {"icon": "res://Images/Type_Icons/Element/air_icon.png",       "color": Color("#8ECae6")},
+	Element.LIGHTNING: {"icon": "res://Images/Type_Icons/Element/lightning_icon.png", "color": Color("#FFD166")},
+}
 
-# --- Сигнали ---
+# --- Signals ---
 signal hovered
 signal hovered_off
 
 func _ready() -> void:
-	#All cards must be a child of CardManager or this will error
-	get_parent().connect_card_signals(self)
+	if get_parent() and get_parent().has_method("connect_card_signals"):
+		get_parent().connect_card_signals(self)
+
 	
-	# В този момент @onready нодовете са валидни → приложи текущите стойности
-	if is_instance_valid(texture_rect) and card_texture:
-		texture_rect.texture = card_texture
+	if is_instance_valid(card_texture_rect) and card_texture:
+		card_texture_rect.texture = card_texture
+	_update_element_ui()
 	_update_kind_ui()
 	_update_style_ui()
-	_update_color_ui()
-	_update_attack_targets_ui()
+	_update_targets_ui()
 
 # --- setters ---
 func set_card_texture(value: Texture2D) -> void:
 	card_texture = value
-	if is_instance_valid(texture_rect):
-		texture_rect.texture = card_texture
+	if is_instance_valid(card_texture_rect):
+		card_texture_rect.texture = card_texture
 
+func set_element(v: Element) -> void:
+	element = v
+	_update_element_ui()
 
 func set_kind(v: CardKind) -> void:
 	kind = v
@@ -90,100 +103,99 @@ func set_attack_style(v: AttackStyle) -> void:
 	attack_style = v
 	_update_style_ui()
 
-func set_color(v: CardColor) -> void:
-	color = v
-	_update_color_ui()
+func set_use_element_target(v: bool) -> void:
+	use_element_target = v
+	_update_targets_ui()
 
-func set_use_color_target(v: bool) -> void:
-	use_color_target = v
-	_update_attack_targets_ui()
-
-func set_target_color(v: CardColor) -> void:
-	target_color = v
-	_update_attack_targets_ui()
+func set_target_element(v: Element) -> void:
+	target_element = v
+	_update_targets_ui()
 
 func set_use_kind_target(v: bool) -> void:
 	use_kind_target = v
-	_update_attack_targets_ui()
+	_update_targets_ui()
 
 func set_target_kind(v: CardKind) -> void:
 	target_kind = v
-	_update_attack_targets_ui()
+	_update_targets_ui()
 
 func set_use_attack_style_target(v: bool) -> void:
 	use_attack_style_target = v
-	_update_attack_targets_ui()
+	_update_targets_ui()
 
 func set_target_attack_style(v: AttackStyle) -> void:
 	target_attack_style = v
-	_update_attack_targets_ui()
+	_update_targets_ui()
 
 # --- UI updates ---
+func _update_element_ui() -> void:
+	if not (is_instance_valid(seld_card_type_element_color_rect) and is_instance_valid(seld_card_type_element_texture_rect)):
+		return
+	if ELEMENT_DISPLAY.has(element):
+		var data = ELEMENT_DISPLAY[element]
+		seld_card_type_element_color_rect.color = data["color"]
+		_set_texture(seld_card_type_element_texture_rect, data["icon"])
+
 func _update_kind_ui() -> void:
-	if not is_instance_valid(self_kind_text_label) or not is_instance_valid(self_kind_panel):
+	if not (is_instance_valid(seld_card_type_kind_color_rect) and is_instance_valid(seld_card_type_kind_texture_rect)):
 		return
 	if KIND_DISPLAY.has(kind):
-		self_kind_text_label.text = KIND_DISPLAY[kind]["name"]
-		_set_panel_bg(self_kind_panel, KIND_DISPLAY[kind]["color"])
+		var data = KIND_DISPLAY[kind]
+		seld_card_type_kind_color_rect.color = data["color"]
+		_set_texture(seld_card_type_kind_texture_rect, data["icon"])
 
 func _update_style_ui() -> void:
-	if not is_instance_valid(self_attack_style_text_label) or not is_instance_valid(self_attack_style_panel):
+	if not (is_instance_valid(seld_card_type_attack_style_color_rect) and is_instance_valid(seld_card_type_attack_style_texture_rect)):
 		return
 	if STYLE_DISPLAY.has(attack_style):
-		self_attack_style_text_label.text = STYLE_DISPLAY[attack_style]["name"]
-		_set_panel_bg(self_attack_style_panel, STYLE_DISPLAY[attack_style]["color"])
+		var data = STYLE_DISPLAY[attack_style]
+		seld_card_type_attack_style_color_rect.color = data["color"]
+		_set_texture(seld_card_type_attack_style_texture_rect, data["icon"])
 
-func _update_color_ui() -> void:
-	if not is_instance_valid(self_color_panel):
-		return
-	if CARD_COLORS.has(color):
-		_set_panel_bg(self_color_panel, CARD_COLORS[color])
+func _update_targets_ui() -> void:
+	# visibility
+	if is_instance_valid(connect_wth_element_control):
+		connect_wth_element_control.visible = use_element_target
+	if is_instance_valid(connect_wth_kind_control):
+		connect_wth_kind_control.visible = use_kind_target
+	if is_instance_valid(connect_wth_attack_style_control):
+		connect_wth_attack_style_control.visible = use_attack_style_target
 
-func _update_attack_targets_ui() -> void:
-	if not (is_instance_valid(color_control) and is_instance_valid(kind_control) and is_instance_valid(style_control)):
-		return
+	# element target
+	if use_element_target and ELEMENT_DISPLAY.has(target_element):
+		var ed = ELEMENT_DISPLAY[target_element]
+		if is_instance_valid(connect_wth_element_color_rect):
+			connect_wth_element_color_rect.color = ed["color"]
+		_set_texture(connect_wth_element_texture_rect, ed["icon"])
 
-	color_control.visible = use_color_target
-	kind_control.visible  = use_kind_target
-	style_control.visible = use_attack_style_target
-
-	if use_color_target and CARD_COLORS.has(target_color):
-		attack_color_rect.color = CARD_COLORS[target_color]
-
+	# kind target
 	if use_kind_target and KIND_DISPLAY.has(target_kind):
-		attack_kind_text_label.text = str(KIND_DISPLAY[target_kind]["name"]).substr(0,1).to_upper()
-		attack_kind_color_rect.color = KIND_DISPLAY[target_kind]["color"]
+		var kd = KIND_DISPLAY[target_kind]
+		if is_instance_valid(connect_wth_kind_color_rect):
+			connect_wth_kind_color_rect.color = kd["color"]
+		_set_texture(connect_wth_kind_texture_rect, kd["icon"])
 
+	# attack style target
 	if use_attack_style_target and STYLE_DISPLAY.has(target_attack_style):
-		attack_style_text_label.text = str(STYLE_DISPLAY[target_attack_style]["name"]).substr(0,1).to_upper()
-		attack_style_color_rect.color = STYLE_DISPLAY[target_attack_style]["color"]
+		var sd = STYLE_DISPLAY[target_attack_style]
+		if is_instance_valid(connect_wth_attackStyle_color_rect):
+			connect_wth_attackStyle_color_rect.color = sd["color"]
+		_set_texture(connect_wth_attack_style_texture_rect, sd["icon"])
 
 # --- helper ---
-func _set_panel_bg(panel: Panel, color: Color) -> void:
-	if not is_instance_valid(panel):
+func _set_texture(tex_rect: TextureRect, path: String) -> void:
+	if not is_instance_valid(tex_rect):
 		return
-	var sb := panel.get_theme_stylebox("panel")
-	if sb and sb is StyleBoxFlat:
-		var copy := (sb as StyleBoxFlat).duplicate() as StyleBoxFlat
-		copy.bg_color = color
-		panel.add_theme_stylebox_override("panel", copy)
-	else:
-		var new_sb := StyleBoxFlat.new()
-		new_sb.bg_color = color
-		new_sb.corner_radius_top_left = 8
-		new_sb.corner_radius_top_right = 8
-		new_sb.corner_radius_bottom_left = 8
-		new_sb.corner_radius_bottom_right = 8
-		panel.add_theme_stylebox_override("panel", new_sb)
-		
+	if path.is_empty():
+		tex_rect.texture = null
+		return
+	# Можеш да замениш load() с preload() ако иконите са фиксирани.
+	var tex: Texture2D = load(path)
+	tex_rect.texture = tex
 
-
-
-
-
+# --- hover signals (ако ползваш Area2D в сцената) ---
 func _on_area_2d_mouse_exited() -> void:
 	emit_signal("hovered_off", self)
-
 
 func _on_area_2d_mouse_entered() -> void:
 	emit_signal("hovered", self)

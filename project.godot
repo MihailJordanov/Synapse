@@ -14,10 +14,14 @@ config/name="Synapse"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CollectionManager="*res://Scripts/collection_manager.gd"
+
 [display]
 
-window/size/viewport_width=160
-window/size/viewport_height=90
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=1416
 window/size/window_height_override=836
 window/stretch/mode="canvas_items"

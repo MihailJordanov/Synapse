@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0br6vxncb8f3"]
+
+[ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
+[ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
+[ext_resource type="Script" uid="uid://cvxyyaiev5efn" path="res://Scripts/card_manager.gd" id="3_jsejj"]
+[ext_resource type="Script" uid="uid://bwvigaxcwlodp" path="res://Scripts/player_hand.gd" id="4_crvlv"]
+[ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="5_g4lrw"]
+[ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="6_rwy6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
+bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+shadow_offset = Vector2(-2, 2)
+
+[node name="Level_00" type="Node2D"]
+script = ExtResource("1_8axge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(320, 180)
+scale = Vector2(0.625, 0.351563)
+texture = ExtResource("2_rwy6q")
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("3_jsejj")
+
+[node name="PlayerHand" type="Node2D" parent="."]
+position = Vector2(320, 360)
+script = ExtResource("4_crvlv")
+
+[node name="Deck" type="Node2D" parent="PlayerHand"]
+position = Vector2(-270, -65)
+
+[node name="Panel" type="Panel" parent="PlayerHand/Deck"]
+offset_left = -25.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6bp64")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
+position = Vector2(25, 40)
+scale = Vector2(0.125, 0.141071)
+texture = ExtResource("5_g4lrw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
+position = Vector2(26, 39)
+scale = Vector2(0.125, 0.141071)
+texture = ExtResource("5_g4lrw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
+position = Vector2(27, 38)
+scale = Vector2(0.125, 0.141071)
+texture = ExtResource("5_g4lrw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
+position = Vector2(28, 37)
+scale = Vector2(0.125, 0.141071)
+texture = ExtResource("5_g4lrw")
+
+[node name="Points" type="Node" parent="PlayerHand"]
+
+[node name="Point1" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(320, 315)
+
+[node name="Point2" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(375, 315)
+
+[node name="Point3" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(265, 315)
+
+[node name="Point4" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(210, 315)
+
+[node name="Point5" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(430, 315)
+
+[node name="Point6" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(485, 315)
+
+[node name="Point7" type="Node2D" parent="PlayerHand/Points"]
+position = Vector2(155, 315)
+
+[node name="Slots" type="Node" parent="."]
+
+[node name="PlayerSlots" type="Node" parent="Slots"]
+
+[node name="CardSlot" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(320, 110)
+
+[node name="CardSlot2" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(400, 110)
+
+[node name="CardSlot3" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(240, 110)
+
+[node name="CardSlot4" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(160, 110)
+
+[node name="CardSlot5" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(480, 110)
+
+[node name="EnemySlots" type="Node" parent="Slots"]
+
+[node name="CardSlot6" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(320, 220)
+
+[node name="CardSlot7" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(400, 220)
+
+[node name="CardSlot8" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(240, 220)
+
+[node name="CardSlot9" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(160, 220)
+
+[node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+position = Vector2(480, 220)
