@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dviofnyfv8iq3"]
+
+[ext_resource type="Texture2D" uid="uid://cjm06rruoyovn" path="res://Images/BackGrounds/bg_1.jpg" id="1_d2ee6"]
+[ext_resource type="PackedScene" uid="uid://cd1a7q1oufv14" path="res://Scenes/card.tscn" id="2_ungwm"]
+
+[sub_resource type="Gradient" id="Gradient_ahcsq"]
+colors = PackedColorArray(0.945219, 0.838611, 0.635731, 1, 1, 0.282353, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d2ee6"]
+gradient = SubResource("Gradient_ahcsq")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ungwm"]
+texture = SubResource("GradientTexture2D_d2ee6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f77j5"]
+texture = ExtResource("1_d2ee6")
+modulate_color = Color(1, 1, 1, 0.286275)
+
+[node name="Collection" type="Node2D"]
+
+[node name="PanelGradiand" type="Panel" parent="."]
+offset_right = 646.0
+offset_bottom = 1688.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ungwm")
+
+[node name="PanelBG" type="Panel" parent="."]
+offset_right = 646.0
+offset_bottom = 1688.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_f77j5")
+
+[node name="FlowContainer" type="FlowContainer" parent="."]
+offset_left = 44.0
+offset_top = 68.0
+offset_right = 615.0
+offset_bottom = 108.0
+theme_override_constants/h_separation = 90
+
+[node name="Control" type="Control" parent="FlowContainer"]
+layout_mode = 2
+
+[node name="Card" parent="FlowContainer/Control" instance=ExtResource("2_ungwm")]
+
+[node name="Control2" type="Control" parent="FlowContainer"]
+layout_mode = 2
+
+[node name="Card" parent="FlowContainer/Control2" instance=ExtResource("2_ungwm")]
+
+[node name="Control3" type="Control" parent="FlowContainer"]
+layout_mode = 2
+
+[node name="Card" parent="FlowContainer/Control3" instance=ExtResource("2_ungwm")]
+
+[node name="Control4" type="Control" parent="FlowContainer"]
+layout_mode = 2
+
+[node name="Card" parent="FlowContainer/Control4" instance=ExtResource("2_ungwm")]

@@ -375,13 +375,10 @@ expand_mode = 2
 [node name="ConnectingPanel" type="Panel" parent="MainPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.071
-anchor_top = 0.812
+anchor_left = 0.08
+anchor_top = 0.05
 anchor_right = 0.92
-anchor_bottom = 0.962
-offset_left = 0.45
-offset_top = -60.96
-offset_bottom = -60.96
+anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -389,16 +386,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bnspj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/ConnectingPanel"]
 layout_mode = 0
-offset_right = 113.0
+offset_right = 42.0
 offset_bottom = 12.0
 theme_override_constants/separation = 15
+alignment = 1
 
 [node name="ElementControl" type="Control" parent="MainPanel/ConnectingPanel/HBoxContainer"]
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MainPanel/ConnectingPanel/HBoxContainer/ElementControl"]
 layout_mode = 0
-offset_right = 12.0
+offset_left = -6.0
+offset_right = 6.0
 offset_bottom = 12.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
 
@@ -422,7 +421,8 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MainPanel/ConnectingPanel/HBoxContainer/KindControl"]
 layout_mode = 0
-offset_right = 12.0
+offset_left = -6.0
+offset_right = 6.0
 offset_bottom = 12.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
 
@@ -446,7 +446,8 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl"]
 layout_mode = 0
-offset_right = 12.0
+offset_left = -6.0
+offset_right = 6.0
 offset_bottom = 12.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
 
@@ -482,16 +483,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bnspj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/CardTypesPanel"]
 layout_mode = 0
-offset_right = 113.0
+offset_right = 42.0
 offset_bottom = 12.0
 theme_override_constants/separation = 15
+alignment = 1
 
 [node name="ElementControl" type="Control" parent="MainPanel/CardTypesPanel/HBoxContainer"]
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MainPanel/CardTypesPanel/HBoxContainer/ElementControl"]
 layout_mode = 0
-offset_right = 12.0
+offset_left = -6.0
+offset_right = 6.0
 offset_bottom = 12.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
 
@@ -515,7 +518,8 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MainPanel/CardTypesPanel/HBoxContainer/KindControl"]
 layout_mode = 0
-offset_right = 12.0
+offset_left = -6.0
+offset_right = 6.0
 offset_bottom = 12.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
 
@@ -539,7 +543,8 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl"]
 layout_mode = 0
-offset_right = 12.0
+offset_left = -6.0
+offset_right = 6.0
 offset_bottom = 12.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_e6po8")
 

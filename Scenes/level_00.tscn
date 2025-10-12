@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=14 format=3 uid="uid://d0br6vxncb8f3"]
 
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
 [ext_resource type="Script" uid="uid://cvxyyaiev5efn" path="res://Scripts/card_manager.gd" id="3_jsejj"]
 [ext_resource type="Script" uid="uid://bwvigaxcwlodp" path="res://Scripts/player_hand.gd" id="4_crvlv"]
 [ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="5_g4lrw"]
+[ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_jsejj"]
 [ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="6_rwy6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
@@ -15,6 +16,34 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 shadow_size = 1
 shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwy6q"]
+bg_color = Color(0.215902, 0.215902, 0.215902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsejj"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4lrw"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvlv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pjfu"]
+bg_color = Color(0, 0, 0, 0)
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_8axge")
@@ -27,6 +56,7 @@ texture = ExtResource("2_rwy6q")
 
 [node name="CardManager" type="Node2D" parent="."]
 script = ExtResource("3_jsejj")
+picked_card_show_path = NodePath("../PlayerHand/PickedCardShow")
 
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(320, 360)
@@ -84,6 +114,258 @@ position = Vector2(485, 315)
 
 [node name="Point7" type="Node2D" parent="PlayerHand/Points"]
 position = Vector2(155, 315)
+
+[node name="PickedCardShow" type="Node2D" parent="PlayerHand"]
+position = Vector2(229, -233)
+script = ExtResource("6_jsejj")
+
+[node name="MainPanel" type="Panel" parent="PlayerHand/PickedCardShow"]
+offset_left = -25.0
+offset_top = -49.0
+offset_right = 75.0
+offset_bottom = 129.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwy6q")
+
+[node name="ImagePanel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.237
+anchor_right = 0.92
+anchor_bottom = 0.762
+offset_top = 0.0399971
+offset_bottom = 0.0400009
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsejj")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/ImagePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.043
+anchor_right = 0.952
+anchor_bottom = 0.957
+offset_left = -0.0320001
+offset_top = -0.0183501
+offset_right = 0.0319977
+offset_bottom = 0.0183411
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="ConnectingPanel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.091
+anchor_right = 0.92
+anchor_bottom = 0.227
+offset_top = -0.0160007
+offset_bottom = 0.0479965
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4lrw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel"]
+layout_mode = 0
+offset_right = 85.0
+offset_bottom = 24.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -11.0
+offset_right = 13.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -11.0
+offset_right = 13.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="CardTypesPanel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.841
+anchor_right = 0.92
+anchor_bottom = 0.977
+offset_left = 0.9
+offset_top = -0.0160065
+offset_bottom = 0.0479889
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0pjfu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel"]
+layout_mode = 0
+offset_right = 85.0
+offset_bottom = 24.0
+theme_override_constants/separation = 30
+
+[node name="ElementControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="InteractRichTextLabel" type="RichTextLabel" parent="PlayerHand/PickedCardShow/MainPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 14.0
+theme_override_font_sizes/normal_font_size = 7
+text = "Interact with:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelfRichTextLabel" type="RichTextLabel" parent="PlayerHand/PickedCardShow/MainPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 137.0
+offset_right = 94.0
+offset_bottom = 148.0
+theme_override_font_sizes/normal_font_size = 7
+text = "Card Types:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Slots" type="Node" parent="."]
 

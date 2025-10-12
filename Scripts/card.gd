@@ -7,7 +7,8 @@ const destroy_water_anim : String = "destroyed_water"
 const destroy_air_anim : String = "destroyed_air"
 const destroy_lightning_anim : String = "destroyed_lightning"
 
-var _is_destroying := false
+var _is_destroying: bool = false
+var is_locked: bool = false
 signal destroyed(card: Card)
 
 # --- Enums ---
@@ -245,3 +246,13 @@ func _get_destroy_anim_for_element(el: int) -> String:
 		_:
 			# дефолтна/резервна
 			return destroy_air_anim
+			
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			emit_signal("hovered", self)
+		else:
+			emit_signal("hovered_off", self)
+	elif event is InputEventScreenDrag:
+		# Ако искаш да позволиш плъзгане (drag)
+		emit_signal("hovered", self)
