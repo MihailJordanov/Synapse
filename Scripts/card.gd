@@ -1,6 +1,15 @@
 class_name Card
 extends Node2D
 
+
+const destroy_fire_anim : String = "destroyed_fire"
+const destroy_water_anim : String = "destroyed_water"
+const destroy_air_anim : String = "destroyed_air"
+const destroy_lightning_anim : String = "destroyed_lightning"
+
+var _is_destroying := false
+signal destroyed(card: Card)
+
 # --- Enums ---
 enum Element     { AIR, WATER, FIRE, LIGHTNING }
 enum CardKind    { HERO, ORG, WIZARD }
@@ -48,6 +57,7 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 @onready var connect_wth_element_control: Control = $MainPanel/ConnectingPanel/HBoxContainer/ElementControl
 @onready var connect_wth_kind_control: Control    = $MainPanel/ConnectingPanel/HBoxContainer/KindControl
 @onready var connect_wth_attack_style_control: Control = $MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # --- Display dictionaries ---
 const KIND_DISPLAY := {
@@ -199,3 +209,39 @@ func _on_area_2d_mouse_exited() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	emit_signal("hovered", self)
+	
+func on_destroy() -> void:
+	if _is_destroying:
+		return
+	_is_destroying = true
+	set_process(false)
+	set_physics_process(false)
+
+	var anim := _get_destroy_anim_for_element(element)
+	if animation_player and animation_player.has_animation(anim):
+		animation_player.play(anim)
+		animation_player.animation_finished.connect(
+			func(name):
+				if name == anim:
+					emit_signal("destroyed", self) 
+					queue_free(),
+			CONNECT_ONE_SHOT
+		)
+	else:
+		emit_signal("destroyed", self)     
+		queue_free()
+
+
+func _get_destroy_anim_for_element(el: int) -> String:
+	match el:
+		Card.Element.WATER:
+			return destroy_water_anim
+		Card.Element.FIRE:
+			return destroy_fire_anim
+		Card.Element.AIR:
+			return destroy_air_anim
+		Card.Element.LIGHTNING:
+			return destroy_lightning_anim
+		_:
+			# дефолтна/резервна
+			return destroy_air_anim

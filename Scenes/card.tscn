@@ -1,7 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd1a7q1oufv14"]
+[gd_scene load_steps=22 format=3 uid="uid://cd1a7q1oufv14"]
 
 [ext_resource type="Script" uid="uid://ccdixyf7yyp8q" path="res://Scripts/card.gd" id="1_eumee"]
 [ext_resource type="Texture2D" uid="uid://bkl5kcmo71j34" path="res://Images/Card_Icons/Heros/tile005.png" id="2_brehn"]
+[ext_resource type="Texture2D" uid="uid://eh3jkdqf3wpx" path="res://Images/Explosions/explosion_fire.png" id="3_brehn"]
+[ext_resource type="AudioStream" uid="uid://bayb6n0omupes" path="res://Sounds/Explosions/explosion_air.mp3" id="3_u5wvb"]
+[ext_resource type="Texture2D" uid="uid://hm4u8tj177c6" path="res://Images/Explosions/explosion_air.png" id="4_bnspj"]
+[ext_resource type="Texture2D" uid="uid://sex4qf0nixwc" path="res://Images/Explosions/explosion_water.png" id="4_eumee"]
+[ext_resource type="AudioStream" uid="uid://boqryciylwt5c" path="res://Sounds/Explosions/explosion_fire.mp3" id="4_mm04k"]
+[ext_resource type="Texture2D" uid="uid://c4jhr3mn3e8cd" path="res://Images/Explosions/explosion_lightning.png" id="5_e6po8"]
+[ext_resource type="AudioStream" uid="uid://dy8q0odeiuy6s" path="res://Sounds/Explosions/explosion_lightning.mp3" id="5_mm04k"]
+[ext_resource type="AudioStream" uid="uid://k2v4k1s1skq4" path="res://Sounds/Explosions/explosion_water.mp3" id="6_yvxpl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eumee"]
 bg_color = Color(0.215902, 0.215902, 0.215902, 1)
@@ -26,6 +34,300 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brehn"]
 size = Vector2(50, 80)
+
+[sub_resource type="Animation" id="Animation_e6po8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DestroySprite2D_Fire:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroySprite2D_Water:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DestroySprite2D_Lighting:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DestroySprite2D_Air:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainPanel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_u5wvb"]
+resource_name = "destroyed_air"
+length = 0.6
+step = 0.036
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DestroySprite2D_Air:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.036, 0.072, 0.108, 0.144, 0.18, 0.216, 0.252, 0.288, 0.324, 0.36, 0.396, 0.432, 0.468, 0.504),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroySprite2D_Air:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.571429),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_u5wvb")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_eumee"]
+resource_name = "destroyed_fire"
+length = 0.9
+step = 0.036
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DestroySprite2D_Fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.036, 0.072, 0.108, 0.144, 0.18, 0.216, 0.252, 0.288, 0.324, 0.36, 0.396, 0.432, 0.468, 0.504),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroySprite2D_Fire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.535714),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 2.41184,
+"start_offset": 0.119465,
+"stream": ExtResource("4_mm04k")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xnv4g"]
+resource_name = "destroyed_lightning"
+step = 0.036
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DestroySprite2D_Lighting:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.036288, 0.072576, 0.108864, 0.145152, 0.18144, 0.217728, 0.254016, 0.290304, 0.326592, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroySprite2D_Lighting:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.392857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.114008,
+"start_offset": 0.111909,
+"stream": ExtResource("5_mm04k")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bnspj"]
+resource_name = "destroyed_water"
+step = 0.036
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DestroySprite2D_Water:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.036, 0.072, 0.108, 0.144, 0.18, 0.216, 0.252, 0.288, 0.324, 0.36, 0.396, 0.432, 0.468, 0.504),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroySprite2D_Water:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.571429),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 6.35496,
+"start_offset": 0.223113,
+"stream": ExtResource("6_yvxpl")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnspj"]
+_data = {
+&"RESET": SubResource("Animation_e6po8"),
+&"destroyed_air": SubResource("Animation_u5wvb"),
+&"destroyed_fire": SubResource("Animation_eumee"),
+&"destroyed_lightning": SubResource("Animation_xnv4g"),
+&"destroyed_water": SubResource("Animation_bnspj")
+}
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_eumee")
@@ -78,8 +380,8 @@ anchor_top = 0.812
 anchor_right = 0.92
 anchor_bottom = 0.962
 offset_left = 0.45
-offset_top = 0.0399933
-offset_bottom = 0.0399933
+offset_top = -60.96
+offset_bottom = -60.96
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -171,8 +473,8 @@ anchor_top = 0.812
 anchor_right = 0.92
 anchor_bottom = 0.962
 offset_left = 0.45
-offset_top = -60.96
-offset_bottom = -60.96
+offset_top = 0.0400009
+offset_bottom = 0.0400009
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -263,6 +565,43 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(100, 160)
 shape = SubResource("RectangleShape2D_brehn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bnspj")
+}
+
+[node name="DestroySprite2D_Fire" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.62, 1.73196)
+texture = ExtResource("3_brehn")
+hframes = 8
+vframes = 2
+
+[node name="DestroySprite2D_Air" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.62, 1.73196)
+texture = ExtResource("4_bnspj")
+hframes = 8
+vframes = 2
+
+[node name="DestroySprite2D_Water" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.62, 1.73196)
+texture = ExtResource("4_eumee")
+hframes = 8
+vframes = 2
+frame = 14
+
+[node name="DestroySprite2D_Lighting" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38.5, 0)
+scale = Vector2(1.69753, 1.90551)
+texture = ExtResource("5_e6po8")
+hframes = 6
+vframes = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

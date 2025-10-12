@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2tut7p1ccp52"]
+
+[ext_resource type="Script" uid="uid://cqow3wrtve06" path="res://Scenes/edge.gd" id="1_3280n"]
+
+[sub_resource type="Gradient" id="Gradient_3280n"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 0, 1, 1)
+
+[node name="Edge" type="Node2D"]
+z_index = 10
+script = ExtResource("1_3280n")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 3.0
+gradient = SubResource("Gradient_3280n")
