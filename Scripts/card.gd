@@ -19,8 +19,17 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 # --- Exports ---
 @export var id : int = 0
 
+
+
+
+
+@export var use_self_element: bool = true : set = set_use_self_element
 @export var element: Element = Element.AIR : set = set_element
+
+@export var use_self_kind: bool = true : set = set_use_self_kind
 @export var kind: CardKind = CardKind.HERO : set = set_kind
+
+@export var use_self_attack_style: bool = true : set = set_use_self_attack_style
 @export var attack_style: AttackStyle = AttackStyle.MELEE : set = set_attack_style
 
 @export_category("Attacking On")
@@ -39,13 +48,19 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 # --- UI refs ---
 @onready var card_texture_rect: TextureRect = $MainPanel/ImagePanel/TextureRect
 
-# Self Card Type
+# Self Card Type (добавяме и Control контейнерите)
+@onready var self_element_control: Control = $MainPanel/CardTypesPanel/HBoxContainer/ElementControl
 @onready var seld_card_type_element_color_rect: ColorRect   = $MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel/ColorRect
 @onready var seld_card_type_element_texture_rect: TextureRect = $MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel/TextureRect
+
+@onready var self_kind_control: Control = $MainPanel/CardTypesPanel/HBoxContainer/KindControl
 @onready var seld_card_type_kind_color_rect: ColorRect      = $MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel/ColorRect
 @onready var seld_card_type_kind_texture_rect: TextureRect  = $MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel/TextureRect
+
+@onready var self_attack_style_control: Control = $MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl
 @onready var seld_card_type_attack_style_color_rect: ColorRect  = $MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel/ColorRect
 @onready var seld_card_type_attack_style_texture_rect: TextureRect = $MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel/TextureRect
+
 
 # Targets / Connecting
 @onready var connect_wth_element_color_rect: ColorRect      = $MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel/ColorRect
@@ -88,13 +103,19 @@ func _ready() -> void:
 	if get_parent() and get_parent().has_method("connect_card_signals"):
 		get_parent().connect_card_signals(self)
 
-	
 	if is_instance_valid(card_texture_rect) and card_texture:
 		card_texture_rect.texture = card_texture
+
+	# уважи флаговете за видимост преди да попълниш
+	set_use_self_element(use_self_element)
+	set_use_self_kind(use_self_kind)
+	set_use_self_attack_style(use_self_attack_style)
+
 	_update_element_ui()
 	_update_kind_ui()
 	_update_style_ui()
 	_update_targets_ui()
+
 
 # --- setters ---
 func set_card_texture(value: Texture2D) -> void:
@@ -137,9 +158,30 @@ func set_use_attack_style_target(v: bool) -> void:
 func set_target_attack_style(v: AttackStyle) -> void:
 	target_attack_style = v
 	_update_targets_ui()
+	
+	
+func set_use_self_element(v: bool) -> void:
+	use_self_element = v
+	_update_element_ui()
+
+func set_use_self_kind(v: bool) -> void:
+	use_self_kind = v
+	_update_kind_ui()
+
+func set_use_self_attack_style(v: bool) -> void:
+	use_self_attack_style = v
+	_update_style_ui()
+
 
 # --- UI updates ---
 func _update_element_ui() -> void:
+	# контролирай видимостта на целия self-element блок
+	if is_instance_valid(self_element_control):
+		self_element_control.visible = use_self_element
+	# ако е скрит – не попълваме нищо (оставяме темплейта по default)
+	if not use_self_element:
+		return
+
 	if not (is_instance_valid(seld_card_type_element_color_rect) and is_instance_valid(seld_card_type_element_texture_rect)):
 		return
 	if ELEMENT_DISPLAY.has(element):
@@ -147,7 +189,13 @@ func _update_element_ui() -> void:
 		seld_card_type_element_color_rect.color = data["color"]
 		_set_texture(seld_card_type_element_texture_rect, data["icon"])
 
+
 func _update_kind_ui() -> void:
+	if is_instance_valid(self_kind_control):
+		self_kind_control.visible = use_self_kind
+	if not use_self_kind:
+		return
+
 	if not (is_instance_valid(seld_card_type_kind_color_rect) and is_instance_valid(seld_card_type_kind_texture_rect)):
 		return
 	if KIND_DISPLAY.has(kind):
@@ -155,13 +203,20 @@ func _update_kind_ui() -> void:
 		seld_card_type_kind_color_rect.color = data["color"]
 		_set_texture(seld_card_type_kind_texture_rect, data["icon"])
 
+
 func _update_style_ui() -> void:
+	if is_instance_valid(self_attack_style_control):
+		self_attack_style_control.visible = use_self_attack_style
+	if not use_self_attack_style:
+		return
+
 	if not (is_instance_valid(seld_card_type_attack_style_color_rect) and is_instance_valid(seld_card_type_attack_style_texture_rect)):
 		return
 	if STYLE_DISPLAY.has(attack_style):
 		var data = STYLE_DISPLAY[attack_style]
 		seld_card_type_attack_style_color_rect.color = data["color"]
 		_set_texture(seld_card_type_attack_style_texture_rect, data["icon"])
+
 
 func _update_targets_ui() -> void:
 	# visibility

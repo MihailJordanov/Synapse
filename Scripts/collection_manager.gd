@@ -26,7 +26,11 @@ func get_all_cards() -> Array:
 
 func is_unlocked(id) -> bool:
 	id = _norm_id(id)
-	return unlocked.has(id)
+	for u in unlocked:
+		if _norm_id(u) == id:
+			return true
+	return false
+
 
 func in_deck(id) -> bool:
 	id = _norm_id(id)
@@ -101,6 +105,9 @@ func _load_all() -> void:
 	var user_cards_map := _cards_to_map(user_data.get("cards", []))
 	unlocked = user_data.get("unlocked", [])
 	deck     = user_data.get("deck", [])
+	
+	unlocked = _normalize_id_array(unlocked)
+	deck = _normalize_id_array(deck)
 
 	# -> синхронизирай карти от res (OVERRIDE/ADD)
 	var res_cards_arr: Array = res_data.get("cards", [])
@@ -199,3 +206,11 @@ func _filter_only_res_ids(user_map: Dictionary, res_arr: Array) -> Dictionary:
 		if res_ids.has(k):
 			keep[k] = user_map[k]
 	return keep
+	
+func _normalize_id_array(arr: Array) -> Array:
+	var out: Array = []
+	for v in arr:
+		var nv = _norm_id(v)
+		if nv != null:
+			out.append(nv)  # ще са int или string, но не float 1.0
+	return out

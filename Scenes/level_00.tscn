@@ -272,13 +272,15 @@ layout_mode = 0
 offset_right = 85.0
 offset_bottom = 24.0
 theme_override_constants/separation = 30
+alignment = 1
 
 [node name="ElementControl" type="Control" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl"]
 layout_mode = 0
-offset_right = 24.0
+offset_left = -12.0
+offset_right = 12.0
 offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
 
@@ -302,7 +304,8 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl"]
 layout_mode = 0
-offset_right = 24.0
+offset_left = -13.0
+offset_right = 11.0
 offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
 
@@ -326,7 +329,8 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="PlayerHand/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl"]
 layout_mode = 0
-offset_right = 24.0
+offset_left = -13.0
+offset_right = 11.0
 offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_crvlv")
 
@@ -372,33 +376,33 @@ vertical_alignment = 1
 [node name="PlayerSlots" type="Node" parent="Slots"]
 
 [node name="CardSlot" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(320, 110)
+position = Vector2(320, 220)
 
 [node name="CardSlot2" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(400, 110)
+position = Vector2(380, 220)
 
 [node name="CardSlot3" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(240, 110)
+position = Vector2(260, 220)
 
 [node name="CardSlot4" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(160, 110)
+position = Vector2(200, 222)
 
 [node name="CardSlot5" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(480, 110)
+position = Vector2(440, 220)
 
 [node name="EnemySlots" type="Node" parent="Slots"]
 
 [node name="CardSlot6" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(320, 220)
+position = Vector2(320, 120)
 
 [node name="CardSlot7" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(400, 220)
+position = Vector2(380, 120)
 
 [node name="CardSlot8" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(240, 220)
+position = Vector2(260, 120)
 
 [node name="CardSlot9" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(160, 220)
+position = Vector2(200, 120)
 
 [node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
-position = Vector2(480, 220)
+position = Vector2(440, 120)

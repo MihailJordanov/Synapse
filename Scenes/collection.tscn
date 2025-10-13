@@ -1,7 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://dviofnyfv8iq3"]
+[gd_scene load_steps=28 format=3 uid="uid://dviofnyfv8iq3"]
 
+[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="1_4an7l"]
 [ext_resource type="Texture2D" uid="uid://cjm06rruoyovn" path="res://Images/BackGrounds/bg_1.jpg" id="1_d2ee6"]
-[ext_resource type="PackedScene" uid="uid://cd1a7q1oufv14" path="res://Scenes/card.tscn" id="2_ungwm"]
+[ext_resource type="Script" uid="uid://d0r4btya68m7n" path="res://Scripts/collection_container.gd" id="2_f77j5"]
+[ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="2_ungwm"]
+[ext_resource type="Texture2D" uid="uid://chtrxy6x76kwf" path="res://Images/Card_Slot_Images/card_deck_icon_2.png" id="3_0vnob"]
+[ext_resource type="Texture2D" uid="uid://dm6vswilrbj3s" path="res://Images/BackGrounds/wood_texture_2.jpg" id="3_t2cyl"]
+[ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="4_kthco"]
+[ext_resource type="Texture2D" uid="uid://u0m008ixbbic" path="res://Images/Card_Slot_Images/in_use_icon.png" id="8_4an7l"]
+[ext_resource type="Script" uid="uid://cbmmcrnesr7e6" path="res://Scripts/camera_scroll.gd" id="8_qqc3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t7gs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrx6y"]
+texture = ExtResource("3_t2cyl")
+modulate_color = Color(1, 1, 1, 0.937255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2cyl"]
+bg_color = Color(0.215902, 0.215902, 0.215902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrx6y"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqc3n"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4an7l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vnob"]
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_ahcsq"]
 colors = PackedColorArray(0.945219, 0.838611, 0.635731, 1, 1, 0.282353, 0, 1)
@@ -17,41 +61,640 @@ texture = SubResource("GradientTexture2D_d2ee6")
 texture = ExtResource("1_d2ee6")
 modulate_color = Color(1, 1, 1, 0.286275)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ee6"]
+bg_color = Color(0.215902, 0.215902, 0.215902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ungwm"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f77j5"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kthco"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u01rs"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dudnq"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.972549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0vnob"]
+texture = ExtResource("8_4an7l")
+
 [node name="Collection" type="Node2D"]
 
-[node name="PanelGradiand" type="Panel" parent="."]
-offset_right = 646.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BorderPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.186
+offset_bottom = 0.0400009
+theme_override_styles/panel = SubResource("StyleBoxFlat_0t7gs")
+
+[node name="CardCountRichTextLabel" type="RichTextLabel" parent="CanvasLayer/BorderPanel"]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 3.0
+offset_right = 632.0
+offset_bottom = 56.0
+theme_override_fonts/normal_font = ExtResource("1_4an7l")
+theme_override_font_sizes/normal_font_size = 28
+text = "x23"
+vertical_alignment = 1
+
+[node name="PanelBG" type="Panel" parent="CanvasLayer/BorderPanel"]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hrx6y")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BorderPanel"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 3.0
+offset_right = 532.0
+offset_bottom = 55.0
+texture = ExtResource("3_0vnob")
+expand_mode = 2
+
+[node name="InfoRichTextLabel" type="RichTextLabel" parent="CanvasLayer/BorderPanel"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 7.0
+offset_right = 402.0
+offset_bottom = 55.0
+text = "The limit has been reached."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PickedCardShow" type="Node2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(528, 144)
+script = ExtResource("2_ungwm")
+
+[node name="MainPanel" type="Panel" parent="CanvasLayer/PickedCardShow"]
+offset_left = -25.0
+offset_top = -49.0
+offset_right = 75.0
+offset_bottom = 129.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2cyl")
+
+[node name="ImagePanel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.237
+anchor_right = 0.92
+anchor_bottom = 0.762
+offset_top = 0.0399971
+offset_bottom = 0.0400009
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrx6y")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/ImagePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.043
+anchor_right = 0.952
+anchor_bottom = 0.957
+offset_left = -0.0320001
+offset_top = -0.0183501
+offset_right = 0.0319977
+offset_bottom = 0.0183411
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="ConnectingPanel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.091
+anchor_right = 0.92
+anchor_bottom = 0.227
+offset_top = -0.0160007
+offset_bottom = 0.0479965
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qqc3n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel"]
+layout_mode = 0
+offset_right = 85.0
+offset_bottom = 24.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -11.0
+offset_right = 13.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4an7l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -11.0
+offset_right = 13.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4an7l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4an7l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 1.99999
+offset_right = 22.45
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="CardTypesPanel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.841
+anchor_right = 0.92
+anchor_bottom = 0.977
+offset_left = 0.9
+offset_top = -0.0160065
+offset_bottom = 0.0479889
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0vnob")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel"]
+layout_mode = 0
+offset_right = 85.0
+offset_bottom = 24.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4an7l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4an7l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 12.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4an7l")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PickedCardShow/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.45001
+offset_top = 2.04001
+offset_right = 22.45
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="InteractRichTextLabel" type="RichTextLabel" parent="CanvasLayer/PickedCardShow/MainPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 14.0
+theme_override_font_sizes/normal_font_size = 7
+text = "Interact with:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelfRichTextLabel" type="RichTextLabel" parent="CanvasLayer/PickedCardShow/MainPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 137.0
+offset_right = 94.0
+offset_bottom = 148.0
+theme_override_font_sizes/normal_font_size = 7
+text = "Card Types:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 31
+text = "Menu"
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="PanelGradiand" type="Panel" parent="Backgrounds"]
+z_index = -10
+offset_right = 640.0
 offset_bottom = 1688.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ungwm")
 
-[node name="PanelBG" type="Panel" parent="."]
-offset_right = 646.0
+[node name="PanelBG" type="Panel" parent="Backgrounds"]
+z_index = -10
+offset_right = 640.0
 offset_bottom = 1688.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_f77j5")
 
-[node name="FlowContainer" type="FlowContainer" parent="."]
-offset_left = 44.0
-offset_top = 68.0
-offset_right = 615.0
-offset_bottom = 108.0
-theme_override_constants/h_separation = 90
+[node name="CollectionFlowContainer" type="GridContainer" parent="."]
+offset_left = 87.0
+offset_top = 102.0
+offset_right = 87.0
+offset_bottom = 102.0
+theme_override_constants/h_separation = 120
+theme_override_constants/v_separation = 180
+columns = 4
+script = ExtResource("2_f77j5")
 
-[node name="Control" type="Control" parent="FlowContainer"]
+[node name="Card_Visualisation" type="Control" parent="."]
+visible = false
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = 75.0
+offset_top = 103.0
+offset_right = 75.0
+offset_bottom = 103.0
+
+[node name="MainPanel" type="Panel" parent="Card_Visualisation"]
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 160.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2ee6")
+
+[node name="ImagePanel" type="Panel" parent="Card_Visualisation/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.237
+anchor_right = 0.92
+anchor_bottom = 0.762
+offset_top = 0.039999
+offset_bottom = 0.0399971
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ungwm")
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/ImagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="ConnectingPanel" type="Panel" parent="Card_Visualisation/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.05
+anchor_right = 0.92
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f77j5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Card_Visualisation/MainPanel/ConnectingPanel"]
+layout_mode = 0
+offset_left = 6.45
+offset_right = 66.45
+offset_bottom = 12.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer"]
 layout_mode = 2
 
-[node name="Card" parent="FlowContainer/Control" instance=ExtResource("2_ungwm")]
+[node name="Panel" type="Panel" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 18.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kthco")
 
-[node name="Control2" type="Control" parent="FlowContainer"]
+[node name="ColorRect" type="ColorRect" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 1.55
+offset_top = 2.0
+offset_right = 21.55
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 1.55
+offset_top = 2.0
+offset_right = 21.55
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer"]
 layout_mode = 2
 
-[node name="Card" parent="FlowContainer/Control2" instance=ExtResource("2_ungwm")]
+[node name="Panel" type="Panel" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 18.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kthco")
 
-[node name="Control3" type="Control" parent="FlowContainer"]
+[node name="ColorRect" type="ColorRect" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 1.55
+offset_top = 2.0
+offset_right = 21.55
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 1.55
+offset_top = 2.0
+offset_right = 21.55
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer"]
 layout_mode = 2
 
-[node name="Card" parent="FlowContainer/Control3" instance=ExtResource("2_ungwm")]
+[node name="Panel" type="Panel" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 18.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kthco")
 
-[node name="Control4" type="Control" parent="FlowContainer"]
+[node name="ColorRect" type="ColorRect" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 1.55
+offset_top = 2.0
+offset_right = 21.55
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 1.55
+offset_top = 2.0
+offset_right = 21.55
+offset_bottom = 22.0
+expand_mode = 2
+
+[node name="CardTypesPanel" type="Panel" parent="Card_Visualisation/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.812
+anchor_right = 0.92
+anchor_bottom = 0.962
+offset_left = 0.45
+offset_top = 0.0400009
+offset_bottom = 0.0400009
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u01rs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Card_Visualisation/MainPanel/CardTypesPanel"]
+layout_mode = 0
+offset_left = 6.45
+offset_right = 66.45
+offset_bottom = 12.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer"]
 layout_mode = 2
 
-[node name="Card" parent="FlowContainer/Control4" instance=ExtResource("2_ungwm")]
+[node name="Panel" type="Panel" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 18.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kthco")
+
+[node name="ColorRect" type="ColorRect" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.04001
+offset_right = 22.0
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.04001
+offset_right = 22.0
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 18.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kthco")
+
+[node name="ColorRect" type="ColorRect" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.04001
+offset_right = 22.0
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.04001
+offset_right = 22.0
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 18.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kthco")
+
+[node name="ColorRect" type="ColorRect" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.04001
+offset_right = 22.0
+offset_bottom = 22.04
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.04001
+offset_right = 22.0
+offset_bottom = 22.04
+expand_mode = 2
+
+[node name="LockedPanel" type="Panel" parent="Card_Visualisation"]
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dudnq")
+
+[node name="TextureRect" type="TextureRect" parent="Card_Visualisation/LockedPanel"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 100.0
+offset_bottom = 126.0
+texture = ExtResource("4_kthco")
+expand_mode = 2
+
+[node name="InDeckPanel" type="Panel" parent="Card_Visualisation"]
+layout_mode = 2
+offset_left = 83.0
+offset_top = -15.0
+offset_right = 113.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0vnob")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+script = ExtResource("8_qqc3n")
+smooth_factor = 0.1

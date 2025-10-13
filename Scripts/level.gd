@@ -101,13 +101,24 @@ func _draw_next_card_instance() -> Node2D:
 	if as_card:
 		as_card.id = int(id)
 
-	# основни свойства (String -> enum int)
-	if card.has_method("set_element"):
-		card.set_element(_to_element(data.get("self_element")))
-	if card.has_method("set_kind"):
-		card.set_kind(_to_kind(data.get("self_kind")))
-	if card.has_method("set_attack_style"):
-		card.set_attack_style(_to_style(data.get("self_attack_style")))
+	# --- SELF секции: уважи null -> скрий; иначе попълни ---
+	var se = data.get("self_element")
+	if card.has_method("set_use_self_element"):
+		card.set_use_self_element(se != null)
+	if se != null and card.has_method("set_element"):
+		card.set_element(_to_element(se))
+
+	var sk = data.get("self_kind")
+	if card.has_method("set_use_self_kind"):
+		card.set_use_self_kind(sk != null)
+	if sk != null and card.has_method("set_kind"):
+		card.set_kind(_to_kind(sk))
+
+	var ss = data.get("self_attack_style")
+	if card.has_method("set_use_self_attack_style"):
+		card.set_use_self_attack_style(ss != null)
+	if ss != null and card.has_method("set_attack_style"):
+		card.set_attack_style(_to_style(ss))
 
 	# текстура
 	if card.has_method("set_card_texture"):
@@ -139,6 +150,7 @@ func _draw_next_card_instance() -> Node2D:
 		card_manager.connect_card_signals(card)
 
 	return card
+
 
 func _place_card_at_point(card: Node2D, point: Node2D) -> void:
 	card.global_position = point.global_position

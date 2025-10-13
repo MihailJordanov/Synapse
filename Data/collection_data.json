@@ -4,7 +4,7 @@
 	  "id": 1,
 	  "self_element": "AIR",
 	  "self_kind": "HERO",
-	  "self_attack_style": "MELEE",
+	  "self_attack_style": null,
 	  "card_texture": "res://Images/Card_Icons/Heros/tile003.png",
 	  "connect_element": "WATER",
 	  "connect_kind": null,
@@ -65,7 +65,7 @@
 	  "self_element": "FIRE",
 	  "self_kind": "HERO",
 	  "self_attack_style": "TELEPATH",
-	  "card_texture": "res://Images/Card_Icons/Heros/tile011.png",
+	  "card_texture": "res://Images/Card_Icons/Heros/tile010.png",
 	  "connect_element": "WATER",
 	  "connect_kind": "HERO",
 	  "connect_attack_style": "MELEE"
@@ -99,6 +99,56 @@
 	  "connect_element": "AIR",
 	  "connect_kind": "HERO",
 	  "connect_attack_style": "TELEPATH"
+	},
+	{
+		"card_texture": "res://Images/Card_Icons/Heros/tile000.png",
+		"connect_attack_style": "MELEE",
+		"connect_element": null,
+		"connect_kind": "HERO",
+		"id": 11,
+		"self_attack_style": "MELEE",
+		"self_element": "AIR",
+		"self_kind": "HERO"
+	},
+	{
+		"card_texture": "res://Images/Card_Icons/Heros/tile004.png",
+		"connect_attack_style": "TELEPATH",
+		"connect_element": "FIRE",
+		"connect_kind": null,
+		"id": 12,
+		"self_attack_style": "RANGE",
+		"self_element": "LIGHTNING",
+		"self_kind": "HERO"
+	},
+	{
+		"card_texture": "res://Images/Card_Icons/Heros/tile005.png",
+		"connect_attack_style": null,
+		"connect_element": "AIR",
+		"connect_kind": "WARRIOR",
+		"id": 13,
+		"self_attack_style": "TELEPATH",
+		"self_element": "WATER",
+		"self_kind": "HERO"
+	},
+	{
+		"card_texture": "res://Images/Card_Icons/Heros/tile006.png",
+		"connect_attack_style": "RANGE",
+		"connect_element": null,
+		"connect_kind": "WIZARD",
+		"id": 14,
+		"self_attack_style": "MELEE",
+		"self_element": null,
+		"self_kind": "HERO"
+	},
+	{
+		"card_texture": "res://Images/Card_Icons/Heros/tile002.png",
+		"connect_attack_style": "MELEE",
+		"connect_element": "WATER",
+		"connect_kind": "HERO",
+		"id": 15,
+		"self_attack_style": "MELEE",
+		"self_element": "LIGHTNING",
+		"self_kind": "HERO"
 	}
   ]
 }
