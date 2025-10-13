@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=21 format=3 uid="uid://d0br6vxncb8f3"]
 
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_jsejj"]
 [ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="6_rwy6q"]
 [ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scenes/game_state_random.gd" id="8_crvlv"]
+[ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/tutorial_deck.tres" id="9_g4lrw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
@@ -89,6 +90,13 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp2sk"]
+bg_color = Color(0, 0, 0, 0.364706)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_8axge")
@@ -489,11 +497,9 @@ position = Vector2(440, 120)
 script = ExtResource("8_crvlv")
 level_path = NodePath("..")
 enemy_slots_root_path = NodePath("../Slots/EnemySlots")
-max_hand = 5
 think_time_ms = 750
 ai_points_root_path = NodePath("../AIHand/Points")
-place_anim_s = 0.7
-ai_deck_ids = [1, 1, 1, 1, 2, 2, 2]
+deck = ExtResource("9_g4lrw")
 
 [node name="EndTurnButton" type="Button" parent="."]
 offset_left = 40.0
@@ -505,3 +511,20 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jxdfy")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dow8t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kk00c")
 text = "End Turn"
+
+[node name="InfoPanel" type="Panel" parent="."]
+offset_left = 9.0
+offset_top = 17.0
+offset_right = 165.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hp2sk")
+
+[node name="InfoRichTextLabel" type="RichTextLabel" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 145.0
+offset_bottom = 129.0
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1

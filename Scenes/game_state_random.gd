@@ -5,14 +5,14 @@ extends Node
 # === КОНФИГ ===
 @export var level_path: NodePath             # посочи Level нода
 @export var enemy_slots_root_path: NodePath           # посочи .../Slots/EnemySlots
-@export var max_hand: int = 4                         # можеш да го сетнеш на 5 от инспектора
-@export var think_time_ms: int = 300                  # "мислене" за по-естествено
+@export var max_hand: int = 5                         # можеш да го сетнеш на 5 от инспектора
+@export var think_time_ms: int = 500                 # "мислене" за по-естествено
 @export var ai_points_root_path: NodePath  
-@export var place_anim_s: float = 1.0   # време на анимацията при поставяне
+@export var place_anim_s: float = 0.7  # време на анимацията при поставяне
 @export var hand_anim_s: float = 0.2
 
 # AI дек (id-та от CollectionManager)
-@export var ai_deck_ids: PackedInt32Array = []
+@export var deck: AIDeck 
 
 # === ВЪТРЕШНО СЪСТОЯНИЕ ===
 const CARD_SCENE := preload("res://Scenes/card.tscn")
@@ -29,26 +29,30 @@ var _rng := RandomNumberGenerator.new()
 
 signal turn_finished
 
+
 func _ready() -> void:
 	_rng.randomize()
 	_level = get_node(level_path)
 
-	var enemy_root := get_node(enemy_slots_root_path)
+	# Enemy slots
 	_enemy_slots = []
+	var enemy_root := get_node(enemy_slots_root_path)
 	if enemy_root:
 		for c in enemy_root.get_children():
 			if c is CardSlot:
 				_enemy_slots.append(c)
 
-	# събери AI Points
+	# AI hand points
+	_ai_points = []
 	var points_root := get_node(ai_points_root_path)
 	if points_root:
 		for p in points_root.get_children():
 			if p is Node2D:
 				_ai_points.append(p)
 
-	if ai_deck_ids.size() > 0:
-		init_with_ids(ai_deck_ids)
+	# Зареди тестето от Resource (AIDeck)
+	if deck and deck.ids.size() > 0:
+		init_with_ids(deck.ids)
 
 # Инициализация/смяна на тестето на AI
 func init_with_ids(ids: PackedInt32Array) -> void:

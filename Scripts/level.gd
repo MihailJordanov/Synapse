@@ -1,10 +1,19 @@
 class_name Level
 extends Node2D
 
-const MAX_HAND := 4
 const MIN_CYCLE_LEN := 3  # игнорирай 2-цикъл (1 ↔ 2)
 const CARD_SCENE := preload("res://Scenes/card.tscn")
 const EDGE_SCENE := preload("res://Scenes/edge.tscn")
+
+const INFO_COLOR_NORMAL := Color(0.7, 1.0, 0.7)      # зеленикав — стандартни инструкции
+const INFO_COLOR_WARNING := Color(1.0, 0.8, 0.3)     # жълтеникав — предупреждение
+const INFO_COLOR_ERROR := Color(1.0, 0.4, 0.4)       # червен — грешка
+const INFO_COLOR_AI := Color(0.5, 0.8, 1.0)          # синкав — AI съобщения
+
+
+signal cycle_continue_requested
+
+
 
 # game manager
 enum PlayerID { HUMAN = 0, AI = 1 }
@@ -13,11 +22,15 @@ var player_played_this_turn: bool = false
 
 @onready var end_turn_btn: Button = $EndTurnButton       # посочи бутона
 @onready var ai: GameStateRandom = $GameStateRandom     # посочи нода с AI
+@onready var info_rich_text_label: RichTextLabel = $InfoPanel/InfoRichTextLabel
+@onready var panel: Panel = $PlayerHand/Deck/Panel
+@onready var card_manager: CardManager = $CardManager
+
 
 @export var is_edge_visible : bool = false
+@export var draw_anim_s: float = 1.0  # продължителност на анимацията при теглене от дека
+@export var starting_hand_size: int = 5
 
-
-@onready var card_manager: CardManager = $CardManager
 
 # Points (ползваме ти 7те, но ще пълним до MAX_HAND)
 @onready var point_1: Node2D = $PlayerHand/Points/Point1
@@ -52,7 +65,8 @@ var placed_cards: Array[Card] = []        # реалните нодове на �
 var graph: Dictionary = {}                # instance_id(int) -> Array[int]
 var uid_to_card: Dictionary = {}          # uid(int) -> Card
 var edges: Dictionary = {}                # речник: "a_uid->b_uid" -> инстанция на ръб
-
+var waiting_cycle_ack: bool = false
+var resolving_links: bool = false 
 
 func _ready() -> void:
 	points = [point_1, point_2, point_3, point_4, point_5, point_6, point_7]
@@ -69,11 +83,13 @@ func _ready() -> void:
 	_draw_to_full_hand()
 	end_turn_btn.pressed.connect(_on_end_turn_pressed)
 	_update_turn_ui()
+	_info("[b]Your turn[/b] — play [b]one[/b] card.", false, INFO_COLOR_NORMAL)
+
 
 # ---------------------- РЪКА / ТЕГЛЕНЕ ----------------------
 
 func _draw_to_full_hand() -> void:
-	while hand_cards.size() < MAX_HAND:
+	while hand_cards.size() < starting_hand_size:
 		var p := _first_free_point()
 		if p == null:
 			break
@@ -81,6 +97,7 @@ func _draw_to_full_hand() -> void:
 		if card == null:
 			break
 		_place_card_at_point(card, p)
+
 
 func _first_free_point() -> Node2D:
 	for p in points:
@@ -164,10 +181,40 @@ func _draw_next_card_instance() -> Node2D:
 
 
 func _place_card_at_point(card: Node2D, point: Node2D) -> void:
-	card.global_position = point.global_position
+	# стартова позиция = панела на дека (ако има), иначе директно до целта
+	var start_pos: Vector2 = point.global_position
+	if is_instance_valid(panel):
+		# Panel е Control, но си има global_position; fallback при нужда:
+		# start_pos = panel.get_global_transform().origin
+		start_pos = panel.global_position
+
+	# позиционирай картата при дека
+	card.global_position = start_pos
+
+	# бекър за ръката (за да може CardManager да я върне при “drop back”)
 	home_of_card[card] = point
 	hand_cards.append(card)
 	card.set_meta("home_pos", point.global_position)
+
+	# покажи гърба по време на “изтеглянето”
+	if card.has_method("show_back"):
+		card.show_back(true)
+
+	# по желание: изнеси над останалите по време на анимацията
+	if "z_index" in card:
+		card.z_index = 3
+
+	# анимирано прехвърляне към точката в ръката
+	await _tween_to(card as Node2D, point.global_position, draw_anim_s)
+
+	# след като „дойде в ръката“ – покажи лицето (ако искаш да остане с гръб, просто махни следващия блок)
+	if card.has_method("show_back"):
+		card.show_back(false)
+
+	# върни z_index към нормално (по желание)
+	if "z_index" in card:
+		card.z_index = 1
+
 
 # ---------------------- DRAG/DROP CALLBACKS ----------------------
 
@@ -176,12 +223,14 @@ func _on_card_dropped_back(card: Node2D) -> void:
 	if typeof(home) == TYPE_VECTOR2:
 		var tw := create_tween()
 		tw.tween_property(card, "global_position", home, 0.12).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
-
+	if current_player == PlayerID.HUMAN and not player_played_this_turn and not waiting_cycle_ack:
+		_info("Drop the card on your slots.")
 
 
 func _on_card_dropped_on_slot(card: Node2D, slot: Node2D) -> void:
-	
+	resolving_links = true                  # NEW
+	end_turn_btn.disabled = true            # както беше
+
 	if hand_cards.has(card):
 		hand_cards.erase(card)
 		home_of_card.erase(card)
@@ -190,11 +239,18 @@ func _on_card_dropped_on_slot(card: Node2D, slot: Node2D) -> void:
 	if c:
 		_add_to_board(c)
 		_bind_card_to_slot(c, slot as CardSlot)
-		_check_new_edges(c)
+
+		await _check_new_edges(c)           # изчакваме докрай (вкл. визуализация/цикъл)
+
 	_draw_to_full_hand()
-	
-	if current_player == PlayerID.HUMAN:
+
+	# ако НЯМА цикъл (т.е. не сме в await_cycle_ack), включваме бутона
+	if current_player == PlayerID.HUMAN and not waiting_cycle_ack:
 		player_played_this_turn = true
+		end_turn_btn.disabled = false
+		_info("You must end your turn\n(press the [b]'End Turn'[/b] button).")
+
+	resolving_links = false                 # NEW (пускаме след всичко, или в _await_cycle_ack)
 
 
 # ---------------------- ГРАФ / ВРЪЗКИ ----------------------
@@ -235,6 +291,12 @@ func _matches(from: Card, to: Card) -> Array[String]:
 	return res
 
 func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
+	# защити: ако някоя карта вече напуска сцената/унищожава се
+	if not is_instance_valid(a) or not is_instance_valid(b):
+		return
+	if ("_is_destroying" in a and a._is_destroying) or ("_is_destroying" in b and b._is_destroying):
+		return
+	
 	var a_uid := a.get_instance_id()
 	var b_uid := b.get_instance_id()
 
@@ -317,10 +379,19 @@ func _check_cycle_and_destroy(a_uid: int, b_uid: int) -> void:
 	if _dfs_find_path(b_uid, a_uid, parent):
 		var cycle_path := _reconstruct_path(parent, b_uid, a_uid)  # [b, ..., a]
 		if cycle_path.size() >= MIN_CYCLE_LEN:
-			# само при скрити ръбове: покажи цикъла за момент (за да се види трасето)
+			# 1) визуализация (ако ръбовете иначе са скрити, ги „реплейваме“ за да се видят)
 			if not is_edge_visible:
 				await _show_cycle_edges_once(cycle_path, a_uid, b_uid, 1.2)
+			else:
+				# дори при видими ръбове – кратко „наблягане“
+				await _show_cycle_edges_once(cycle_path, a_uid, b_uid, 0.8)
+
+			# 2) пауза: изчакай играчът да натисне "Go next"
+			await _await_cycle_ack()
+
+			# 3) чак сега унищожи картите от цикъла
 			_destroy_cards_in_cycle(cycle_path)
+
 
 # Намира път (ако съществува) от start до target в насочения граф.
 func _dfs_find_path(start: int, target: int, parent: Dictionary) -> bool:
@@ -352,7 +423,7 @@ func _reconstruct_path(parent: Dictionary, start: int, end: int) -> Array[int]:
 	return path
 
 func _destroy_cards_in_cycle(cycle_uids: Array[int]) -> void:
-	# махни дубликати, създай подреден списък
+	# уникални + подредени
 	var seen := {}
 	var ordered: Array[int] = []
 	for uid in cycle_uids:
@@ -360,40 +431,19 @@ func _destroy_cards_in_cycle(cycle_uids: Array[int]) -> void:
 			seen[uid] = true
 			ordered.append(uid)
 
-	# 1) ВАНИШ на всички ръбове, които докосват някой UID от цикъла
+	# 1) махни визуалните ръбове, които докосват цикъла
 	await _vanish_edges_touching(ordered)
 
-	# 2) Сега унищожи картите (ще пуснат своите анимации)
+	# 2) стартирай анимациите за унищожение (emit "destroyed" вътре)
 	for uid in ordered:
 		var card: Card = uid_to_card.get(uid, null) as Card
 		if card and card.has_method("on_destroy"):
 			card.on_destroy()
 
-	# 3) Почисти графа/буферите
+	# 3) допълнително за здравина: махни от графа (ако още не са изчистени)
 	for uid in ordered:
-		graph.erase(uid)
-	for key in graph.keys():
-		var arr: Array = graph[key]
-		for uid in ordered:
-			if arr.has(uid):
-				arr.erase(uid)
-		graph[key] = arr
+		await _remove_uid_from_graph(uid)
 
-	for uid in ordered:
-		var c: Card = uid_to_card.get(uid, null) as Card
-		if c and placed_cards.has(c):
-			placed_cards.erase(c)
-		uid_to_card.erase(uid)
-
-
-	# По желание: махни и визуалните ръбове, ако държиш да изчезнат веднага
-	# (обикновено ще се разкарат сами, когато картите се изтрият)
-	# for key in edges.keys():
-	#     var parts = key.split("->")
-	#     if int(parts[0]) in seen or int(parts[1]) in seen:
-	#         var e = edges[key]
-	#         if is_instance_valid(e): e.queue_free()
-	#         edges.erase(key)
 	
 	
 func _bind_card_to_slot(card: Card, slot: CardSlot) -> void:
@@ -415,22 +465,26 @@ func _bind_card_to_slot(card: Card, slot: CardSlot) -> void:
 
 		
 func _on_card_destroyed(card: Card) -> void:
-	# 1) опитай директно през мапинга
+	# 0) освободи слота
 	var slot: CardSlot = card_to_slot.get(card, null) as CardSlot
 	if slot != null:
 		_mark_slot_free(slot)
 		card_to_slot.erase(card)
 	else:
-		# 2) fallback: намери слота, който още реферира тази карта
 		_force_free_slot_for_card(card)
 
-	# почистване на структури (ако още не са почистени другаде)
-	uid_to_card.erase(card.get_instance_id())
-	placed_cards.erase(card)  # ако присъства
+	# 1) почисти графа (идемпотентно е; няма да счупи ако вече е чистено)
+	var uid := card.get_instance_id()
+	await _remove_uid_from_graph(uid)
 
-	# остави 1 кадър за стабилизиране на drag/drop
+	# 2) синхронизирай локалните структури (също идемпотентно)
+	placed_cards.erase(card)
+	uid_to_card.erase(uid)
+
+	# 3) остави 1 кадър за стабилизиране
 	if is_inside_tree():
 		await get_tree().process_frame
+
 
 	
 	
@@ -567,41 +621,67 @@ func _show_cycle_edges_once(path_uids: Array[int], a_uid: int, b_uid: int, show_
 		await get_tree().create_timer(max(0.0, show_time)).timeout
 		
 func can_player_drop_on_slot(card: Node2D, slot: Node2D) -> bool:
-	# само в човешкия ход
+	# стоп по време на паузата за цикъл
+	if waiting_cycle_ack:
+		_info("A cycle is being resolved. Press [b]Go next[/b].", false, INFO_COLOR_WARNING)
+		return false
+	
+	# 1) човешки ход ли е?
 	if current_player != PlayerID.HUMAN:
+		_info("It's AI's turn… please wait.", false, INFO_COLOR_AI)
 		return false
-	# вече е поставил една карта в този ход → отказ
+
+	# 2) точно една карта на ход
 	if player_played_this_turn:
-		return false
-	# трябва да е реален слот
+		_info("You can't place more than one card per turn.", false, INFO_COLOR_ERROR)
+		return false  # ← важно: вътре в if-а!
+
+	# 3) реален слот ли е?
 	if slot == null:
+		_info("Drop the card on your slots.", false, INFO_COLOR_WARNING)
 		return false
-	# само в PlayerSlots
-	return slot.get_parent() == $Slots/PlayerSlots
+
+	# 4) само в PlayerSlots
+	if slot.get_parent() != $Slots/PlayerSlots:
+		_info("You can place cards only on [b]your[/b] side.", false, INFO_COLOR_WARNING)
+		return false
+
+	return true
 
 
 
 func _on_end_turn_pressed() -> void:
-	# Правилото е: „точно една карта на ход“ → ако не е играл карта, не му позволявай да приключи.
-	if current_player != PlayerID.HUMAN:
-		return # игнор (не е негов ред)
-	if not player_played_this_turn:
-		# По избор: покажи съобщение в UI
-		print("You must place a card before ending your turn.")
+	if resolving_links:
+		return
+	if waiting_cycle_ack:
+		emit_signal("cycle_continue_requested")
+		return
+	
+	# ако чакаме потвърждение за цикъл, бутонът служи за "Go next"
+	if waiting_cycle_ack:
+		emit_signal("cycle_continue_requested")
 		return
 
-	# Преминаваме към AI: бутона се disable-ва от _update_turn_ui()
+	if current_player != PlayerID.HUMAN:
+		return
+	if not player_played_this_turn:
+		_info("You have to play one card.", false, INFO_COLOR_WARNING)
+		return
+
+	# към AI
 	current_player = PlayerID.AI
 	player_played_this_turn = false
 	_update_turn_ui()
+	_info("AI is playing…", false, INFO_COLOR_AI)
 
 	await get_tree().process_frame
 	ai.take_turn()
 	await ai.turn_finished
 
-	# Връщаме хода на човека: бутона се enable-ва
+	# обратно към човека
 	current_player = PlayerID.HUMAN
 	_update_turn_ui()
+	_info("[b]Your turn[/b] — play [b]one[/b] card.", false, INFO_COLOR_NORMAL)
 
 
 func _set_player_input_enabled(enabled: bool) -> void:
@@ -610,13 +690,101 @@ func _set_player_input_enabled(enabled: bool) -> void:
 		card_manager.set_process_input(enabled)
 		card_manager.set_physics_process(enabled)
 		
+		
+# докато тече проверка/визуализация, UI не трябва да го включва
 func _update_turn_ui() -> void:
+	if waiting_cycle_ack:
+		return  # управлението е при _set_go_next_ui()
+
 	var human_turn: bool = (current_player == PlayerID.HUMAN)
-	end_turn_btn.disabled = not human_turn
+	var enable_btn := human_turn and not resolving_links
+	end_turn_btn.disabled = not enable_btn
 	end_turn_btn.text = "End Turn" if human_turn else "AI turn…"
-	_set_player_input_enabled(human_turn)
+	_set_player_input_enabled(human_turn and not resolving_links)
+
+
+
 
 func _on_game_over() -> void:
 	end_turn_btn.disabled = true
 	end_turn_btn.text = "Game Over"
 	_set_player_input_enabled(false)
+	_info("[b]Game Over[/b]", false, INFO_COLOR_NORMAL)
+
+	
+func _info(text: String, append: bool = false, color: Color = INFO_COLOR_NORMAL) -> void:
+	if not is_instance_valid(info_rich_text_label):
+		return
+
+	# поставяме текста (с цвят)
+	var colored_text := "[color=#%s]%s[/color]" % [color.to_html(false), text]
+	if append and not info_rich_text_label.text.is_empty():
+		info_rich_text_label.append_text("\n" + colored_text)
+	else:
+		info_rich_text_label.text = colored_text
+
+	# леко „премигване“ / подсилване на вниманието
+	info_rich_text_label.modulate = Color(1, 1, 1, 0)  # започва прозрачен
+	var tw := create_tween()
+	tw.tween_property(info_rich_text_label, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	await tw.finished
+
+	# кратко задържане, после леко избледняване (по избор)
+	var tw2 := create_tween()
+	tw2.tween_property(info_rich_text_label, "modulate:a", 0.8, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func _tween_to(node: Node2D, to_pos: Vector2, dur: float) -> void:
+	var tw := node.create_tween()
+	tw.tween_property(node, "global_position", to_pos, dur).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	await tw.finished
+	
+func _set_go_next_ui(show: bool) -> void:
+	waiting_cycle_ack = show
+	if show:
+		end_turn_btn.disabled = false
+		end_turn_btn.text = "Go next"
+		_set_player_input_enabled(false)
+	else:
+		_update_turn_ui()
+
+
+# когато стигнем до паузата за цикъл – едва СЛЕД визуализацията включваме бутона за "Go next"
+func _await_cycle_ack() -> void:
+	# до тук бутонът е изключен (resolving_links == true)
+	_set_go_next_ui(true)   # това прави disabled = false + сменя текста
+	resolving_links = false # вече може да се натисне "Go next"
+	_info("A cycle was detected. Press [b]Go next[/b] to continue.", false, INFO_COLOR_WARNING)
+	await cycle_continue_requested
+	_set_go_next_ui(false)
+
+	
+	
+func _remove_uid_from_graph(uid: int) -> void:
+	# 1) махни визуалните ръбове, които го докосват
+	await _vanish_edges_touching([uid])
+
+	# 2) махни върха
+	graph.erase(uid)
+
+	# 3) махни всички препратки към него в съседните списъци
+	for key in graph.keys():
+		var arr: Array = graph[key]
+		if arr.has(uid):
+			arr.erase(uid)
+		graph[key] = arr
+
+	# 4) изчисти uid->card мапинга
+	uid_to_card.erase(uid)
+
+	# 5) допълнително: ако е останал визуален ръб в `edges`, го махни
+	var to_erase: Array[String] = []
+	for k in edges.keys():
+		var parts : PackedStringArray = k.split("->")
+		if parts.size() == 2 and (int(parts[0]) == uid or int(parts[1]) == uid):
+			var e = edges[k]
+			if is_instance_valid(e):
+				e.queue_free()
+			to_erase.append(k)
+	for k in to_erase:
+		edges.erase(k)
