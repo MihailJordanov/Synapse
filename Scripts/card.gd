@@ -20,9 +20,6 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 @export var id : int = 0
 
 
-
-
-
 @export var use_self_element: bool = true : set = set_use_self_element
 @export var element: Element = Element.AIR : set = set_element
 
@@ -47,6 +44,7 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 
 # --- UI refs ---
 @onready var card_texture_rect: TextureRect = $MainPanel/ImagePanel/TextureRect
+@onready var back_card: Panel = $BackCard
 
 # Self Card Type (добавяме и Control контейнерите)
 @onready var self_element_control: Control = $MainPanel/CardTypesPanel/HBoxContainer/ElementControl
@@ -311,3 +309,7 @@ func _input_event(viewport, event, shape_idx):
 	elif event is InputEventScreenDrag:
 		# Ако искаш да позволиш плъзгане (drag)
 		emit_signal("hovered", self)
+		
+func show_back(state: bool) -> void:
+	if is_instance_valid(back_card):
+		back_card.visible = state

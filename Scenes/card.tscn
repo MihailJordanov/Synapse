@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cd1a7q1oufv14"]
+[gd_scene load_steps=24 format=3 uid="uid://cd1a7q1oufv14"]
 
 [ext_resource type="Script" uid="uid://ccdixyf7yyp8q" path="res://Scripts/card.gd" id="1_eumee"]
 [ext_resource type="Texture2D" uid="uid://bkl5kcmo71j34" path="res://Images/Card_Icons/Heros/tile005.png" id="2_brehn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4jhr3mn3e8cd" path="res://Images/Explosions/explosion_lightning.png" id="5_e6po8"]
 [ext_resource type="AudioStream" uid="uid://dy8q0odeiuy6s" path="res://Sounds/Explosions/explosion_lightning.mp3" id="5_mm04k"]
 [ext_resource type="AudioStream" uid="uid://k2v4k1s1skq4" path="res://Sounds/Explosions/explosion_water.mp3" id="6_yvxpl"]
+[ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="11_uf1hq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eumee"]
 bg_color = Color(0.215902, 0.215902, 0.215902, 1)
@@ -329,6 +330,9 @@ _data = {
 &"destroyed_water": SubResource("Animation_bnspj")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sj14m"]
+texture = ExtResource("11_uf1hq")
+
 [node name="Card" type="Node2D"]
 script = ExtResource("1_eumee")
 element = 3
@@ -607,6 +611,14 @@ hframes = 6
 vframes = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="BackCard" type="Panel" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sj14m")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

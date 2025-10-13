@@ -6,7 +6,16 @@ const MIN_CYCLE_LEN := 3  # игнорирай 2-цикъл (1 ↔ 2)
 const CARD_SCENE := preload("res://Scenes/card.tscn")
 const EDGE_SCENE := preload("res://Scenes/edge.tscn")
 
+# game manager
+enum PlayerID { HUMAN = 0, AI = 1 }
+var current_player: int = PlayerID.HUMAN
+var player_played_this_turn: bool = false
+
+@onready var end_turn_btn: Button = $EndTurnButton       # посочи бутона
+@onready var ai: GameStateRandom = $GameStateRandom     # посочи нода с AI
+
 @export var is_edge_visible : bool = false
+
 
 @onready var card_manager: CardManager = $CardManager
 
@@ -58,6 +67,8 @@ func _ready() -> void:
 	card_manager.card_dropped_back.connect(_on_card_dropped_back)
 
 	_draw_to_full_hand()
+	end_turn_btn.pressed.connect(_on_end_turn_pressed)
+	_update_turn_ui()
 
 # ---------------------- РЪКА / ТЕГЛЕНЕ ----------------------
 
@@ -181,6 +192,10 @@ func _on_card_dropped_on_slot(card: Node2D, slot: Node2D) -> void:
 		_bind_card_to_slot(c, slot as CardSlot)
 		_check_new_edges(c)
 	_draw_to_full_hand()
+	
+	if current_player == PlayerID.HUMAN:
+		player_played_this_turn = true
+
 
 # ---------------------- ГРАФ / ВРЪЗКИ ----------------------
 
@@ -550,3 +565,58 @@ func _show_cycle_edges_once(path_uids: Array[int], a_uid: int, b_uid: int, show_
 	# единствено, кратко изчакване за визуализацията
 	if is_inside_tree():
 		await get_tree().create_timer(max(0.0, show_time)).timeout
+		
+func can_player_drop_on_slot(card: Node2D, slot: Node2D) -> bool:
+	# само в човешкия ход
+	if current_player != PlayerID.HUMAN:
+		return false
+	# вече е поставил една карта в този ход → отказ
+	if player_played_this_turn:
+		return false
+	# трябва да е реален слот
+	if slot == null:
+		return false
+	# само в PlayerSlots
+	return slot.get_parent() == $Slots/PlayerSlots
+
+
+
+func _on_end_turn_pressed() -> void:
+	# Правилото е: „точно една карта на ход“ → ако не е играл карта, не му позволявай да приключи.
+	if current_player != PlayerID.HUMAN:
+		return # игнор (не е негов ред)
+	if not player_played_this_turn:
+		# По избор: покажи съобщение в UI
+		print("You must place a card before ending your turn.")
+		return
+
+	# Преминаваме към AI: бутона се disable-ва от _update_turn_ui()
+	current_player = PlayerID.AI
+	player_played_this_turn = false
+	_update_turn_ui()
+
+	await get_tree().process_frame
+	ai.take_turn()
+	await ai.turn_finished
+
+	# Връщаме хода на човека: бутона се enable-ва
+	current_player = PlayerID.HUMAN
+	_update_turn_ui()
+
+
+func _set_player_input_enabled(enabled: bool) -> void:
+	if card_manager:
+		card_manager.set_process(enabled)
+		card_manager.set_process_input(enabled)
+		card_manager.set_physics_process(enabled)
+		
+func _update_turn_ui() -> void:
+	var human_turn: bool = (current_player == PlayerID.HUMAN)
+	end_turn_btn.disabled = not human_turn
+	end_turn_btn.text = "End Turn" if human_turn else "AI turn…"
+	_set_player_input_enabled(human_turn)
+
+func _on_game_over() -> void:
+	end_turn_btn.disabled = true
+	end_turn_btn.text = "Game Over"
+	_set_player_input_enabled(false)

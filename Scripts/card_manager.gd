@@ -97,6 +97,16 @@ func finish_drag() -> void:
 	card_being_dragged.scale = Vector2(1.05, 1.05)
 
 	var card_slot_found: Node2D = raycast_check_for_card_slot(pointer_pos)
+
+
+	var level := $".."  # качваме се към родителя (Level)
+	if level and level.has_method("can_player_drop_on_slot"):
+		if not level.can_player_drop_on_slot(card_being_dragged, card_slot_found):
+			emit_signal("card_dropped_back", card_being_dragged)
+			card_being_dragged = null
+			return
+
+
 	if card_slot_found and not card_slot_found.card_in_slot:
 		card_being_dragged.global_position = card_slot_found.global_position
 		card_being_dragged.is_locked = true
@@ -104,6 +114,7 @@ func finish_drag() -> void:
 		emit_signal("card_dropped_on_slot", card_being_dragged, card_slot_found)
 	else:
 		emit_signal("card_dropped_back", card_being_dragged)
+
 
 	# след пускане – ако не сме върху друга карта, скрий
 	var still_hovered: Node2D = raycast_check_for_card(pointer_pos)

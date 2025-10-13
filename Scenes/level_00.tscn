@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=19 format=3 uid="uid://d0br6vxncb8f3"]
 
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="5_g4lrw"]
 [ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_jsejj"]
 [ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="6_rwy6q"]
+[ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scenes/game_state_random.gd" id="8_crvlv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
@@ -44,6 +45,50 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pjfu"]
 bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crvlv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxdfy"]
+bg_color = Color(0, 0.458325, 0.646617, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dow8t"]
+bg_color = Color(4.09111e-07, 0.282062, 0.405699, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk00c"]
+bg_color = Color(0, 0.607843, 0.85098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_8axge")
@@ -371,6 +416,39 @@ text = "Card Types:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AIHand" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="AIHand"]
+z_index = 5
+
+[node name="Point1" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(320, 29)
+
+[node name="Point2" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(375, 29)
+
+[node name="Point3" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(265, 29)
+
+[node name="Point4" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(210, 29)
+
+[node name="Point5" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(430, 29)
+
+[node name="Point6" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(485, 29)
+
+[node name="Point7" type="Node2D" parent="AIHand/Points"]
+z_index = 5
+position = Vector2(155, 29)
+
 [node name="Slots" type="Node" parent="."]
 
 [node name="PlayerSlots" type="Node" parent="Slots"]
@@ -406,3 +484,24 @@ position = Vector2(200, 120)
 
 [node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
 position = Vector2(440, 120)
+
+[node name="GameStateRandom" type="Node" parent="."]
+script = ExtResource("8_crvlv")
+level_path = NodePath("..")
+enemy_slots_root_path = NodePath("../Slots/EnemySlots")
+max_hand = 5
+think_time_ms = 750
+ai_points_root_path = NodePath("../AIHand/Points")
+place_anim_s = 0.7
+ai_deck_ids = [1, 1, 1, 1, 2, 2, 2]
+
+[node name="EndTurnButton" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 155.0
+offset_right = 125.0
+offset_bottom = 186.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_crvlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jxdfy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dow8t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kk00c")
+text = "End Turn"
