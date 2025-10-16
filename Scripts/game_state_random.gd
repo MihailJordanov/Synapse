@@ -2,6 +2,9 @@
 class_name GameStateRandom
 extends Node
 
+
+signal card_AI_is_drawed
+
 # === КОНФИГ ===
 @export var level_path: NodePath             # посочи Level нода
 @export var enemy_slots_root_path: NodePath           # посочи .../Slots/EnemySlots
@@ -13,6 +16,10 @@ extends Node
 
 # AI дек (id-та от CollectionManager)
 @export var deck: AIDeck 
+
+
+@onready var deckAI_pos: Node2D = $"../AIHand/Deck"
+
 
 # === ВЪТРЕШНО СЪСТОЯНИЕ ===
 const CARD_SCENE := preload("res://Scenes/card.tscn")
@@ -118,6 +125,7 @@ func _get_free_enemy_slots() -> Array[CardSlot]:
 		if s and not s.card_in_slot:
 			res.append(s)
 	return res
+	
 
 func _fill_hand_to_max() -> void:
 	while _ai_hand.size() < max_hand and _ai_deck.size() > 0:
@@ -125,6 +133,11 @@ func _fill_hand_to_max() -> void:
 		var c := _instantiate_card_from_id(id)
 		if c:
 			_ai_hand.append(c)
+			# анимирай от AI дека към точката в ръката
+			await _place_ai_card_in_hand(c, true)
+			# по избор: малък стегър за по-приятно чувство
+			await get_tree().create_timer(0.05).timeout
+
 
 # Създава Card по id, използвайки CollectionManager (копие на логиката ти за човешката ръка)
 func _instantiate_card_from_id(id: int) -> Card:
@@ -173,7 +186,7 @@ func _instantiate_card_from_id(id: int) -> Card:
 		as_card.set_use_attack_style_target(cs != null)
 		if cs != null: as_card.set_target_attack_style(_to_style(cs))
 
-		_place_ai_card_in_hand(as_card)
+
 
 	return as_card
 
@@ -199,8 +212,9 @@ func _to_style(v) -> int:
 	return Card.AttackStyle.MELEE
 
 
-func _place_ai_card_in_hand(card: Card) -> void:
-	# първа свободна точка
+# заменя твоята версия
+func _place_ai_card_in_hand(card: Card, animate_from_deck: bool = false) -> void:
+	# намери първа свободна точка
 	var target: Node2D = null
 	for p in _ai_points:
 		var taken := false
@@ -211,14 +225,31 @@ func _place_ai_card_in_hand(card: Card) -> void:
 		if not taken:
 			target = p
 			break
-	# ако няма точки, просто не местим (оставяме off-screen/0,0) или измисли си fallback
-	if target:
-		card.global_position = target.global_position
-		card.show_back(true)   # покаже гърба, докато е в ръката
-		_ai_card_home[card] = target
-	# заключи картата в ръката
+
+	if target == null:
+		# няма къде да я сложим – оставяме я където е
+		return
+
+	_ai_card_home[card] = target
 	card.is_locked = true
-	
+	if card.has_method("show_back"):
+		card.show_back(true)
+
+	# стартова позиция: или от AI дека, или директно на целта (без анимация)
+	if animate_from_deck and is_instance_valid(deckAI_pos):
+		card.global_position = deckAI_pos.global_position
+	else:
+		card.global_position = target.global_position
+
+	# анимирай към целевата точка в ръката
+	card.z_index = 3
+	await _tween_to(card, target.global_position, hand_anim_s if animate_from_deck else 0.0)
+	card.z_index = 1
+
+	emit_signal("card_AI_is_drawed")
+
+
+
 func _relayout_ai_hand() -> void:
 	var n : int = min(_ai_hand.size(), _ai_points.size())
 	for i in n:

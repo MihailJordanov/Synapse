@@ -12,7 +12,7 @@ const INFO_COLOR_AI := Color(0.5, 0.8, 1.0)          # синкав — AI съ�
 
 
 signal cycle_continue_requested
-
+signal card_is_drawed
 
 
 # game manager
@@ -28,7 +28,8 @@ var player_played_this_turn: bool = false
 
 
 @export var is_edge_visible : bool = false
-@export var draw_anim_s: float = 1.0  # продължителност на анимацията при теглене от дека
+@export var draw_anim_s: float = 1.# продължителност на анимацията при теглене от дека
+@export var draw_delay_s: float = 0.08  
 @export var starting_hand_size: int = 5
 
 
@@ -55,7 +56,7 @@ var player_played_this_turn: bool = false
 
 var points: Array[Node2D]
 var hand_cards: Array[Node2D] = []        # текущи карти в ръката
-var home_of_card := {}                    # card(Node2D) -> point(Node2D)
+var home_of_card: Dictionary[Node2D, Node2D] = {}   # card(Node2D) -> point(Node2D)
 var deck_index := 0                       # позиция в CollectionManager.deck
 var card_to_slot: Dictionary = {}         # Card -> CardSlot
 var all_slots: Array[CardSlot] = []
@@ -100,15 +101,17 @@ func _draw_to_full_hand() -> void:
 
 
 func _first_free_point() -> Node2D:
+	var used := {}
+	for c in hand_cards:
+		var hp: Node2D = home_of_card.get(c, null)
+		if hp != null:
+			used[hp] = true
+
 	for p in points:
-		var taken := false
-		for c in hand_cards:
-			if home_of_card.get(c) == p:
-				taken = true
-				break
-		if not taken:
+		if not used.has(p):
 			return p
 	return null
+
 
 func _draw_next_card_instance() -> Node2D:
 	var deck := CollectionManager.deck
@@ -125,6 +128,7 @@ func _draw_next_card_instance() -> Node2D:
 	add_child(card)
 
 	# присвои id към Card (ако има поле id)
+	emit_signal("card_is_drawed")
 	var as_card := card as Card
 	if as_card:
 		as_card.id = int(id)
@@ -200,9 +204,8 @@ func _place_card_at_point(card: Node2D, point: Node2D) -> void:
 	if card.has_method("show_back"):
 		card.show_back(true)
 
-	# по желание: изнеси над останалите по време на анимацията
-	if "z_index" in card:
-		card.z_index = 3
+
+	card.z_index = 3
 
 	# анимирано прехвърляне към точката в ръката
 	await _tween_to(card as Node2D, point.global_position, draw_anim_s)
@@ -211,9 +214,8 @@ func _place_card_at_point(card: Node2D, point: Node2D) -> void:
 	if card.has_method("show_back"):
 		card.show_back(false)
 
-	# върни z_index към нормално (по желание)
-	if "z_index" in card:
-		card.z_index = 1
+
+	card.z_index = 1
 
 
 # ---------------------- DRAG/DROP CALLBACKS ----------------------
@@ -228,30 +230,35 @@ func _on_card_dropped_back(card: Node2D) -> void:
 
 
 func _on_card_dropped_on_slot(card: Node2D, slot: Node2D) -> void:
-	resolving_links = true                  # NEW
-	end_turn_btn.disabled = true            # както беше
+	_lock_during_resolve()          # 🔒 моментално заключване
 
+	home_of_card.erase(card)
 	if hand_cards.has(card):
 		hand_cards.erase(card)
-		home_of_card.erase(card)
+
 
 	var c := card as Card
 	if c:
 		_add_to_board(c)
 		_bind_card_to_slot(c, slot as CardSlot)
 
-		await _check_new_edges(c)           # изчакваме докрай (вкл. визуализация/цикъл)
+		await _check_new_edges(c)   # чака и ръб-растежa, и cycle flow-а
 
 	_draw_to_full_hand()
 
-	# ако НЯМА цикъл (т.е. не сме в await_cycle_ack), включваме бутона
+	# Ако НЯМА цикъл (=> не сме в waiting_cycle_ack), дай малък „буфер“
 	if current_player == PlayerID.HUMAN and not waiting_cycle_ack:
 		player_played_this_turn = true
-		end_turn_btn.disabled = false
+
+		# 🔔 минимален визуален буфер (1.0s) преди да стане достъпен
+		await get_tree().create_timer(1.0).timeout
+
+		_unlock_after_resolve()     # 🔓 централизирано пускане
 		_info("You must end your turn\n(press the [b]'End Turn'[/b] button).")
-
-	resolving_links = false                 # NEW (пускаме след всичко, или в _await_cycle_ack)
-
+	else:
+		# При цикъл _await_cycle_ack() ще се погрижи да отвори "Go next"
+		# и да върне управлението след натискане.
+		pass
 
 # ---------------------- ГРАФ / ВРЪЗКИ ----------------------
 
@@ -304,8 +311,8 @@ func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
 		graph[a_uid] = []
 	var neigh: Array = graph[a_uid]
 	if not neigh.has(b_uid):
-		neigh.append(b_uid)
-		graph[a_uid] = neigh
+		neigh.append(b_uid) 
+
 
 		var a_tpl := "?" if not ("id" in a) else str(a.id)
 		var b_tpl := "?" if not ("id" in b) else str(b.id)
@@ -348,14 +355,14 @@ func _to_style(v) -> int:
 func _edge_key(a: Node, b: Node) -> String:
 	return "%d->%d" % [a.get_instance_id(), b.get_instance_id()]
 	
-# Level.gd (_spawn_edge)
+
 func _spawn_edge(a: Card, b: Card, labels: Array[String]) -> Edge:
 	var key := _edge_key(a, b)
 	if edges.has(key):
 		return edges[key] as Edge
+
 	var edge: Edge = EDGE_SCENE.instantiate() as Edge
 	add_child(edge)
-	# ако е скрит режим – 0.0 (моментално); иначе кратка анимация
 	var dur := 0.15 if is_edge_visible else 0.0
 	edge.call_deferred("set_endpoints", a, b, labels, dur)
 	edges[key] = edge
@@ -364,10 +371,6 @@ func _spawn_edge(a: Card, b: Card, labels: Array[String]) -> Edge:
 	return edge
 
 
-	# ако не искаме да се виждат по време на играта – скрий ги
-	if not is_edge_visible:
-		edge.visible = false
-	return edge
 
 	
 # ---------------------- ЦИКЛИ ----------------------
@@ -549,9 +552,13 @@ func _force_free_slot_for_card(card: Card) -> void:
 		if matched:
 			_mark_slot_free(s)
 			# премахни и обратно евентуални мапинги
+			var to_remove: Array = []
 			for k in card_to_slot.keys():
 				if card_to_slot[k] == s:
-					card_to_slot.erase(k)
+					to_remove.append(k)
+			for k in to_remove:
+				card_to_slot.erase(k)
+
 			break
 
 
@@ -569,20 +576,22 @@ func _vanish_edges_touching(target_uids: Array[int]) -> void:
 		var a_uid := int(parts[0])
 		var b_uid := int(parts[1])
 
-		if uid_set.has(a_uid) or uid_set.has(b_uid):
-			var edge_obj = edges[key]
-			if not is_instance_valid(edge_obj):
-				to_erase.append(key)
-				continue
+		if not (uid_set.has(a_uid) or uid_set.has(b_uid)):
+			continue
 
-			var e := edge_obj as Edge
-			if e:
-				if e.has_method("vanish"):
-					e.vanish(max_vanish)
-					did_vanish = true
-				else:
-					e.queue_free()
-				to_erase.append(key)
+		var edge_obj = edges[key]
+		if not is_instance_valid(edge_obj):
+			to_erase.append(key)
+			continue
+
+		var e := edge_obj as Edge
+		if e and e.has_method("vanish"):
+			e.vanish(max_vanish)
+			did_vanish = true
+		elif e:
+			e.queue_free()
+		to_erase.append(key)
+
 
 	if did_vanish and is_inside_tree():
 		await get_tree().create_timer(max_vanish).timeout
@@ -656,11 +665,6 @@ func _on_end_turn_pressed() -> void:
 	if waiting_cycle_ack:
 		emit_signal("cycle_continue_requested")
 		return
-	
-	# ако чакаме потвърждение за цикъл, бутонът служи за "Go next"
-	if waiting_cycle_ack:
-		emit_signal("cycle_continue_requested")
-		return
 
 	if current_player != PlayerID.HUMAN:
 		return
@@ -694,22 +698,24 @@ func _set_player_input_enabled(enabled: bool) -> void:
 # докато тече проверка/визуализация, UI не трябва да го включва
 func _update_turn_ui() -> void:
 	if waiting_cycle_ack:
-		return  # управлението е при _set_go_next_ui()
+		return  # "Go next" режим управлява UI-то сам
+	if resolving_links:
+		_set_end_turn_enabled(false, "Resolving…")
+		return
 
-	var human_turn: bool = (current_player == PlayerID.HUMAN)
-	var enable_btn := human_turn and not resolving_links
-	end_turn_btn.disabled = not enable_btn
-	end_turn_btn.text = "End Turn" if human_turn else "AI turn…"
-	_set_player_input_enabled(human_turn and not resolving_links)
+	var human_turn := (current_player == PlayerID.HUMAN)
+	_set_end_turn_enabled(human_turn, "End Turn" if human_turn else "AI turn…")
+	_set_player_input_enabled(human_turn)
+
 
 
 
 
 func _on_game_over() -> void:
-	end_turn_btn.disabled = true
-	end_turn_btn.text = "Game Over"
+	_set_end_turn_enabled(false, "Game Over")
 	_set_player_input_enabled(false)
 	_info("[b]Game Over[/b]", false, INFO_COLOR_NORMAL)
+
 
 	
 func _info(text: String, append: bool = false, color: Color = INFO_COLOR_NORMAL) -> void:
@@ -742,21 +748,23 @@ func _tween_to(node: Node2D, to_pos: Vector2, dur: float) -> void:
 func _set_go_next_ui(show: bool) -> void:
 	waiting_cycle_ack = show
 	if show:
-		end_turn_btn.disabled = false
-		end_turn_btn.text = "Go next"
+		_set_end_turn_enabled(true, "Go next")
 		_set_player_input_enabled(false)
 	else:
 		_update_turn_ui()
 
 
+
 # когато стигнем до паузата за цикъл – едва СЛЕД визуализацията включваме бутона за "Go next"
 func _await_cycle_ack() -> void:
-	# до тук бутонът е изключен (resolving_links == true)
-	_set_go_next_ui(true)   # това прави disabled = false + сменя текста
-	resolving_links = false # вече може да се натисне "Go next"
+	# до тук сме в resolving_links == true
+	_set_go_next_ui(true)    # прави бутона активен + текст "Go next"
+	resolving_links = false  # вече само чакаме потвърждение
 	_info("A cycle was detected. Press [b]Go next[/b] to continue.", false, INFO_COLOR_WARNING)
+
 	await cycle_continue_requested
-	_set_go_next_ui(false)
+	_set_go_next_ui(false)   # връща към нормалния режим (ще мине през _update_turn_ui)
+
 
 	
 	
@@ -788,3 +796,17 @@ func _remove_uid_from_graph(uid: int) -> void:
 			to_erase.append(k)
 	for k in to_erase:
 		edges.erase(k)
+		
+func _set_end_turn_enabled(enabled: bool, label: String = "") -> void:
+	if label != "":
+		end_turn_btn.text = label
+	end_turn_btn.disabled = not enabled
+
+func _lock_during_resolve() -> void:
+	resolving_links = true
+	_set_end_turn_enabled(false)  # заключи бутона
+	_set_player_input_enabled(false)
+
+func _unlock_after_resolve() -> void:
+	resolving_links = false
+	_update_turn_ui()  # централизирано пуска каквото трябва
