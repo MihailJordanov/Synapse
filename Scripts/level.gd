@@ -42,8 +42,8 @@ var resolving_links: bool = false
 @onready var card_manager: CardManager = $CardManager
 
 @export var is_edge_visible : bool = false
-@export var draw_anim_s: float = 1.0
-@export var draw_delay_s: float = 0.08
+@export var draw_anim_s: float = 0.7
+@export var draw_delay_s: float = 0.2
 @export var starting_hand_size: int = 5
 
 # Points
@@ -93,7 +93,7 @@ func _ready() -> void:
 
 	end_turn_btn.pressed.connect(_on_end_turn_pressed)
 
-	_draw_to_full_hand()
+	await _deal_initial_hand_slow()
 
 	current_player = PlayerID.HUMAN if player_starts_first else PlayerID.AI
 	last_card_owner = current_player
@@ -208,6 +208,56 @@ func _switch_turn() -> void:
 # =========================
 #     РЪКА / ТЕГЛЕНЕ
 # =========================
+
+func _deal_initial_hand_slow() -> void:
+	while hand_cards.size() < starting_hand_size:
+		var target_point := _first_free_point()
+		if target_point == null:
+			break
+		var card := _draw_next_card_instance()
+		if card == null:
+			break
+
+		# Регистрирай картата като „в ръката“ преди анимацията
+		home_of_card[card] = target_point
+		hand_cards.append(card)
+		card.set_meta("home_pos", target_point.global_position)
+
+		# Постави „от дека“ и анимирай със същата продължителност като AI
+		await _place_player_card_in_hand(card, target_point, true)
+
+		# Същият стегър като при AI
+		await get_tree().create_timer(0.05).timeout
+
+
+# Аналог на _place_ai_card_in_hand, но за играча (разкрива картата след пристигане)
+func _place_player_card_in_hand(card: Node2D, target_point: Node2D, animate_from_deck: bool = false) -> void:
+	if card == null or target_point == null:
+		return
+
+	# Стартова позиция: от player „дек“ панела или директно на целта
+	if animate_from_deck and is_instance_valid(panel):
+		card.global_position = panel.global_position
+	else:
+		card.global_position = target_point.global_position
+
+	# В ръката на играча картата се разкрива (за разлика от AI)
+	if card.has_method("show_back"):
+		card.show_back(true)
+
+	card.z_index = 3
+
+	# Използвай абсолютно същата продължителност като AI: ai.hand_anim_s (fallback към draw_anim_s)
+	var dur := (ai.hand_anim_s if is_instance_valid(ai) else draw_anim_s)
+	await _tween_to(card as Node2D, target_point.global_position, dur)
+
+	if card.has_method("show_back"):
+		card.show_back(false)
+	card.z_index = 1
+
+
+
+
 
 func _draw_to_full_hand() -> void:
 	while hand_cards.size() < starting_hand_size:
