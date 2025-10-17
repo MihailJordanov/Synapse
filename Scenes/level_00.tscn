@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=28 format=3 uid="uid://d0br6vxncb8f3"]
 
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/tutorial_deck.tres" id="9_g4lrw"]
 [ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="10_0pjfu"]
 [ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="10_jxdfy"]
+[ext_resource type="Texture2D" uid="uid://dru3llnsl4xhc" path="res://Images/Enemies_Points_Icons/enemy_points_icon_1.png" id="12_kk00c"]
+[ext_resource type="Texture2D" uid="uid://fqd6bi16fbrg" path="res://Images/Enemies_Points_Icons/player_Points_Icon.png" id="13_hp2sk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
@@ -114,6 +116,15 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_085pr"]
+bg_color = Color(0, 0, 0, 0.25098)
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx7v5"]
+bg_color = Color(0, 0, 0, 0.25098)
+corner_radius_top_left = 7
+corner_radius_bottom_left = 7
+
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_8axge")
 
@@ -185,7 +196,7 @@ position = Vector2(485, 315)
 position = Vector2(155, 315)
 
 [node name="PickedCardShow" type="Node2D" parent="PlayerHand"]
-position = Vector2(229, -233)
+position = Vector2(232, -141)
 script = ExtResource("6_jsejj")
 
 [node name="MainPanel" type="Panel" parent="PlayerHand/PickedCardShow"]
@@ -474,7 +485,7 @@ z_index = 5
 position = Vector2(155, 29)
 
 [node name="Deck" type="Node2D" parent="AIHand"]
-position = Vector2(561, 19)
+position = Vector2(50, 13)
 
 [node name="Panel" type="Panel" parent="AIHand/Deck"]
 offset_left = -25.0
@@ -549,9 +560,9 @@ deck = ExtResource("9_g4lrw")
 
 [node name="EndTurnButton" type="Button" parent="."]
 offset_left = 40.0
-offset_top = 155.0
+offset_top = 208.0
 offset_right = 125.0
-offset_bottom = 186.0
+offset_bottom = 239.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_crvlv")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_mnyh4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jxdfy")
@@ -561,9 +572,9 @@ text = "End Turn"
 
 [node name="InfoPanel" type="Panel" parent="."]
 offset_left = 9.0
-offset_top = 17.0
+offset_top = 70.0
 offset_right = 165.0
-offset_bottom = 152.0
+offset_bottom = 205.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hp2sk")
 
 [node name="InfoRichTextLabel" type="RichTextLabel" parent="InfoPanel"]
@@ -592,13 +603,103 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AIDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
-offset_left = 543.0
-offset_top = 61.0
-offset_right = 583.0
-offset_bottom = 76.0
+offset_left = 32.0
+offset_top = 55.0
+offset_right = 72.0
+offset_bottom = 70.0
 theme_override_fonts/normal_font = ExtResource("10_0pjfu")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "15/20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PointsPanel" type="Panel" parent="CanvasLayer"]
+offset_left = 516.0
+offset_right = 640.0
+offset_bottom = 114.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_085pr")
+
+[node name="AI_texture" type="TextureRect" parent="CanvasLayer/PointsPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 37.0
+offset_bottom = 36.0
+texture = ExtResource("12_kk00c")
+expand_mode = 2
+
+[node name="Player_texture" type="TextureRect" parent="CanvasLayer/PointsPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 64.0
+offset_right = 37.0
+offset_bottom = 96.0
+texture = ExtResource("13_hp2sk")
+expand_mode = 2
+
+[node name="AI_points_label" type="RichTextLabel" parent="CanvasLayer/PointsPanel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 6.0
+offset_right = 121.0
+offset_bottom = 34.0
+bbcode_enabled = true
+text = "23 / 50	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_points_label" type="RichTextLabel" parent="CanvasLayer/PointsPanel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 66.0
+offset_right = 120.0
+offset_bottom = 94.0
+bbcode_enabled = true
+text = "37 / 50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AI_label" type="Label" parent="CanvasLayer/PointsPanel"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 40.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 8
+text = "Enemy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_Label" type="Label" parent="CanvasLayer/PointsPanel"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 40.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 8
+text = "You"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelRulesPanel" type="Panel" parent="CanvasLayer"]
+offset_left = 537.0
+offset_top = 120.0
+offset_right = 640.0
+offset_bottom = 156.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bx7v5")
+
+[node name="CoefficientRichTextLabel" type="RichTextLabel" parent="CanvasLayer/LevelRulesPanel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 102.0
+offset_bottom = 34.0
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Coefficient:
+Your: x1.0 | Enemy: x2.0
+"
 horizontal_alignment = 1
 vertical_alignment = 1
