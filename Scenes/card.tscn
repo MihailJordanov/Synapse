@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://cd1a7q1oufv14"]
+[gd_scene load_steps=23 format=3 uid="uid://cd1a7q1oufv14"]
 
 [ext_resource type="Script" uid="uid://ccdixyf7yyp8q" path="res://Scripts/card.gd" id="1_eumee"]
-[ext_resource type="Texture2D" uid="uid://bkl5kcmo71j34" path="res://Images/Card_Icons/Heros/tile005.png" id="2_brehn"]
 [ext_resource type="Texture2D" uid="uid://eh3jkdqf3wpx" path="res://Images/Explosions/explosion_fire.png" id="3_brehn"]
 [ext_resource type="AudioStream" uid="uid://bayb6n0omupes" path="res://Sounds/Explosions/explosion_air.mp3" id="3_u5wvb"]
 [ext_resource type="Texture2D" uid="uid://hm4u8tj177c6" path="res://Images/Explosions/explosion_air.png" id="4_bnspj"]
@@ -335,11 +334,6 @@ texture = ExtResource("11_uf1hq")
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_eumee")
-element = 3
-kind = 2
-attack_style = 2
-use_attack_style_target = true
-card_texture = ExtResource("2_brehn")
 
 [node name="MainPanel" type="Panel" parent="."]
 offset_left = -25.0

@@ -15,11 +15,15 @@ signal destroyed(card: Card)
 enum Element     { AIR, WATER, FIRE, LIGHTNING }
 enum CardKind    { HERO, ORG, WIZARD }
 enum AttackStyle { MELEE, RANGE, TELEPATH }
+enum OwnerType   { PLAYER, AI }
 
 # --- Exports ---
 @export var id : int = 0
 
+@export_category("Ownership")
+@export var card_owner: OwnerType = OwnerType.PLAYER : set = set_card_owner
 
+@export_category("Self")
 @export var use_self_element: bool = true : set = set_use_self_element
 @export var element: Element = Element.AIR : set = set_element
 
@@ -41,6 +45,7 @@ enum AttackStyle { MELEE, RANGE, TELEPATH }
 
 @export_category("Card Image")
 @export var card_texture: Texture2D : set = set_card_texture
+
 
 # --- UI refs ---
 @onready var card_texture_rect: TextureRect = $MainPanel/ImagePanel/TextureRect
@@ -116,6 +121,16 @@ func _ready() -> void:
 
 
 # --- setters ---
+func set_card_owner(v: OwnerType) -> void:
+	card_owner = v
+
+func is_owned_by_player() -> bool:
+	return card_owner == OwnerType.PLAYER
+
+func is_owned_by_ai() -> bool:
+	return card_owner == OwnerType.AI
+
+
 func set_card_texture(value: Texture2D) -> void:
 	card_texture = value
 	if is_instance_valid(card_texture_rect):

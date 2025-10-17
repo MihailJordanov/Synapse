@@ -4,6 +4,8 @@ extends Node
 
 
 signal card_AI_is_drawed
+signal ai_slots_full
+
 
 # === КОНФИГ ===
 @export var level_path: NodePath             # посочи Level нода
@@ -60,6 +62,8 @@ func _ready() -> void:
 	# Зареди тестето от Resource (AIDeck)
 	if deck and deck.ids.size() > 0:
 		init_with_ids(deck.ids)
+		
+	
 
 # Инициализация/смяна на тестето на AI
 func init_with_ids(ids: PackedInt32Array) -> void:
@@ -71,6 +75,8 @@ func init_with_ids(ids: PackedInt32Array) -> void:
 
 # Публичен метод: извикай го при "End Turn" на играча
 func take_turn() -> void:
+	_notify_if_ai_slots_full_on_turn_start()
+	
 	_fill_hand_to_max()
 
 	var free_slots: Array[CardSlot] = _get_free_enemy_slots()
@@ -96,12 +102,12 @@ func take_turn() -> void:
 		if card.has_method("show_back"):
 			card.show_back(false)
 
-		# заключи и маркирай слота
-		card.is_locked = true
-		if "card_in_slot" in slot:
-			slot.card_in_slot = true
 
 		if _level:
+			if "last_card_owner" in _level and "PlayerID" in _level:
+				_level.last_card_owner = _level.PlayerID.AI
+
+			
 			if _level.has_method("_add_to_board"):      _level._add_to_board(card)
 			if _level.has_method("_bind_card_to_slot"): _level._bind_card_to_slot(card, slot)
 			if _level.has_method("_check_new_edges"):   _level._check_new_edges(card)
@@ -155,6 +161,9 @@ func _instantiate_card_from_id(id: int) -> Card:
 	var as_card := card as Card
 	if as_card:
 		as_card.id = int(id)
+
+		if as_card.has_method("set_card_owner"):
+			as_card.set_card_owner(Card.OwnerType.AI)
 
 		# --- SELF секции ---
 		var se = data.get("self_element")
@@ -272,3 +281,17 @@ func _tween_relayout(card: Card, point: Node2D) -> void:
 	tw.tween_property(card, "global_position", point.global_position, hand_anim_s) \
 	  .set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	await tw.finished
+	
+func _are_ai_slots_full() -> bool:
+	for s in _enemy_slots:
+		if s is CardSlot:
+			if not ("card_in_slot" in s and s.card_in_slot):
+				return false
+	return true
+
+func _notify_if_ai_slots_full_on_turn_start() -> void:
+	if _are_ai_slots_full():
+		emit_signal("ai_slots_full")
+		# по желание: покажи съобщение и в Info панела на Level (ако имаш достъп)
+		if is_instance_valid(_level) and _level.has_method("_info"):
+			_level._info("AI slots are full — AI can’t place a card this turn.", false, Color(0.5, 0.8, 1.0))
