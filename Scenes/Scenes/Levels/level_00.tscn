@@ -914,7 +914,6 @@ _data = {
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_kjf3o")
-is_edge_visible = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
@@ -1377,7 +1376,6 @@ vertical_alignment = 1
 
 [node name="GameMaster" type="Node" parent="."]
 script = ExtResource("10_6jfnk")
-enemy_points_to_reach = 5
 
 [node name="PlayerDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
 offset_left = 34.0

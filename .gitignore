@@ -21,3 +21,11 @@ export/
 *.bak
 *.swp
 
+# Builds
+*.aab
+*.apk
+Versions/
+
+android/keystore/
+*.keystore
+

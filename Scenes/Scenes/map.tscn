@@ -87,12 +87,14 @@ modulate_color = Color(1, 1, 1, 0.87451)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DownPanel" type="Panel" parent="CanvasLayer"]
+visible = false
 offset_top = 288.0
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7urs")
 
 [node name="GoToCollection" type="Button" parent="CanvasLayer/DownPanel"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 5.0
 offset_right = 67.0
@@ -103,6 +105,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_x48ov")
 theme_override_styles/normal = SubResource("StyleBoxTexture_iwshb")
 
 [node name="UpPanel" type="Panel" parent="CanvasLayer"]
+visible = false
 offset_right = 640.0
 offset_bottom = 31.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cpfjx")
