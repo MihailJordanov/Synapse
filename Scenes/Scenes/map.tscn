@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dye7h3iwsbaj4"]
+
+[ext_resource type="Texture2D" uid="uid://cpvyl4blecsd5" path="res://Images/Map/Synapse_Map.jpg" id="1_t8xgj"]
+[ext_resource type="Script" uid="uid://h6o0sd3yiicg" path="res://Scenes/Scenes/camera_2d_move_map.gd" id="2_ednia"]
+
+[node name="Map" type="Node2D"]
+
+[node name="MapSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t8xgj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_ednia")

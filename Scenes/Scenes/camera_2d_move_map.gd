@@ -1,0 +1,2 @@
+class_name Camera2DMoveMap
+extends Camera2D
