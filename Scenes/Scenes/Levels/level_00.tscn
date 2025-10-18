@@ -1,29 +1,29 @@
 [gd_scene load_steps=56 format=3 uid="uid://d0br6vxncb8f3"]
 
-[ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
-[ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
-[ext_resource type="Script" uid="uid://cvxyyaiev5efn" path="res://Scripts/card_manager.gd" id="3_jsejj"]
-[ext_resource type="Script" uid="uid://bwvigaxcwlodp" path="res://Scripts/player_hand.gd" id="4_crvlv"]
-[ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="5_g4lrw"]
-[ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_jsejj"]
-[ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="6_rwy6q"]
-[ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scripts/game_state_random.gd" id="8_crvlv"]
-[ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/tutorial_deck.tres" id="9_g4lrw"]
-[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="10_0pjfu"]
-[ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="10_jxdfy"]
-[ext_resource type="Script" uid="uid://cjcrddd46qs8f" path="res://Scripts/UI_controllerr.gd" id="12_085pr"]
-[ext_resource type="Texture2D" uid="uid://dru3llnsl4xhc" path="res://Images/Enemies_Points_Icons/enemy_points_icon_1.png" id="12_kk00c"]
-[ext_resource type="Texture2D" uid="uid://fqd6bi16fbrg" path="res://Images/Enemies_Points_Icons/player_Points_Icon.png" id="13_hp2sk"]
-[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="13_mnyh4"]
-[ext_resource type="Texture2D" uid="uid://be6nkpc7lx8dh" path="res://Images/Buttons/pause_button.png" id="14_hp2sk"]
-[ext_resource type="AudioStream" uid="uid://bxqg8ktep7vs3" path="res://Sounds/Hurts/player_hurt_1.mp3" id="17_bx7v5"]
-[ext_resource type="AudioStream" uid="uid://c88vxay7p5vee" path="res://Sounds/Hurts/enemy_hurt_1.mp3" id="18_ibeip"]
-[ext_resource type="AudioStream" uid="uid://drk3pl1bnbiaf" path="res://Sounds/EndLevel/victory.mp3" id="19_7uukx"]
-[ext_resource type="AudioStream" uid="uid://ctncqamvfhcxx" path="res://Sounds/EndLevel/plasma_explosion.mp3" id="20_mf3ci"]
-[ext_resource type="Texture2D" uid="uid://chhb36b7fqkjk" path="res://Images/Explosions/win_anim.png" id="21_2aqg7"]
-[ext_resource type="AudioStream" uid="uid://bad8ywaxtl18s" path="res://Sounds/EndLevel/defeat.mp3" id="21_bj5y6"]
-[ext_resource type="AudioStream" uid="uid://cvyydutqxt3f1" path="res://Sounds/EndLevel/plasma_explosion_2.mp3" id="22_1xedq"]
-[ext_resource type="Texture2D" uid="uid://b4r3ye5wxdrhu" path="res://Images/Explosions/lose_anim.png" id="22_bj5y6"]
+[ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_kjf3o"]
+[ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rcc10"]
+[ext_resource type="Script" uid="uid://cvxyyaiev5efn" path="res://Scripts/card_manager.gd" id="3_r2pnk"]
+[ext_resource type="Script" uid="uid://bwvigaxcwlodp" path="res://Scripts/player_hand.gd" id="4_e36rc"]
+[ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="5_8ftq6"]
+[ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_qaj06"]
+[ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="7_t2m4y"]
+[ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scripts/game_state_random.gd" id="8_tcdqx"]
+[ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/tutorial_deck.tres" id="9_440r4"]
+[ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="10_6jfnk"]
+[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="11_5a4qx"]
+[ext_resource type="Script" uid="uid://cjcrddd46qs8f" path="res://Scripts/UI_controllerr.gd" id="12_30ees"]
+[ext_resource type="Texture2D" uid="uid://be6nkpc7lx8dh" path="res://Images/Buttons/pause_button.png" id="13_06vi5"]
+[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="14_syl33"]
+[ext_resource type="Texture2D" uid="uid://dru3llnsl4xhc" path="res://Images/Enemies_Points_Icons/enemy_points_icon_1.png" id="15_sfp8r"]
+[ext_resource type="Texture2D" uid="uid://fqd6bi16fbrg" path="res://Images/Enemies_Points_Icons/player_Points_Icon.png" id="16_2amvr"]
+[ext_resource type="AudioStream" uid="uid://bxqg8ktep7vs3" path="res://Sounds/Hurts/player_hurt_1.mp3" id="17_g80g1"]
+[ext_resource type="AudioStream" uid="uid://bad8ywaxtl18s" path="res://Sounds/EndLevel/defeat.mp3" id="18_28opo"]
+[ext_resource type="AudioStream" uid="uid://cvyydutqxt3f1" path="res://Sounds/EndLevel/plasma_explosion_2.mp3" id="19_hx1jg"]
+[ext_resource type="AudioStream" uid="uid://c88vxay7p5vee" path="res://Sounds/Hurts/enemy_hurt_1.mp3" id="20_ac21g"]
+[ext_resource type="AudioStream" uid="uid://drk3pl1bnbiaf" path="res://Sounds/EndLevel/victory.mp3" id="21_wdv7h"]
+[ext_resource type="AudioStream" uid="uid://ctncqamvfhcxx" path="res://Sounds/EndLevel/plasma_explosion.mp3" id="22_2sclc"]
+[ext_resource type="Texture2D" uid="uid://chhb36b7fqkjk" path="res://Images/Explosions/win_anim.png" id="23_hqtos"]
+[ext_resource type="Texture2D" uid="uid://b4r3ye5wxdrhu" path="res://Images/Explosions/lose_anim.png" id="24_6h8r2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
@@ -130,7 +130,7 @@ corner_radius_bottom_left = 7
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2sk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_085pr"]
-texture = ExtResource("14_hp2sk")
+texture = ExtResource("13_06vi5")
 expand_margin_left = 3.0
 expand_margin_top = 3.0
 expand_margin_right = 3.0
@@ -138,7 +138,7 @@ expand_margin_bottom = 3.0
 modulate_color = Color(0.762404, 0.762404, 0.762404, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bx7v5"]
-texture = ExtResource("14_hp2sk")
+texture = ExtResource("13_06vi5")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
@@ -146,7 +146,7 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.695503, 0.695503, 0.695503, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mnyh4"]
-texture = ExtResource("14_hp2sk")
+texture = ExtResource("13_06vi5")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibeip"]
 bg_color = Color(0, 0, 0, 0.807843)
@@ -495,7 +495,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.321144,
 "start_offset": 0.19963,
-"stream": ExtResource("17_bx7v5")
+"stream": ExtResource("17_g80g1")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -537,6 +537,149 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0.933333, 0.113725, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_0wyhg"]
+resource_name = "on_lose"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.345274, 0.385274, 0.425274, 0.465274, 0.505274, 0.525274, 0.545274, 0.562501, 0.582965, 0.602501, 0.622965, 0.662965, 0.702964, 0.742964, 0.762965, 0.782965, 0.793896, 0.800192, 0.833896, 0.840192, 0.873896, 0.913895, 0.95, 0.953895, 0.973896, 0.99, 0.993896, 1.01112, 1.03, 1.05112, 1.07, 1.11, 1.13, 1.15, 1.16723, 1.20723, 1.24723, 1.28723, 1.32723, 1.34723, 1.36723, 1.37973, 1.41973, 1.45973, 1.49973, 1.53973, 1.55973, 1.57973, 1.58686, 1.62686, 1.66686, 1.70686, 1.74686, 1.76686, 1.78686, 1.79845, 1.83845, 1.87845, 1.91845, 1.95845, 1.97845, 1.99845, 2.01937, 2.05937, 2.09937, 2.13937, 2.17937, 2.19937, 2.21937, 2.24604),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(0, 0), Vector2(-5, 0), Vector2(2.5, 5), Vector2(5, 10), Vector2(0, 0), Vector2(0, 0), Vector2(-5, 0), Vector2(5, 10), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.345274, 0.435274, 0.545274, 0.562501, 0.582965, 0.672965, 0.782965, 0.793896, 0.800192, 0.883896, 0.95, 0.993896, 1.01112, 1.04, 1.15, 1.16723, 1.25723, 1.36723, 1.37973, 1.46973, 1.57973, 1.58686, 1.67686, 1.78686, 1.79845, 1.88845, 1.99845, 2.01937, 2.10937, 2.21937, 2.24604),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 1.11876,
+"start_offset": 0.47676,
+"stream": ExtResource("18_28opo")
+}],
+"times": PackedFloat32Array(1.05)
+}
+tracks/2/use_blend = true
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 1.0429,
+"start_offset": 0.0,
+"stream": ExtResource("19_hx1jg")
+}],
+"times": PackedFloat32Array(1.65)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Spirets/LoseSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.66514, 1.70697, 1.76697, 1.82697, 1.88697, 1.94697, 2.00697, 2.06697, 2.12697),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Spirets/LoseSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.65, 2.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(4, 4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Spirets/LoseSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.65, 2.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/LosePanel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.95, 1.4, 1.7, 2.05, 2.5, 2.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.984314, 0.129412, 0, 0.223529), Color(0.984314, 0.129412, 0, 0.0666667), Color(0.984314, 0.129412, 0, 0.564706), Color(0.984314, 0.129412, 0, 0.368627), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/LosePanel/RichTextLabel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.95, 2.5, 2.95),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/LosePanel/HomeButton:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.95, 2.5, 2.95),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/LosePanel:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.95),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_bx7v5"]
 resource_name = "on_player_get_points"
 length = 0.2
@@ -563,7 +706,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.466527,
 "start_offset": 0.274096,
-"stream": ExtResource("18_ibeip")
+"stream": ExtResource("20_ac21g")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -691,7 +834,7 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.964444,
 "start_offset": 0.122781,
-"stream": ExtResource("19_7uukx")
+"stream": ExtResource("21_wdv7h")
 }],
 "times": PackedFloat32Array(1.05)
 }
@@ -706,7 +849,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 3.4199,
 "start_offset": 0.647206,
-"stream": ExtResource("20_mf3ci")
+"stream": ExtResource("22_2sclc")
 }],
 "times": PackedFloat32Array(1.73293)
 }
@@ -760,149 +903,6 @@ tracks/10/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_0wyhg"]
-resource_name = "on_lose"
-length = 4.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.345274, 0.385274, 0.425274, 0.465274, 0.505274, 0.525274, 0.545274, 0.562501, 0.582965, 0.602501, 0.622965, 0.662965, 0.702964, 0.742964, 0.762965, 0.782965, 0.793896, 0.800192, 0.833896, 0.840192, 0.873896, 0.913895, 0.95, 0.953895, 0.973896, 0.99, 0.993896, 1.01112, 1.03, 1.05112, 1.07, 1.11, 1.13, 1.15, 1.16723, 1.20723, 1.24723, 1.28723, 1.32723, 1.34723, 1.36723, 1.37973, 1.41973, 1.45973, 1.49973, 1.53973, 1.55973, 1.57973, 1.58686, 1.62686, 1.66686, 1.70686, 1.74686, 1.76686, 1.78686, 1.79845, 1.83845, 1.87845, 1.91845, 1.95845, 1.97845, 1.99845, 2.01937, 2.05937, 2.09937, 2.13937, 2.17937, 2.19937, 2.21937, 2.24604),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(0, 0), Vector2(-5, 0), Vector2(2.5, 5), Vector2(5, 10), Vector2(0, 0), Vector2(0, 0), Vector2(-5, 0), Vector2(5, 10), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(5, 10), Vector2(-5, 0), Vector2(2.5, 5), Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.345274, 0.435274, 0.545274, 0.562501, 0.582965, 0.672965, 0.782965, 0.793896, 0.800192, 0.883896, 0.95, 0.993896, 1.01112, 1.04, 1.15, 1.16723, 1.25723, 1.36723, 1.37973, 1.46973, 1.57973, 1.58686, 1.67686, 1.78686, 1.79845, 1.88845, 1.99845, 2.01937, 2.10937, 2.21937, 2.24604),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(1, 1)]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer2D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 1.11876,
-"start_offset": 0.47676,
-"stream": ExtResource("21_bj5y6")
-}],
-"times": PackedFloat32Array(1.05)
-}
-tracks/2/use_blend = true
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer2D")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": [{
-"end_offset": 1.0429,
-"start_offset": 0.0,
-"stream": ExtResource("22_1xedq")
-}],
-"times": PackedFloat32Array(1.65)
-}
-tracks/3/use_blend = true
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Spirets/LoseSprite:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.66514, 1.70697, 1.76697, 1.82697, 1.88697, 1.94697, 2.00697, 2.06697, 2.12697),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Spirets/LoseSprite:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.65, 2.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(4, 4)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Spirets/LoseSprite:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.65, 2.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/LosePanel:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.95, 1.4, 1.7, 2.05, 2.5, 2.95),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(0.984314, 0.129412, 0, 0.223529), Color(0.984314, 0.129412, 0, 0.0666667), Color(0.984314, 0.129412, 0, 0.564706), Color(0.984314, 0.129412, 0, 0.368627), Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/LosePanel/RichTextLabel:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.95, 2.5, 2.95),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CanvasLayer/LosePanel/HomeButton:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.95, 2.5, 2.95),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/LosePanel:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0.95),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s80cv"]
 _data = {
 &"RESET": SubResource("Animation_8wqwq"),
@@ -913,22 +913,22 @@ _data = {
 }
 
 [node name="Level_00" type="Node2D"]
-script = ExtResource("1_8axge")
+script = ExtResource("1_kjf3o")
 is_edge_visible = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
 position = Vector2(320, 180)
 scale = Vector2(0.677734, 0.392578)
-texture = ExtResource("2_rwy6q")
+texture = ExtResource("2_rcc10")
 
 [node name="CardManager" type="Node2D" parent="."]
-script = ExtResource("3_jsejj")
+script = ExtResource("3_r2pnk")
 picked_card_show_path = NodePath("../PlayerHand/PickedCardShow")
 
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(320, 360)
-script = ExtResource("4_crvlv")
+script = ExtResource("4_e36rc")
 
 [node name="Deck" type="Node2D" parent="PlayerHand"]
 position = Vector2(-270, -65)
@@ -943,22 +943,22 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6bp64")
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(25, 40)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(26, 39)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Sprite2D3" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(27, 38)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Sprite2D4" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(28, 37)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Points" type="Node" parent="PlayerHand"]
 
@@ -985,7 +985,7 @@ position = Vector2(155, 315)
 
 [node name="PickedCardShow" type="Node2D" parent="PlayerHand"]
 position = Vector2(232, -141)
-script = ExtResource("6_jsejj")
+script = ExtResource("6_qaj06")
 
 [node name="MainPanel" type="Panel" parent="PlayerHand/PickedCardShow"]
 offset_left = -25.0
@@ -1285,66 +1285,66 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6bp64")
 [node name="Sprite2D" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(25, 40)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(26, 39)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Sprite2D3" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(27, 38)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Sprite2D4" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(28, 37)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_g4lrw")
+texture = ExtResource("5_8ftq6")
 
 [node name="Slots" type="Node" parent="."]
 
 [node name="PlayerSlots" type="Node" parent="Slots"]
 
-[node name="CardSlot" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot" parent="Slots/PlayerSlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(320, 220)
 
-[node name="CardSlot2" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot2" parent="Slots/PlayerSlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(380, 220)
 
-[node name="CardSlot3" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot3" parent="Slots/PlayerSlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(260, 220)
 
-[node name="CardSlot4" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot4" parent="Slots/PlayerSlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(200, 222)
 
-[node name="CardSlot5" parent="Slots/PlayerSlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot5" parent="Slots/PlayerSlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(440, 220)
 
 [node name="EnemySlots" type="Node" parent="Slots"]
 
-[node name="CardSlot6" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot6" parent="Slots/EnemySlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(320, 120)
 
-[node name="CardSlot7" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot7" parent="Slots/EnemySlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(380, 120)
 
-[node name="CardSlot8" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot8" parent="Slots/EnemySlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(260, 120)
 
-[node name="CardSlot9" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot9" parent="Slots/EnemySlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(200, 120)
 
-[node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("6_rwy6q")]
+[node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("7_t2m4y")]
 position = Vector2(440, 120)
 
 [node name="GameStateRandom" type="Node" parent="."]
-script = ExtResource("8_crvlv")
+script = ExtResource("8_tcdqx")
 level_path = NodePath("..")
 enemy_slots_root_path = NodePath("../Slots/EnemySlots")
 think_time_ms = 750
 ai_points_root_path = NodePath("../AIHand/Points")
-deck = ExtResource("9_g4lrw")
+deck = ExtResource("9_440r4")
 
 [node name="EndTurnButton" type="Button" parent="."]
 offset_left = 40.0
@@ -1376,7 +1376,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameMaster" type="Node" parent="."]
-script = ExtResource("10_jxdfy")
+script = ExtResource("10_6jfnk")
 enemy_points_to_reach = 5
 
 [node name="PlayerDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
@@ -1384,7 +1384,7 @@ offset_left = 34.0
 offset_top = 339.0
 offset_right = 74.0
 offset_bottom = 354.0
-theme_override_fonts/normal_font = ExtResource("10_0pjfu")
+theme_override_fonts/normal_font = ExtResource("11_5a4qx")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "12/20"
@@ -1396,7 +1396,7 @@ offset_left = 32.0
 offset_top = 55.0
 offset_right = 72.0
 offset_bottom = 70.0
-theme_override_fonts/normal_font = ExtResource("10_0pjfu")
+theme_override_fonts/normal_font = ExtResource("11_5a4qx")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "15/20"
@@ -1404,7 +1404,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("12_085pr")
+script = ExtResource("12_30ees")
 
 [node name="PauseButton" type="Button" parent="CanvasLayer"]
 offset_left = 5.0
@@ -1468,7 +1468,7 @@ offset_top = -7.0
 offset_right = 500.0
 offset_bottom = 112.0
 theme_override_colors/default_color = Color(0.784314, 0.52549, 0.858824, 1)
-theme_override_fonts/normal_font = ExtResource("13_mnyh4")
+theme_override_fonts/normal_font = ExtResource("14_syl33")
 theme_override_font_sizes/normal_font_size = 100
 text = "Paused"
 horizontal_alignment = 1
@@ -1486,7 +1486,7 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 37.0
 offset_bottom = 36.0
-texture = ExtResource("12_kk00c")
+texture = ExtResource("15_sfp8r")
 expand_mode = 2
 
 [node name="Player_texture" type="TextureRect" parent="CanvasLayer/PointsPanel"]
@@ -1495,7 +1495,7 @@ offset_left = 5.0
 offset_top = 64.0
 offset_right = 37.0
 offset_bottom = 96.0
-texture = ExtResource("13_hp2sk")
+texture = ExtResource("16_2amvr")
 expand_mode = 2
 
 [node name="AI_points_label" type="RichTextLabel" parent="CanvasLayer/PointsPanel"]
@@ -1581,7 +1581,7 @@ offset_left = -0.279999
 offset_right = 0.279968
 offset_bottom = -0.12001
 theme_override_colors/default_color = Color(0.513726, 1, 0.807843, 1)
-theme_override_fonts/normal_font = ExtResource("13_mnyh4")
+theme_override_fonts/normal_font = ExtResource("14_syl33")
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[wave]VICTORY"
@@ -1625,7 +1625,7 @@ offset_left = -0.279999
 offset_right = 0.279968
 offset_bottom = -0.12001
 theme_override_colors/default_color = Color(0.563001, 0.0424189, 0.0496487, 1)
-theme_override_fonts/normal_font = ExtResource("13_mnyh4")
+theme_override_fonts/normal_font = ExtResource("14_syl33")
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "Defeat"
@@ -1662,14 +1662,14 @@ libraries = {
 [node name="WinSprite" type="Sprite2D" parent="Spirets"]
 visible = false
 position = Vector2(320, 170)
-texture = ExtResource("21_2aqg7")
+texture = ExtResource("23_hqtos")
 hframes = 7
 vframes = 2
 
 [node name="LoseSprite" type="Sprite2D" parent="Spirets"]
 visible = false
 position = Vector2(320, 170)
-texture = ExtResource("22_bj5y6")
+texture = ExtResource("24_6h8r2")
 hframes = 5
 vframes = 2
 

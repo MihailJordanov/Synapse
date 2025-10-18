@@ -1,12 +1,220 @@
-[gd_scene load_steps=3 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=18 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://cpvyl4blecsd5" path="res://Images/Map/Synapse_Map.jpg" id="1_t8xgj"]
 [ext_resource type="Script" uid="uid://h6o0sd3yiicg" path="res://Scenes/Scenes/camera_2d_move_map.gd" id="2_ednia"]
+[ext_resource type="Texture2D" uid="uid://c8e53y246fa3x" path="res://Images/Buttons/level_button_3.png" id="3_ednia"]
+[ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="4_i7urs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7urs"]
+bg_color = Color(0.256, 0.256, 0.256, 0.74)
+border_width_top = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7urs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_asnrm"]
+texture = ExtResource("4_i7urs")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x48ov"]
+texture = ExtResource("4_i7urs")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwshb"]
+texture = ExtResource("4_i7urs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpfjx"]
+bg_color = Color(0.256, 0.256, 0.256, 0.74)
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ednia"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tg27t"]
+texture = ExtResource("3_ednia")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.827451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7r2wr"]
+texture = ExtResource("3_ednia")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+modulate_color = Color(1, 1, 1, 0.796078)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sogmy"]
+texture = ExtResource("3_ednia")
+modulate_color = Color(2, 2, 2, 0.875)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ednia"]
+texture = ExtResource("3_ednia")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.827451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cpfjx"]
+texture = ExtResource("3_ednia")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+modulate_color = Color(1, 1, 1, 0.796078)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7urs"]
+texture = ExtResource("3_ednia")
+modulate_color = Color(1, 1, 1, 0.87451)
 
 [node name="Map" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DownPanel" type="Panel" parent="CanvasLayer"]
+offset_top = 288.0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7urs")
+
+[node name="GoToCollection" type="Button" parent="CanvasLayer/DownPanel"]
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 65.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i7urs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_asnrm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x48ov")
+theme_override_styles/normal = SubResource("StyleBoxTexture_iwshb")
+
+[node name="UpPanel" type="Panel" parent="CanvasLayer"]
+offset_right = 640.0
+offset_bottom = 31.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cpfjx")
 
 [node name="MapSprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_t8xgj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-687, -1)
 script = ExtResource("2_ednia")
+world_bounds = Rect2(-1000, -400, 1100, 1100)
+min_zoom = 0.7
+
+[node name="ButtonLevels" type="Node" parent="."]
+
+[node name="Button_0" type="Button" parent="ButtonLevels"]
+offset_left = -932.0
+offset_top = 31.0
+offset_right = -911.0
+offset_bottom = 52.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ednia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tg27t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7r2wr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sogmy")
+text = "0
+"
+
+[node name="Button_1" type="Button" parent="ButtonLevels"]
+offset_left = -904.0
+offset_top = 19.0
+offset_right = -862.0
+offset_bottom = 61.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ednia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ednia")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cpfjx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7urs")
+text = "1"
+
+[node name="Button_2" type="Button" parent="ButtonLevels"]
+offset_left = -834.0
+offset_top = -128.0
+offset_right = -792.0
+offset_bottom = -86.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ednia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ednia")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cpfjx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7urs")
+text = "2
+"
+
+[node name="Button_3" type="Button" parent="ButtonLevels"]
+offset_left = -681.0
+offset_top = 53.0
+offset_right = -639.0
+offset_bottom = 95.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ednia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ednia")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cpfjx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7urs")
+text = "3
+"
+
+[node name="Button_4" type="Button" parent="ButtonLevels"]
+offset_left = -730.0
+offset_top = -195.0
+offset_right = -688.0
+offset_bottom = -149.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ednia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ednia")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cpfjx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7urs")
+text = "4"
+
+[node name="Button_5" type="Button" parent="ButtonLevels"]
+offset_left = -632.0
+offset_top = -93.0
+offset_right = -590.0
+offset_bottom = -47.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ednia")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ednia")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cpfjx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i7urs")
+text = "5
+"
