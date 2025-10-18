@@ -19,6 +19,9 @@ signal ai_closed_cycle(player_lost: int, ai_lost: int)
 signal player_slots_full
 signal board_cleared_due_to_full_slots
 
+signal human_out_of_cards
+signal ai_out_of_cards
+
 
 # --- STATE MACHINE ---
 enum PlayerID { HUMAN = 0, AI = 1 }
@@ -125,16 +128,16 @@ func _enter_state(new_state: int) -> void:
 
 func _on_turn_start() -> void:
 	player_played_this_turn = false
-	waiting_cycle_ack = false
+	# НЕ нулираме waiting_cycle_ack тук – той се управлява от UI helper-ите
 	resolving_links = false
 
-
+	# ⬇️ Първо: ако всичко е пълно → опитай цикъл, иначе чисти
 	if _are_all_slots_full():
-		await _reset_board_due_to_stalemate()
-		# НЕ сменяме current_player; просто рестартираме същия ход върху празна дъска
+		var cycle_handled := await _try_resolve_any_cycle_before_stalemate()
+		if not cycle_handled:
+			await _reset_board_due_to_stalemate()
 		_update_turn_ui()
-		# след изчистването вече със сигурност има място → продължаваме нормално
-	# (няма return; продължаваме)
+		# след като сме освободили, продължаваме нормално
 
 	_update_turn_ui()
 
@@ -144,8 +147,14 @@ func _on_turn_start() -> void:
 			_info("You have no free slots. Press [b]End Turn[/b].", false, INFO_COLOR_WARNING)
 			_enter_state(TurnState.WAIT_END_TURN)
 		else:
-			_info("[b]Your turn[/b] — place [b]one[/b] card.", false, INFO_COLOR_NORMAL)
-			_enter_state(TurnState.PLACE_OR_SKIP)
+			# ➜ НОВО: ако ръката е празна и няма дек, вдигни сигнал и не позволявай поставяне
+			if _is_human_out_of_cards():
+				emit_signal("human_out_of_cards")
+				_info("You have no cards left. Press [b]End Turn[/b].", false, INFO_COLOR_WARNING)
+				_enter_state(TurnState.WAIT_END_TURN)
+			else:
+				_info("[b]Your turn[/b] — place [b]one[/b] card.", false, INFO_COLOR_NORMAL)
+				_enter_state(TurnState.PLACE_OR_SKIP)
 	else:
 		if _are_ai_slots_full():
 			_info("AI slots are full — AI can’t place a card this turn. Your turn again.", false, INFO_COLOR_AI)
@@ -182,6 +191,12 @@ func _on_wait_end_turn() -> void:
 func _on_ai_playing() -> void:
 	_set_player_input_enabled(false)
 	_set_end_turn_enabled(false, "AI turn…")
+
+	if _is_ai_out_of_cards():
+		emit_signal("ai_out_of_cards")
+		_info("AI has no cards left. Your turn.", false, INFO_COLOR_AI)
+		_switch_turn()
+		return
 
 	if _are_ai_slots_full():
 		_info("AI slots are full — AI can’t place a card this turn. Your turn again.", false, INFO_COLOR_AI)
@@ -460,7 +475,8 @@ func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
 
 		var a_tpl := "?" if not ("id" in a) else str(a.id)
 		var b_tpl := "?" if not ("id" in b) else str(b.id)
-		print("LINK: %s(#%d) -> %s(#%d) via %s" % [a_tpl, a_uid, b_tpl, b_uid, ", ".join(labels)])
+		#print("LINK: %s(#%d) -> %s(#%d)" % [a_tpl, a_uid, b_tpl, b_uid])
+		print("%d %d" % [a_uid, b_uid])
 
 		var edge: Edge = _spawn_edge(a, b, labels)
 
@@ -518,7 +534,7 @@ func _spawn_edge(a: Card, b: Card, labels: Array[String]) -> Edge:
 
 func _check_cycle_and_destroy(a_uid: int, b_uid: int) -> void:
 	var parent := {}
-	if _dfs_find_path(b_uid, a_uid, parent):
+	if _dfs_find_path(b_uid, a_uid, parent, MIN_CYCLE_LEN, b_uid, a_uid):
 		var cycle_path := _reconstruct_path(parent, b_uid, a_uid)  # [b, ..., a]
 		if cycle_path.size() >= MIN_CYCLE_LEN:
 			resolving_links = true
@@ -554,22 +570,45 @@ func _check_cycle_and_destroy(a_uid: int, b_uid: int) -> void:
 					_enter_state(TurnState.TURN_START)
 
 
-func _dfs_find_path(start: int, target: int, parent: Dictionary) -> bool:
+# Търси път от start до target с поне min_nodes възли (мин. цикъл = min_nodes).
+# По избор игнорира ребро skip_from -> skip_to (за да избегнем 2-цикъла).
+func _dfs_find_path(start: int, target: int, parent: Dictionary, min_nodes: int = 2, skip_from: int = -1, skip_to: int = -1) -> bool:
 	parent.clear()
 	var visited := {}
-	var stack: Array[int] = [start]
+	# стек от кортежи: (node, depth)
+	var stack: Array = []
+	stack.append([start, 1]) # depth в брой ВЪЗЛИ по пътя; start броим като 1
 	visited[start] = true
 
 	while stack.size() > 0:
-		var u: int = stack.pop_back()
+		var top = stack.pop_back()
+		var u: int = top[0]
+		var depth: int = top[1]
+
 		for v in graph.get(u, []):
-			if not visited.has(v):
-				parent[v] = u
-				if v == target:
+			# игнорирай конкретен ръб (примерно b -> a)
+			if u == skip_from and v == skip_to:
+				continue
+
+			# не маркираме target като visited, ако е твърде къс път — за да позволим по-дълъг по-късно
+			var is_target : bool = (v == target)
+			var next_depth := depth + 1
+
+			if is_target:
+				if next_depth >= min_nodes:
+					parent[v] = u
 					return true
+				# иначе НЕ връщаме; продължаваме да търсим други маршрути
+				continue
+
+			if not visited.has(v):
 				visited[v] = true
-				stack.append(v)
+				parent[v] = u
+				stack.append([v, next_depth])
+
 	return false
+
+
 
 func _reconstruct_path(parent: Dictionary, start: int, end: int) -> Array[int]:
 	var path: Array[int] = [end]
@@ -966,3 +1005,52 @@ func _lock_during_resolve() -> void:
 func _unlock_after_resolve() -> void:
 	resolving_links = false
 	_update_turn_ui()
+	
+	
+func _try_resolve_any_cycle_before_stalemate() -> bool:
+	for a_uid in graph.keys():
+		for b_uid in graph.get(a_uid, []):
+			var parent := {}
+			if _dfs_find_path(b_uid, a_uid, parent):
+				var cycle_path := _reconstruct_path(parent, b_uid, a_uid)
+				if cycle_path.size() >= MIN_CYCLE_LEN:
+					await _run_cycle_flow(cycle_path, a_uid, b_uid)
+					return true
+	return false
+
+func _run_cycle_flow(cycle_path: Array[int], a_uid: int, b_uid: int) -> void:
+	resolving_links = true
+	_set_end_turn_enabled(false, "Resolving..")
+	_set_player_input_enabled(false)
+
+	if not is_edge_visible:
+		await _show_cycle_edges_once(cycle_path, a_uid, b_uid, 1.2)
+	else:
+		await _show_cycle_edges_once(cycle_path, a_uid, b_uid, 0.8)
+
+	_set_go_next_ui(true)
+	resolving_links = false
+	waiting_cycle_ack = true
+	_info("A cycle was detected. Press [b]Go next[/b] to continue.", false, INFO_COLOR_WARNING)
+	_enter_state(TurnState.WAIT_GO_NEXT)
+
+	await cycle_continue_requested
+	_set_go_next_ui(false)
+	waiting_cycle_ack = false
+
+	_destroy_cards_in_cycle(cycle_path)
+
+	if last_card_owner == PlayerID.HUMAN:
+		_enter_state(TurnState.WAIT_END_TURN)
+	else:
+		if current_player == PlayerID.AI:
+			_switch_turn()
+		else:
+			_enter_state(TurnState.TURN_START)
+			
+func _is_human_out_of_cards() -> bool:
+	var deck := CollectionManager.deck
+	return hand_cards.size() == 0 and deck_index >= deck.size()
+
+func _is_ai_out_of_cards() -> bool:
+	return is_instance_valid(ai) and ai.has_method("is_out_of_cards") and ai.is_out_of_cards()

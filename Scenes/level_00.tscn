@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=40 format=3 uid="uid://d0br6vxncb8f3"]
 
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_8axge"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_rwy6q"]
@@ -11,8 +11,11 @@
 [ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/tutorial_deck.tres" id="9_g4lrw"]
 [ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="10_0pjfu"]
 [ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="10_jxdfy"]
+[ext_resource type="Script" uid="uid://cjcrddd46qs8f" path="res://Scenes/UI_controllerr.gd" id="12_085pr"]
 [ext_resource type="Texture2D" uid="uid://dru3llnsl4xhc" path="res://Images/Enemies_Points_Icons/enemy_points_icon_1.png" id="12_kk00c"]
 [ext_resource type="Texture2D" uid="uid://fqd6bi16fbrg" path="res://Images/Enemies_Points_Icons/player_Points_Icon.png" id="13_hp2sk"]
+[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="13_mnyh4"]
+[ext_resource type="Texture2D" uid="uid://be6nkpc7lx8dh" path="res://Images/Buttons/pause_button.png" id="14_hp2sk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
@@ -116,6 +119,78 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2sk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_085pr"]
+texture = ExtResource("14_hp2sk")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(0.762404, 0.762404, 0.762404, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bx7v5"]
+texture = ExtResource("14_hp2sk")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.695503, 0.695503, 0.695503, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mnyh4"]
+texture = ExtResource("14_hp2sk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibeip"]
+bg_color = Color(0, 0, 0, 0.807843)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnyh4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s80cv"]
+bg_color = Color(1, 1, 1, 0.811765)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge7ob"]
+bg_color = Color(1, 1, 1, 0.921569)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wqwq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_085pr"]
 bg_color = Color(0, 0, 0, 0.25098)
 corner_radius_bottom_left = 7
@@ -127,6 +202,7 @@ corner_radius_bottom_left = 7
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_8axge")
+is_edge_visible = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
@@ -589,6 +665,7 @@ vertical_alignment = 1
 
 [node name="GameMaster" type="Node" parent="."]
 script = ExtResource("10_jxdfy")
+player_points_to_reach = 5
 
 [node name="PlayerDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
 offset_left = 34.0
@@ -615,6 +692,75 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("12_085pr")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hp2sk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_085pr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bx7v5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mnyh4")
+
+[node name="PausedPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ibeip")
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/PausedPanel"]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 152.0
+offset_right = 417.0
+offset_bottom = 208.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8wqwq")
+text = "Back and play"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/PausedPanel"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 216.0
+offset_right = 380.0
+offset_bottom = 252.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8wqwq")
+text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PausedPanel"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = -7.0
+offset_right = 500.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0.784314, 0.52549, 0.858824, 1)
+theme_override_fonts/normal_font = ExtResource("13_mnyh4")
+theme_override_font_sizes/normal_font_size = 100
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PointsPanel" type="Panel" parent="CanvasLayer"]
 offset_left = 516.0
@@ -703,3 +849,7 @@ Your: x1.0 | Enemy: x2.0
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="button_down" from="CanvasLayer/PauseButton" to="CanvasLayer" method="_on_pause_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/PausedPanel/PlayButton" to="CanvasLayer" method="_on_play_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/PausedPanel/ExitButton" to="CanvasLayer" method="_on_exit_button_button_down"]

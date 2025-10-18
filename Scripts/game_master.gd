@@ -1,6 +1,15 @@
 class_name GameMaster
 extends Node
 
+@export var player_points_to_reach : int = 10
+@export var enemy_points_to_reach : int = 10
+
+@export_category("Coefficient")
+@export var coefficient_when_destroy_your_card : float = 1.0
+@export var coefficient_when_destroy_enemy_card : float = 1.0
+@export var points_ai_get_when_slots_full : float = 0.0
+@export var points_player_get_when_slots_full : float = 0.0
+
 @onready var level: Level = $".."
 @onready var game_state_random: GameStateRandom = $"../GameStateRandom"
 @onready var player_deck_count_label: RichTextLabel = $PlayerDeckCountLabel
@@ -11,10 +20,6 @@ extends Node
 @onready var player_points_label: RichTextLabel = $"../CanvasLayer/PointsPanel/Player_points_label"
 @onready var coefficient_rich_text_label: RichTextLabel = $"../CanvasLayer/LevelRulesPanel/CoefficientRichTextLabel"
 
-@export var player_points_to_reach : int = 10
-@export var enemy_points_to_reach : int = 10
-@export var coefficient_when_destroy_your_card : float = 1.0
-@export var coefficient_when_destroy_enemy_card : float = 1.0
 
 var max_player_deck_count: int = 0
 var max_AI_deck_count: int = 0
@@ -53,14 +58,41 @@ func _ready() -> void:
 		
 	if not level.board_cleared_due_to_full_slots.is_connected(_on_board_cleared_due_to_full_slots):
 		level.board_cleared_due_to_full_slots.connect(_on_board_cleared_due_to_full_slots)
+		
+	if not level.human_out_of_cards.is_connected(_on_human_out_of_cards):
+		level.human_out_of_cards.connect(_on_human_out_of_cards)
+		
+	if not level.ai_out_of_cards.is_connected(_on_ai_out_of_cards):
+		level.ai_out_of_cards.connect(_on_ai_out_of_cards)
 
 	_update_deck_labels()
 	_update_points_labels() 
 	_update_coefficient_label()
 
 
+func _on_human_out_of_cards() -> void:
+	print("human empty")
+
+func _on_ai_out_of_cards() -> void:
+	print("ai empy")
+
 func _on_board_cleared_due_to_full_slots() -> void:
-	print("[GameMaster] All slots are full")
+
+	# Добавяме точки за двете страни според зададените стойности
+	if points_player_get_when_slots_full != 0.0:
+		player_points += points_player_get_when_slots_full
+		print("Player gains %.2f points for full slots" % points_player_get_when_slots_full)
+		_animate_points_gain(player_points_label, Color("C7FFF0"))
+
+	if points_ai_get_when_slots_full != 0.0:
+		ai_points += points_ai_get_when_slots_full
+		print("AI gains %.2f points for full slots" % points_ai_get_when_slots_full)
+		_animate_points_gain(ai_points_label, Color("FFC4C4"))
+
+	# Обнови визуализацията и провери за победител
+	_update_points_labels()
+	_check_win()
+
 	
 func _on_player_slots_full() -> void:
 	print("[GameMaster] Player slots are FULL — player cannot place a card this turn.")

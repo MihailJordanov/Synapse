@@ -3,6 +3,9 @@ extends Node
 const RES_PATH  := "res://Data/collection_data.json"
 const USER_PATH := "user://collection_data.json"
 
+# Начални ID за първоначално състояние (ако няма user файл или е счупен)
+const DEFAULT_START_IDS := [1,2,3,4,5,6,7,8,9,10]
+
 # В памет:
 # cards: map по id -> { id, self_element, self_kind, self_attack_style, card_texture,
 #                       connect_element, connect_kind, connect_attack_style }
@@ -30,7 +33,6 @@ func is_unlocked(id) -> bool:
 		if _norm_id(u) == id:
 			return true
 	return false
-
 
 func in_deck(id) -> bool:
 	id = _norm_id(id)
@@ -66,7 +68,6 @@ func remove_from_deck(id) -> bool:
 		return true
 	return false
 
-
 func reload() -> void:
 	_load_all()
 
@@ -75,47 +76,44 @@ func reload() -> void:
 # ------------------------------------------------------------
 func _load_all() -> void:
 	var res_data := _load_json(RES_PATH)
-	if res_data.is_empty():
+	if res_data == null or res_data.is_empty():
 		push_error("collection_data.json in res:// is missing or invalid.")
 		return
 
-	if res_data == null:
-		push_error("collection_data.json in res:// is missing or invalid.")
-		return
+	# карти от res
+	var res_cards_arr: Array = res_data.get("cards", [])
+	var res_cards_map := _cards_to_map(res_cards_arr)
 
-	# Ако няма user файл – създай го от res (cards) + празни unlocked/deck
+	# Ако няма user файл – създай го от res + стартови unlocked/deck = [1..10]
 	if not FileAccess.file_exists(USER_PATH):
-		cards    = _cards_to_map(res_data.get("cards", []))
-		unlocked = []
-		deck     = []
+		cards = res_cards_map
+		var start_ids := _filter_existing_ids(DEFAULT_START_IDS, cards)
+		unlocked = start_ids.duplicate()
+		deck     = start_ids.duplicate()
 		_save_user()
 		return
 
 	# Има user файл → синхронизирай cards с res, запази unlocked/deck
 	var user_data := _load_json(USER_PATH)
-	if user_data == null:
-		# ако файлът е счупен, възстанови
-		cards    = _cards_to_map(res_data.get("cards", []))
-		unlocked = []
-		deck     = []
+	if user_data == null or user_data.is_empty():
+		# ако файлът е счупен, възстанови със стартови стойности
+		cards = res_cards_map
+		var start_ids_broken := _filter_existing_ids(DEFAULT_START_IDS, cards)
+		unlocked = start_ids_broken.duplicate()
+		deck     = start_ids_broken.duplicate()
 		_save_user()
 		return
 
 	# базови стойности от user
 	var user_cards_map := _cards_to_map(user_data.get("cards", []))
-	unlocked = user_data.get("unlocked", [])
-	deck     = user_data.get("deck", [])
-	
-	unlocked = _normalize_id_array(unlocked)
-	deck = _normalize_id_array(deck)
+	unlocked = _normalize_id_array(user_data.get("unlocked", []))
+	deck     = _normalize_id_array(user_data.get("deck", []))
 
 	# -> синхронизирай карти от res (OVERRIDE/ADD)
-	var res_cards_arr: Array = res_data.get("cards", [])
 	for c in res_cards_arr:
 		var cid = _norm_id(c.get("id"))
 		if cid == null:
 			continue
-		# винаги копирай последната дефиниция от res върху user
 		user_cards_map[cid] = _normalize_card_dict(c)
 
 	# (по избор) ако не искаш „стари“ карти, които вече не съществуват в res, да останат:
@@ -154,9 +152,6 @@ func _load_json(path: String) -> Dictionary:
 	var data = p.data
 	return data if typeof(data) == TYPE_DICTIONARY else {}
 
-
-
-
 func _cards_to_map(arr: Array) -> Dictionary:
 	var m := {}
 	for c in arr:
@@ -193,7 +188,6 @@ func _norm_id(v) -> Variant:
 			return int(float(v))
 	return str(v)
 
-
 # опционално – ако искаш да премахваш от user карти, които вече не съществуват в res
 func _filter_only_res_ids(user_map: Dictionary, res_arr: Array) -> Dictionary:
 	var keep := {}
@@ -206,11 +200,19 @@ func _filter_only_res_ids(user_map: Dictionary, res_arr: Array) -> Dictionary:
 		if res_ids.has(k):
 			keep[k] = user_map[k]
 	return keep
-	
+
 func _normalize_id_array(arr: Array) -> Array:
 	var out: Array = []
 	for v in arr:
 		var nv = _norm_id(v)
 		if nv != null:
 			out.append(nv)  # ще са int или string, но не float 1.0
+	return out
+
+# НОВО: helper извън _load_all() – филтрира ID-тата до съществуващи карти
+func _filter_existing_ids(id_arr: Array, cards_map: Dictionary) -> Array:
+	var out: Array = []
+	for v in _normalize_id_array(id_arr):
+		if cards_map.has(v):
+			out.append(v)
 	return out

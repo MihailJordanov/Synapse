@@ -295,3 +295,6 @@ func _notify_if_ai_slots_full_on_turn_start() -> void:
 		# по желание: покажи съобщение и в Info панела на Level (ако имаш достъп)
 		if is_instance_valid(_level) and _level.has_method("_info"):
 			_level._info("AI slots are full — AI can’t place a card this turn.", false, Color(0.5, 0.8, 1.0))
+
+func is_out_of_cards() -> bool:
+	return _ai_hand.size() == 0 and _ai_deck.size() == 0
