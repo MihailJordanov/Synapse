@@ -154,20 +154,20 @@
 	  "id": 16,
 	  "self_element": "FIRE",
 	  "self_kind": "HERO",
-	  "self_attack_style": "MELEE",
+	  "self_attack_style": "RANGE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2000.png",
 	  "connect_element": null,
-	  "connect_kind": "HERO",
+	  "connect_kind": "ORG",
 	  "connect_attack_style": "MELEE"
 	},
 	{
 	  "id": 17,
 	  "self_element": "LIGHTNING",
 	  "self_kind": "HERO",
-	  "self_attack_style": "RANGE",
+	  "self_attack_style": "MELEE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2001.png",
 	  "connect_element": "AIR",
-	  "connect_kind": "HERO",
+	  "connect_kind": null,
 	  "connect_attack_style": "RANGE"
 	},
 	{
@@ -198,7 +198,7 @@
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2004.png",
 	  "connect_element": "FIRE",
 	  "connect_kind": "HERO",
-	  "connect_attack_style": "MELEE"
+	  "connect_attack_style": "RANGE"
 	},
 	{
 	  "id": 21,
@@ -207,28 +207,28 @@
 	  "self_attack_style": "MELEE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2005.png",
 	  "connect_element": "WATER",
-	  "connect_kind": "HERO",
+	  "connect_kind": "WIZARD",
 	  "connect_attack_style": "RANGE"
 	},
 	{
 	  "id": 22,
-	  "self_element": "WATER",
+	  "self_element": "FIRE",
 	  "self_kind": "HERO",
 	  "self_attack_style": "RANGE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2006.png",
 	  "connect_element": "AIR",
 	  "connect_kind": "ORG",
-	  "connect_attack_style": "MELEE"
+	  "connect_attack_style": "TELEPATH"
 	},
 	{
 	  "id": 23,
-	  "self_element": "AIR",
+	  "self_element": "LIGHTNING",
 	  "self_kind": "HERO",
-	  "self_attack_style": null,
+	  "self_attack_style": "TELEPATH",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2007.png",
 	  "connect_element": "LIGHTNING",
 	  "connect_kind": "HERO",
-	  "connect_attack_style": "TELEPATH"
+	  "connect_attack_style": "AIR"
 	},
 	{
 	  "id": 24,
@@ -238,7 +238,7 @@
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2008.png",
 	  "connect_element": "AIR",
 	  "connect_kind": "ORG",
-	  "connect_attack_style": "MELEE"
+	  "connect_attack_style": null
 	},
 	{
 	  "id": 25,
@@ -247,14 +247,14 @@
 	  "self_attack_style": "RANGE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2009.png",
 	  "connect_element": "WATER",
-	  "connect_kind": "HERO",
-	  "connect_attack_style": "RANGE"
+	  "connect_kind": "WIZARD",
+	  "connect_attack_style": "TELEPATH"
 	},
 	{
 	  "id": 26,
 	  "self_element": "WATER",
 	  "self_kind": "HERO",
-	  "self_attack_style": "RANGE",
+	  "self_attack_style": null,
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2010.png",
 	  "connect_element": "FIRE",
 	  "connect_kind": null,
@@ -267,7 +267,167 @@
 	  "self_attack_style": "MELEE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2011.png",
 	  "connect_element": "AIR",
+	  "connect_kind": "ORG",
+	  "connect_attack_style": null
+	},
+	{
+	  "id": 28,
+	  "self_element": "WATER",
+	  "self_kind": "HERO",
+	  "self_attack_style": null,
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_0.png",
+	  "connect_element": "FIRE",
+	  "connect_kind": "SKELETON",
+	  "connect_attack_style": null
+	},
+	{
+	  "id": 29,
+	  "self_element": "LIGHTNING",
+	  "self_kind": "HERO",
+	  "self_attack_style": null,
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_1.png",
+	  "connect_element": null,
+	  "connect_kind": "SKELETON",
+	  "connect_attack_style": "MELEE"
+	},
+	{
+	  "id": 30,
+	  "self_element": "FIRE",
+	  "self_kind": "HERO",
+	  "self_attack_style": "MELEE",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_2.png",
+	  "connect_element": "AIR",
+	  "connect_kind": "WIZARD",
+	  "connect_attack_style": "TELEPATH"
+	},
+	{
+	  "id": 31,
+	  "self_element": "AIR",
+	  "self_kind": "HERO",
+	  "self_attack_style": "TELEPATH",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_3.png",
+	  "connect_element": null,
+	  "connect_kind": "ORG",
+	  "connect_attack_style": "RANGE"
+	},
+	{
+	  "id": 32,
+	  "self_element": null,
+	  "self_kind": "HERO",
+	  "self_attack_style": "MELEE",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_4.png",
+	  "connect_element": null,
 	  "connect_kind": "HERO",
+	  "connect_attack_style": null
+	},
+	{
+	  "id": 33,
+	  "self_element": "WATER",
+	  "self_kind": "HERO",
+	  "self_attack_style": "RANGE",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_5.png",
+	  "connect_element": "FIRE",
+	  "connect_kind": "SKELETON",
+	  "connect_attack_style": null
+	},
+	{
+	  "id": 34,
+	  "self_element": "FIRE",
+	  "self_kind": null,
+	  "self_attack_style": "MELEE",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_6.png",
+	  "connect_element": null,
+	  "connect_kind": "WIZARD",
+	  "connect_attack_style": "MELEE"
+	},
+	{
+	  "id": 35,
+	  "self_element": "AIR",
+	  "self_kind": "HERO",
+	  "self_attack_style": "MELEE",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_7.png",
+	  "connect_element": "AIR",
+	  "connect_kind": "ORG",
+	  "connect_attack_style": "TELEPATH"
+	},
+	{
+	  "id": 36,
+	  "self_element": "LIGHTNING",
+	  "self_kind": "HERO",
+	  "self_attack_style": null,
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_8.png",
+	  "connect_element": "WATER",
+	  "connect_kind": null,
+	  "connect_attack_style": "RANGE"
+	},
+	{
+	  "id": 37,
+	  "self_element": "TELEPATH",
+	  "self_kind": "HERO",
+	  "self_attack_style": "AIR",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_9.png",
+	  "connect_element": "MELEE",
+	  "connect_kind": "ORG",
+	  "connect_attack_style": "FIRE"
+	},
+	{
+	  "id": 38,
+	  "self_element": "RANGE",
+	  "self_kind": "HERO",
+	  "self_attack_style": "WATER",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_10.png",
+	  "connect_element": "TELEPATH",
+	  "connect_kind": null,
+	  "connect_attack_style": "LIGHTNING"
+	},
+	{
+	  "id": 39,
+	  "self_element": "MELEE",
+	  "self_kind": "HERO",
+	  "self_attack_style": null,
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_11.png",
+	  "connect_element": "RANGE",
+	  "connect_kind": "WIZARD",
+	  "connect_attack_style": "AIR"
+	},
+	{
+	  "id": 40,
+	  "self_element": null,
+	  "self_kind": "HERO",
+	  "self_attack_style": "FIRE",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_12.png",
+	  "connect_element": "TELEPATH",
+	  "connect_kind": "HERO",
+	  "connect_attack_style": "WATER"
+	},
+	{
+	  "id": 41,
+	  "self_element": "TELEPATH",
+	  "self_kind": null,
+	  "self_attack_style": "LIGHTNING",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_13.png",
+	  "connect_element": "RANGE",
+	  "connect_kind": "SKELETON",
+	  "connect_attack_style": null
+	},
+	{
+	  "id": 42,
+	  "self_element": null,
+	  "self_kind": "HERO",
+	  "self_attack_style": "AIR",
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_14.png",
+	  "connect_element": null,
+	  "connect_kind": "HERO",
+	  "connect_attack_style": "FIRE"
+	},
+	{
+	  "id": 43,
+	  "self_element": "RANGE",
+	  "self_kind": "HERO",
+	  "self_attack_style": null,
+	  "card_texture": "res://Images/Card_Icons/Heros3/hero_3_15.png",
+	  "connect_element": "MELEE",
+	  "connect_kind": null,
 	  "connect_attack_style": null
 	}
   ]

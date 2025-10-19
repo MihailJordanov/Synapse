@@ -360,13 +360,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_liulw")
 [node name="PanelGradiand" type="Panel" parent="Backgrounds"]
 z_index = -10
 offset_right = 640.0
-offset_bottom = 1688.0
+offset_bottom = 3935.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ungwm")
 
 [node name="PanelBG" type="Panel" parent="Backgrounds"]
 z_index = -10
 offset_right = 640.0
-offset_bottom = 1688.0
+offset_bottom = 3935.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_f77j5")
 
 [node name="CollectionFlowContainer" type="GridContainer" parent="."]
@@ -641,6 +641,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_0vnob")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
 script = ExtResource("8_hin0j")
+max_y = 2500.0
 smooth_factor = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

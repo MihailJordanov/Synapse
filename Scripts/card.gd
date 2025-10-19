@@ -13,7 +13,7 @@ signal destroyed(card: Card)
 
 # --- Enums ---
 enum Element     { AIR, WATER, FIRE, LIGHTNING }
-enum CardKind    { HERO, ORG, WIZARD }
+enum CardKind    { HERO, ORG, WIZARD, SKELETON }
 enum AttackStyle { MELEE, RANGE, TELEPATH }
 enum OwnerType   { PLAYER, AI }
 
@@ -80,9 +80,10 @@ enum OwnerType   { PLAYER, AI }
 
 # --- Display dictionaries ---
 const KIND_DISPLAY := {
-	CardKind.HERO:   {"icon": "res://Images/Type_Icons/Kind/knight_icon.png", "color": Color("#9c7e00")},
-	CardKind.ORG:    {"icon": "res://Images/Type_Icons/Kind/orc_icon.png",    "color": Color("#84994F")},
-	CardKind.WIZARD: {"icon": "res://Images/Type_Icons/Kind/wizard_icon.png", "color": Color("#640D5F")},
+	CardKind.HERO:     {"icon": "res://Images/Type_Icons/Kind/knight_icon.png",   "color": Color("#9c7e00")},
+	CardKind.ORG:      {"icon": "res://Images/Type_Icons/Kind/orc_icon.png",      "color": Color("#84994F")},
+	CardKind.WIZARD:   {"icon": "res://Images/Type_Icons/Kind/wizard_icon.png",   "color": Color("#640D5F")},
+	CardKind.SKELETON: {"icon": "res://Images/Type_Icons/Kind/skeleton_icon.png", "color": Color("#f6f6f6")},
 }
 
 const STYLE_DISPLAY := {

@@ -18,6 +18,7 @@ const KIND_DISPLAY := {
 	"HERO":   {"icon": "res://Images/Type_Icons/Kind/knight_icon.png", "color": Color("#9c7e00")},
 	"ORG":    {"icon": "res://Images/Type_Icons/Kind/orc_icon.png",    "color": Color("#84994F")},
 	"WIZARD": {"icon": "res://Images/Type_Icons/Kind/wizard_icon.png", "color": Color("#640D5F")},
+	"SKELETON": {"icon": "res://Images/Type_Icons/Kind/skeleton_icon.png", "color": Color("#f6f6f6")},
 }
 const STYLE_DISPLAY := {
 	"MELEE":    {"icon": "res://Images/Type_Icons/Attack_Type/mele_icon.png",     "color": Color("#483900")},
