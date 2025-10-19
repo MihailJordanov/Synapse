@@ -2,6 +2,7 @@ class_name GameMaster
 extends Node
 
 # === CONFIG ===
+@export_category("Game points")
 @export var player_points_to_reach : int = 10
 @export var enemy_points_to_reach : int = 10
 
@@ -11,6 +12,9 @@ extends Node
 @export var points_ai_get_when_slots_full : float = 0.0
 @export var points_player_get_when_slots_full : float = 0.0
 
+@export_category("On Win")
+@export var cur_level : String
+@export var levels_to_unlock_on_win : Array[String]
 # === NODES ===
 @onready var level: Level = $".."
 @onready var game_state_random: GameStateRandom = $"../GameStateRandom"
@@ -42,6 +46,7 @@ const PLAYER_TEXT := "#00ffb7"
 const AI_TEXT := "#ff5555"
 
 func _ready() -> void:
+	animation_player.play("open_scene")
 	# allow BBCode
 	player_deck_count_label.bbcode_enabled = true
 	ai_deck_count_label.bbcode_enabled = true
@@ -217,6 +222,9 @@ func on_win(reason: String = "") -> void:
 	print("[GameMaster] WIN! Reason: %s" % reason)
 	emit_signal("game_over", "player")
 	if animation_player: animation_player.play("on_win")
+	for i in levels_to_unlock_on_win:
+		LevelManager.add_unlocked(i)
+	LevelManager.add_cleared(cur_level)
 
 func on_lose(reason: String = "") -> void:
 	if _phase != GamePhase.PLAYING: return

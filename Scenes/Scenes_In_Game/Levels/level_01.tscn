@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=59 format=3 uid="uid://d0br6vxncb8f3"]
 
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_bfpom"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_r0vc1"]
@@ -468,6 +468,106 @@ tracks/20/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AnimatingParts/Panel:size")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(693, 403)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("AnimatingParts/Panel:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, -25)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("AnimatingParts/Panel:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("AnimatingParts/Panel:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_r0vc1"]
+resource_name = "closeScene"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatingParts/Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(941, 0), Vector2(693, 403)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatingParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-109, -24), Vector2(-27, -25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatingParts/Panel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.436332, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatingParts/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_ibeip"]
 resource_name = "on_enemy_get_points"
@@ -903,17 +1003,75 @@ tracks/10/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_bfpom"]
+resource_name = "open_scene"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatingParts/Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(693, 403), Vector2(941, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatingParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-27, -25), Vector2(-109, -24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatingParts/Panel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatingParts/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s80cv"]
 _data = {
 &"RESET": SubResource("Animation_8wqwq"),
+&"closeScene": SubResource("Animation_r0vc1"),
 &"on_enemy_get_points": SubResource("Animation_ibeip"),
 &"on_lose": SubResource("Animation_0wyhg"),
 &"on_player_get_points": SubResource("Animation_bx7v5"),
-&"on_win": SubResource("Animation_vxfw5")
+&"on_win": SubResource("Animation_vxfw5"),
+&"open_scene": SubResource("Animation_bfpom")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmait"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Level_01" type="Node2D"]
 script = ExtResource("1_bfpom")
+is_edge_visible = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
@@ -1377,6 +1535,8 @@ vertical_alignment = 1
 [node name="GameMaster" type="Node" parent="."]
 script = ExtResource("10_qgqr5")
 player_points_to_reach = 5
+cur_level = "1"
+levels_to_unlock_on_win = Array[String](["2"])
 
 [node name="PlayerDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
 offset_left = 34.0
@@ -1671,6 +1831,15 @@ position = Vector2(320, 170)
 texture = ExtResource("24_ixbt0")
 hframes = 5
 vframes = 2
+
+[node name="AnimatingParts" type="Node2D" parent="."]
+
+[node name="Panel" type="Panel" parent="AnimatingParts"]
+offset_left = -27.0
+offset_top = -25.0
+offset_right = 666.0
+offset_bottom = 378.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qmait")
 
 [connection signal="button_down" from="CanvasLayer/PauseButton" to="CanvasLayer" method="_on_pause_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/PausedPanel/PlayButton" to="CanvasLayer" method="_on_play_button_button_down"]

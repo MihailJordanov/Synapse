@@ -1,6 +1,9 @@
 class_name MapLevelController
 extends Node2D
 
+@export_category("Go to scenes")
+@export_file("*.tscn") var collection_scene_path: String = "res://Scenes/Scenes_In_Game/collection.tscn"
+
 @export_category("Button -> level")
 @export var buttons: Array[NodePath] = []          
 @export var level_ids: Array[String] = []       
@@ -11,6 +14,8 @@ extends Node2D
 @onready var enemy_texture_rect: TextureRect = $CanvasLayer/SelectLevelPanel2/EnemyTextureRect
 @onready var play_button: Button = $CanvasLayer/SelectLevelPanel2/Button
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var info_rich_text_label: RichTextLabel = $CanvasLayer/SelectLevelPanel2/InfoRichTextLabel
+@onready var go_to_collection: Button = $CanvasLayer/DownPanel/GoToCollection
 
 var _selected_button: LevelButton = null
 var _pending_show := false
@@ -18,6 +23,7 @@ var _next_button: LevelButton = null
 var _panel_visible := false
 
 func _ready() -> void:
+	animation_player.play("openScene")
 	# 1) Синхронизиране на бутони с LevelManager
 	if buttons.size() != level_ids.size():
 		push_warning("buttons и level_ids трябва да са с еднаква дължина! Използвам минималната.")
@@ -115,9 +121,16 @@ func _on_anim_finished(name: StringName) -> void:
 func _on_play_pressed() -> void:
 	if _selected_button == null:
 		return
-
+	
+	if CollectionManager.deck.size() < 5:
+		info_rich_text_label.text = "Your deck must contain at least 5 cards."
+		_pulse_button(go_to_collection)
+		return
+	else:
+		info_rich_text_label.text = ""
 	# Зареждаме сцената, ако е зададена (PackedScene)
 	if _selected_button.scene_name != null:
+		animation_player.play("closeScene")
 		get_tree().change_scene_to_packed(_selected_button.scene_name)
 	else:
 		push_warning("There is no scene for selected LevelButton.")
@@ -157,3 +170,22 @@ func _is_descendant_of(node: Control, ancestor: Node) -> bool:
 			return true
 		n = n.get_parent()
 	return false
+
+
+func _on_go_to_collection_button_down() -> void:
+	animation_player.play("closeScene")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file(collection_scene_path)
+	
+func _pulse_button(button: Button) -> void:
+	if not is_instance_valid(button):
+		return
+
+	button.pivot_offset = button.size * 0.5 
+
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(button, "scale", Vector2(1.2, 1.2), 0.05)
+	tween.parallel().tween_property(button, "modulate", Color(1.3, 1.3, 1.3), 0.05)
+	tween.tween_property(button, "scale", Vector2(1, 1), 0.05)
+	tween.parallel().tween_property(button, "modulate", Color(1, 1, 1), 0.05)

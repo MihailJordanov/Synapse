@@ -1,11 +1,14 @@
 class_name CollectionContainer
 extends GridContainer
 
-const DECK_LIMIT := 20
+@export_category("Deack and Path")
+@export var deck_limit : int = 20
+@export_file("*.tscn") var menu_scene_path: String = "res://Scenes/Scenes_In_Game/map.tscn"
 
 @onready var template: Control = $"../Card_Visualisation"
 @onready var card_count_rich_text_label: RichTextLabel = $"../CanvasLayer/BorderPanel/CardCountRichTextLabel"
 @onready var info_rich_text_label: RichTextLabel = $"../CanvasLayer/BorderPanel/InfoRichTextLabel"
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
 signal deck_changed(card_id, in_deck: bool)
 
@@ -29,8 +32,10 @@ const ELEMENT_DISPLAY := {
 }
 
 func _ready() -> void:
+	animation_player.play("openScene")
 	_build_collection()
 	_update_deck_labels()
+
 
 func refresh_in_deck_icons() -> void:
 	for id_str in _id_to_ui.keys():
@@ -187,7 +192,7 @@ func _toggle_for_card_id(data: Dictionary) -> void:
 		return
 
 	# добавяне с лимит
-	if _deck_size() >= DECK_LIMIT:
+	if _deck_size() >= deck_limit:
 		_flash_limit_warning()
 		return
 
@@ -216,14 +221,14 @@ func _deck_size() -> int:
 func _update_deck_labels() -> void:
 	if is_instance_valid(card_count_rich_text_label):
 		card_count_rich_text_label.bbcode_enabled = true
-		card_count_rich_text_label.text = "[center][b]Deck:[/b]\n%d / %d[/center]" % [_deck_size(), DECK_LIMIT]
+		card_count_rich_text_label.text = "[center][b]Deck:[/b]\n%d / %d[/center]" % [_deck_size(), deck_limit]
 
 	if is_instance_valid(info_rich_text_label):
 		info_rich_text_label.bbcode_enabled = true
-		if _deck_size() > DECK_LIMIT:
-			var over := _deck_size() - DECK_LIMIT
+		if _deck_size() > deck_limit:
+			var over := _deck_size() - deck_limit
 			info_rich_text_label.text = "[color=red][b]Limit exceeded! Remove %d cards.[/b][/color]" % over
-		elif _deck_size() == DECK_LIMIT:
+		elif _deck_size() == deck_limit:
 			info_rich_text_label.text = "[color=yellow][b]The limit has been reached.[/b][/color]"
 		else:
 			info_rich_text_label.text = ""
@@ -242,3 +247,87 @@ func _click_animation(node: Control) -> void:
 	var t := create_tween()
 	t.tween_property(node, "scale", Vector2(0.9, 0.9), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	t.tween_property(node, "scale", Vector2(1, 1), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+
+func _on_go_menu_button_button_down() -> void:
+	animation_player.play("closeScene")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file(menu_scene_path)
+
+
+func _on_sort_button_button_down() -> void:
+	_sort_cards()
+
+
+func _sort_cards() -> void:
+	# 1) Вземаме текущия ред (линейно) от имената "Card_<id>"
+	var current_ids := _collect_current_ids()
+	# 2) Ако вече е сортирано според правилата – излизаме (O(n) проверка)
+	if _is_already_sorted(current_ids):
+		return
+
+	# 3) Иначе сортираме и пренареждаме децата
+	var ids: Array[String] = _id_to_ui.keys()
+	ids.sort_custom(func(a: String, b: String) -> bool:
+		return _id_a_precedes_b(a, b)
+	)
+
+	for i in ids.size():
+		var ui: Control = _id_to_ui.get(ids[i], null)
+		if ui:
+			move_child(ui, i)
+
+	refresh_in_deck_icons()
+
+
+# Взима текущия ред на картите от имената на нодовете "Card_<id>"
+func _collect_current_ids() -> Array[String]:
+	var out: Array[String] = []
+	for ch in get_children():
+		if ch is Control:
+			var n := (ch as Control).name
+			if n.begins_with("Card_"):
+				out.append(n.substr(5)) # след "Card_"
+	return out
+
+# Линейна проверка дали редът вече е сортиран според нашите правила
+func _is_already_sorted(ids: Array[String]) -> bool:
+	if ids.size() <= 1:
+		return true
+	var prev := ids[0]
+	for i in range(1, ids.size()):
+		var cur := ids[i]
+		# ако cur трябва да е преди prev -> не е сортирано
+		if _id_a_precedes_b(cur, prev):
+			return false
+		prev = cur
+	return true
+
+# Главното правило за реда:
+# 1) картите в дека (CollectionManager.deck) първи, по реда им в дека
+# 2) след това unlocked (не-в-дека), по id
+# 3) накрая locked, по id
+func _id_a_precedes_b(a: String, b: String) -> bool:
+	var a_in := CollectionManager.in_deck(a)
+	var b_in := CollectionManager.in_deck(b)
+	if a_in != b_in:
+		return a_in and not b_in
+
+	if a_in and b_in:
+		return _deck_index(a) < _deck_index(b)
+
+	var a_un := CollectionManager.is_unlocked(a)
+	var b_un := CollectionManager.is_unlocked(b)
+	if a_un != b_un:
+		return a_un and not b_un
+
+	# и двете са unlocked (или locked) -> сравняваме по id (числово, ако и двете са числа)
+	var a_num := a.is_valid_int()
+	var b_num := b.is_valid_int()
+	if a_num and b_num:
+		return int(a) < int(b)
+	return a < b
+
+func _deck_index(id_str: String) -> int:
+	var idx := CollectionManager.deck.find(id_str)
+	return idx if idx != -1 else 999999

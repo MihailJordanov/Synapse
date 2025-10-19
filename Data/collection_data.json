@@ -172,7 +172,7 @@
 	},
 	{
 	  "id": 18,
-	  "self_element": "Water",
+	  "self_element": "WATER",
 	  "self_kind": "HERO",
 	  "self_attack_style": null,
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2002.png",
@@ -192,7 +192,7 @@
 	},
 	{
 	  "id": 20,
-	  "self_element": "Water",
+	  "self_element": "WATER",
 	  "self_kind": "HERO",
 	  "self_attack_style": "MELEE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2004.png",
@@ -206,13 +206,13 @@
 	  "self_kind": null,
 	  "self_attack_style": "MELEE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2005.png",
-	  "connect_element": "Water",
+	  "connect_element": "WATER",
 	  "connect_kind": "HERO",
 	  "connect_attack_style": "RANGE"
 	},
 	{
 	  "id": 22,
-	  "self_element": "Water",
+	  "self_element": "WATER",
 	  "self_kind": "HERO",
 	  "self_attack_style": "RANGE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2006.png",
@@ -232,7 +232,7 @@
 	},
 	{
 	  "id": 24,
-	  "self_element": "Water",
+	  "self_element": "WATER",
 	  "self_kind": "HERO",
 	  "self_attack_style": "MELEE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2008.png",
@@ -246,13 +246,13 @@
 	  "self_kind": "HERO",
 	  "self_attack_style": "RANGE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2009.png",
-	  "connect_element": "Water",
+	  "connect_element": "WATER",
 	  "connect_kind": "HERO",
 	  "connect_attack_style": "RANGE"
 	},
 	{
 	  "id": 26,
-	  "self_element": "Water",
+	  "self_element": "WATER",
 	  "self_kind": "HERO",
 	  "self_attack_style": "RANGE",
 	  "card_texture": "res://Images/Card_Icons/Heros2/hero_2010.png",
