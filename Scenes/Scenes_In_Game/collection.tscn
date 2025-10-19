@@ -1,13 +1,13 @@
 [gd_scene load_steps=22 format=3 uid="uid://dviofnyfv8iq3"]
 
-[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="1_3an25"]
-[ext_resource type="Texture2D" uid="uid://dm6vswilrbj3s" path="res://Images/BackGrounds/wood_texture_2.jpg" id="2_5u01e"]
-[ext_resource type="Texture2D" uid="uid://chtrxy6x76kwf" path="res://Images/Card_Slot_Images/card_deck_icon_2.png" id="3_odell"]
-[ext_resource type="Texture2D" uid="uid://cjm06rruoyovn" path="res://Images/BackGrounds/bg_1.jpg" id="4_50ajv"]
-[ext_resource type="Script" uid="uid://d0r4btya68m7n" path="res://Scripts/collection_container.gd" id="5_jotrl"]
-[ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="6_8csa1"]
-[ext_resource type="Texture2D" uid="uid://u0m008ixbbic" path="res://Images/Card_Slot_Images/in_use_icon.png" id="7_k6k28"]
-[ext_resource type="Script" uid="uid://cbmmcrnesr7e6" path="res://Scripts/camera_scroll.gd" id="8_7rs4h"]
+[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="1_avwso"]
+[ext_resource type="Texture2D" uid="uid://dm6vswilrbj3s" path="res://Images/BackGrounds/wood_texture_2.jpg" id="2_y405g"]
+[ext_resource type="Texture2D" uid="uid://chtrxy6x76kwf" path="res://Images/Card_Slot_Images/card_deck_icon_2.png" id="3_ycjcu"]
+[ext_resource type="Texture2D" uid="uid://cjm06rruoyovn" path="res://Images/BackGrounds/bg_1.jpg" id="4_liulw"]
+[ext_resource type="Script" uid="uid://d0r4btya68m7n" path="res://Scripts/collection_container.gd" id="5_0ce80"]
+[ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="6_phcif"]
+[ext_resource type="Texture2D" uid="uid://u0m008ixbbic" path="res://Images/Card_Slot_Images/in_use_icon.png" id="7_xege3"]
+[ext_resource type="Script" uid="uid://cbmmcrnesr7e6" path="res://Scripts/camera_scroll.gd" id="8_hin0j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t7gs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,7 +15,7 @@ border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrx6y"]
-texture = ExtResource("2_5u01e")
+texture = ExtResource("2_y405g")
 modulate_color = Color(1, 1, 1, 0.937255)
 
 [sub_resource type="Gradient" id="Gradient_ahcsq"]
@@ -29,7 +29,7 @@ fill_to = Vector2(0, 1)
 texture = SubResource("GradientTexture2D_d2ee6")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f77j5"]
-texture = ExtResource("4_50ajv")
+texture = ExtResource("4_liulw")
 modulate_color = Color(1, 1, 1, 0.286275)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ee6"]
@@ -64,7 +64,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0vnob"]
-texture = ExtResource("7_k6k28")
+texture = ExtResource("7_xege3")
 
 [node name="Collection" type="Node2D"]
 
@@ -83,7 +83,7 @@ offset_left = 538.0
 offset_top = 3.0
 offset_right = 632.0
 offset_bottom = 56.0
-theme_override_fonts/normal_font = ExtResource("1_3an25")
+theme_override_fonts/normal_font = ExtResource("1_avwso")
 theme_override_font_sizes/normal_font_size = 28
 text = "x23"
 vertical_alignment = 1
@@ -104,7 +104,7 @@ offset_left = 480.0
 offset_top = 3.0
 offset_right = 532.0
 offset_bottom = 55.0
-texture = ExtResource("3_odell")
+texture = ExtResource("3_ycjcu")
 expand_mode = 2
 
 [node name="InfoRichTextLabel" type="RichTextLabel" parent="CanvasLayer/BorderPanel"]
@@ -147,7 +147,7 @@ offset_bottom = 102.0
 theme_override_constants/h_separation = 120
 theme_override_constants/v_separation = 180
 columns = 4
-script = ExtResource("5_jotrl")
+script = ExtResource("5_0ce80")
 
 [node name="Card_Visualisation" type="Control" parent="."]
 visible = false
@@ -397,7 +397,7 @@ layout_mode = 0
 offset_top = 36.0
 offset_right = 100.0
 offset_bottom = 126.0
-texture = ExtResource("6_8csa1")
+texture = ExtResource("6_phcif")
 expand_mode = 2
 
 [node name="InDeckPanel" type="Panel" parent="Card_Visualisation"]
@@ -410,5 +410,5 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_0vnob")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
-script = ExtResource("8_7rs4h")
+script = ExtResource("8_hin0j")
 smooth_factor = 0.1

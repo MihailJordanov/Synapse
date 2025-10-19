@@ -1,0 +1,429 @@
+[gd_scene load_steps=35 format=3 uid="uid://dye7h3iwsbaj4"]
+
+[ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
+[ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
+[ext_resource type="Texture2D" uid="uid://cpvyl4blecsd5" path="res://Images/Map/Synapse_Map.jpg" id="2_1xnci"]
+[ext_resource type="Script" uid="uid://h6o0sd3yiicg" path="res://Scripts/camera_2d_move_map.gd" id="3_ijeka"]
+[ext_resource type="Texture2D" uid="uid://bkyucjwobn1js" path="res://Images/Buttons/show_level.png" id="3_uxesv"]
+[ext_resource type="PackedScene" uid="uid://v3525e5fn7dq" path="res://Scenes/level_button.tscn" id="4_1xnci"]
+[ext_resource type="FontFile" uid="uid://d1yahlnho8lp3" path="res://Fonts/WANTED.ttf" id="4_moljf"]
+[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="5_b7rwn"]
+[ext_resource type="Texture2D" uid="uid://dru3llnsl4xhc" path="res://Images/Enemies_Points_Icons/enemy_points_icon_1.png" id="5_ijeka"]
+[ext_resource type="Texture2D" uid="uid://1n1w310cbu03" path="res://Images/Buttons/finished_enemy.png" id="5_mvypx"]
+[ext_resource type="PackedScene" uid="uid://d0br6vxncb8f3" path="res://Scenes/Scenes_In_Game/Levels/level_01.tscn" id="6_8ew20"]
+[ext_resource type="Texture2D" uid="uid://dr6xl10yer3fm" path="res://Images/Enemies_Points_Icons/enemy_points_icon_2.png" id="6_forc4"]
+[ext_resource type="Texture2D" uid="uid://dnhb0t5rki23e" path="res://Images/Enemies_Points_Icons/enemy_points_icon_11.png" id="7_lxa30"]
+[ext_resource type="Texture2D" uid="uid://pho1dbcb6wip" path="res://Images/Enemies_Points_Icons/enemy_points_icon_3.png" id="8_8ew20"]
+[ext_resource type="Texture2D" uid="uid://dreaa6igp7ebe" path="res://Images/Enemies_Points_Icons/enemy_points_icon_4.png" id="9_uxesv"]
+[ext_resource type="Texture2D" uid="uid://bkf1th4cls4wg" path="res://Images/Enemies_Points_Icons/enemy_points_icon_10.png" id="10_moljf"]
+[ext_resource type="Texture2D" uid="uid://oae00sck2wmv" path="res://Images/Enemies_Points_Icons/enemy_points_icon_6.png" id="11_b7rwn"]
+[ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
+[ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7urs"]
+bg_color = Color(0.256, 0.256, 0.256, 0.74)
+border_width_top = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7urs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_asnrm"]
+texture = ExtResource("1_87dg0")
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x48ov"]
+texture = ExtResource("1_87dg0")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwshb"]
+texture = ExtResource("1_87dg0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpfjx"]
+bg_color = Color(0.256, 0.256, 0.256, 0.74)
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_moljf"]
+texture = ExtResource("3_uxesv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvypx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvypx"]
+bg_color = Color(0.489483, 0.392902, 0.211285, 0.890196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay0fg"]
+bg_color = Color(0.255978, 0.199617, 0.0930941, 0.890196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdts0"]
+bg_color = Color(0.866667, 0.745098, 0.52549, 0.890196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Animation" id="Animation_mvypx"]
+resource_name = "show_select_level_menu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/SelectLevelPanel2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(491, -389), Vector2(491, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/SelectLevelPanel2/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("18_sdts0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_sdts0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/SelectLevelPanel2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(491, -389)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/SelectLevelPanel2/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gojlf"]
+resource_name = "hide_select_level_menu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/SelectLevelPanel2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(491, -48), Vector2(491, -389)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/SelectLevelPanel2/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.758172,
+"start_offset": 0.0465136,
+"stream": ExtResource("19_ay0fg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ay0fg"]
+_data = {
+&"RESET": SubResource("Animation_sdts0"),
+&"hide_select_level_menu": SubResource("Animation_gojlf"),
+&"show_select_level_menu": SubResource("Animation_mvypx")
+}
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_lxa30")
+buttons = Array[NodePath]([NodePath("ButtonLevels/LevelButton_1"), NodePath("ButtonLevels/LevelButton_2"), NodePath("ButtonLevels/LevelButton_3"), NodePath("ButtonLevels/LevelButton_4"), NodePath("ButtonLevels/LevelButton_5"), NodePath("ButtonLevels/LevelButton_6"), NodePath("ButtonLevels/LevelButton_7")])
+level_ids = Array[String](["1", "2", "3", "4", "5", "6", "7"])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DownPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7urs")
+
+[node name="GoToCollection" type="Button" parent="CanvasLayer/DownPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439
+anchor_top = 0.069
+anchor_right = 0.533
+anchor_bottom = 0.903
+offset_left = 0.039978
+offset_top = 0.0319996
+offset_right = -0.120026
+offset_bottom = -0.0160065
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i7urs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_asnrm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x48ov")
+theme_override_styles/normal = SubResource("StyleBoxTexture_iwshb")
+
+[node name="UpPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.086
+offset_bottom = 0.039999
+theme_override_styles/panel = SubResource("StyleBoxFlat_cpfjx")
+
+[node name="SelectLevelPanel2" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.767
+anchor_top = -0.136
+anchor_right = 0.995
+anchor_bottom = 0.869
+offset_left = 0.119995
+offset_top = -340.04
+offset_right = 0.199951
+offset_bottom = -339.84
+theme_override_styles/panel = SubResource("StyleBoxTexture_moljf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/SelectLevelPanel2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 58.0
+offset_right = 139.0
+offset_bottom = 101.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_moljf")
+theme_override_font_sizes/normal_font_size = 40
+text = "WANTED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/SelectLevelPanel2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 226.0
+offset_right = 139.0
+offset_bottom = 250.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_moljf")
+theme_override_font_sizes/normal_font_size = 19
+bbcode_enabled = true
+text = "DEAD [font_size=13]OR[/font_size] ALIVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoolerTextureRect" type="TextureRect" parent="CanvasLayer/SelectLevelPanel2/RichTextLabel2"]
+layout_mode = 0
+offset_left = 68.0
+offset_right = 121.0
+offset_bottom = 23.0
+texture = ExtResource("5_mvypx")
+expand_mode = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="CanvasLayer/SelectLevelPanel2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 204.0
+offset_right = 139.0
+offset_bottom = 225.0
+theme_override_colors/default_color = Color(0.670588, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_b7rwn")
+theme_override_font_sizes/normal_font_size = 19
+bbcode_enabled = true
+text = "Stachi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyTextureRect" type="TextureRect" parent="CanvasLayer/SelectLevelPanel2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 24.0
+offset_top = 100.0
+offset_right = 124.0
+offset_bottom = 200.0
+expand_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/SelectLevelPanel2"]
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 258.0
+offset_right = 128.0
+offset_bottom = 302.0
+theme_override_fonts/font = ExtResource("4_moljf")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mvypx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mvypx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ay0fg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sdts0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/SelectLevelPanel2/Button"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 104.0
+offset_bottom = 47.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_moljf")
+theme_override_font_sizes/normal_font_size = 40
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1xnci")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-687, -1)
+script = ExtResource("3_ijeka")
+world_bounds = Rect2(-1000, -400, 700, 600)
+min_zoom = 1.0
+
+[node name="ButtonLevels" type="Node" parent="."]
+
+[node name="LevelButton_1" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -895.0
+offset_top = 17.0
+offset_right = -863.0
+offset_bottom = 59.0
+scene_name = ExtResource("6_8ew20")
+enemy_texture = ExtResource("5_ijeka")
+
+[node name="LevelButton_2" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -836.0
+offset_top = -56.0
+offset_right = -804.0
+offset_bottom = -14.0
+enemy_texture = ExtResource("6_forc4")
+
+[node name="LevelButton_3" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -680.0
+offset_top = 44.0
+offset_right = -648.0
+offset_bottom = 86.0
+enemy_texture = ExtResource("7_lxa30")
+
+[node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -828.0
+offset_top = -163.0
+offset_right = -796.0
+offset_bottom = -121.0
+enemy_texture = ExtResource("8_8ew20")
+
+[node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -723.0
+offset_top = -219.0
+offset_right = -691.0
+offset_bottom = -177.0
+enemy_texture = ExtResource("9_uxesv")
+
+[node name="LevelButton_6" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -703.0
+offset_top = -108.0
+offset_right = -671.0
+offset_bottom = -66.0
+enemy_texture = ExtResource("10_moljf")
+
+[node name="LevelButton_7" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -558.0
+offset_top = -56.0
+offset_right = -526.0
+offset_bottom = -14.0
+enemy_texture = ExtResource("11_b7rwn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ay0fg")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

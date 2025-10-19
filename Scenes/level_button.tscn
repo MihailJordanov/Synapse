@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://v3525e5fn7dq"]
+
+[ext_resource type="Texture2D" uid="uid://cq84e26ffekvs" path="res://Images/Buttons/level_button_4.png" id="1_iapje"]
+[ext_resource type="Script" uid="uid://0hgh4meqm1kf" path="res://Scripts/level_button.gd" id="2_hsxrf"]
+[ext_resource type="Texture2D" uid="uid://1n1w310cbu03" path="res://Images/Buttons/finished_enemy.png" id="4_j6rai"]
+[ext_resource type="Texture2D" uid="uid://dusabblrxfybd" path="res://Images/Buttons/question_mark.png" id="4_j8cp3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_34smg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsxrf"]
+texture = ExtResource("1_iapje")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8cp3"]
+texture = ExtResource("1_iapje")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6rai"]
+texture = ExtResource("1_iapje")
+
+[sub_resource type="Animation" id="Animation_34smg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iapje"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.03, 1.03), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hsxrf"]
+_data = {
+&"RESET": SubResource("Animation_34smg"),
+&"default": SubResource("Animation_iapje")
+}
+
+[node name="LevelButton" type="Button"]
+offset_left = -16.0
+offset_top = -21.0
+offset_right = 16.0
+offset_bottom = 21.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_34smg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hsxrf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j8cp3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6rai")
+script = ExtResource("2_hsxrf")
+
+[node name="EnemyTextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 11.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="MysteryTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 11.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_j8cp3")
+expand_mode = 2
+
+[node name="FinishedTextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 11.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_j6rai")
+expand_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hsxrf")
+}

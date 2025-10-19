@@ -13,11 +13,12 @@ config_version=5
 config/name="Synapse"
 run/main_scene="uid://dye7h3iwsbaj4"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://doyw4avwe06xn"
 
 [autoload]
 
 CollectionManager="*res://Scripts/collection_manager.gd"
+LevelManager="*res://Scripts/level_manager.gd"
 
 [display]
 
