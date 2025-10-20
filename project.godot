@@ -28,3 +28,7 @@ window/size/window_width_override=1416
 window/size/window_height_override=836
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
