@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and ((event as InputEventMouseButton).button_index == MOUSE_BUTTON_WHEEL_UP or (event as InputEventMouseButton).button_index == MOUSE_BUTTON_WHEEL_DOWN):
 		var mb := event as InputEventMouseButton
 		var focus_vp: Vector2 = get_viewport().get_mouse_position()
-		var step: float = 1.0 / wheel_zoom_factor if mb.button_index == MOUSE_BUTTON_WHEEL_UP else wheel_zoom_factor
+		var step: float = wheel_zoom_factor if mb.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0 / wheel_zoom_factor
 		_zoom_at(focus_vp, step)
 
 	# --- Touch tracking ---
@@ -67,7 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMagnifyGesture:
 		var mg := event as InputEventMagnifyGesture
 		var focus: Vector2 = mg.position
-		var factor: float = 1.0 / max(0.01, (1.0 + mg.factor))
+		var factor: float = max(0.01, (1.0 + mg.factor))
 		_zoom_at(focus, factor)
 	if event is InputEventPanGesture:
 		var pg := event as InputEventPanGesture
@@ -99,7 +99,7 @@ func _handle_touch_gestures(sd: InputEventScreenDrag) -> void:
 		var ratio_raw: float = dist / _last_pinch_dist
 		_last_pinch_dist = lerpf(_last_pinch_dist, dist, touch_zoom_smooth)
 		var ratio: float = clamp(ratio_raw, 0.01, 100.0)
-		_zoom_at(mid, 1.0 / ratio)
+		_zoom_at(mid, ratio)
 
 # --- Utilities ---
 

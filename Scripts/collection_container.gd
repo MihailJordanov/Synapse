@@ -5,6 +5,7 @@ extends GridContainer
 @export var deck_limit : int = 20
 @export_file("*.tscn") var menu_scene_path: String = "res://Scenes/Scenes_In_Game/map.tscn"
 
+
 @onready var template: Control = $"../Card_Visualisation"
 @onready var card_count_rich_text_label: RichTextLabel = $"../CanvasLayer/BorderPanel/CardCountRichTextLabel"
 @onready var info_rich_text_label: RichTextLabel = $"../CanvasLayer/BorderPanel/InfoRichTextLabel"

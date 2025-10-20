@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d0r4btya68m7n" path="res://Scripts/collection_container.gd" id="5_0ce80"]
 [ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="6_phcif"]
 [ext_resource type="Texture2D" uid="uid://u0m008ixbbic" path="res://Images/Card_Slot_Images/in_use_icon.png" id="7_xege3"]
-[ext_resource type="Script" uid="uid://cbmmcrnesr7e6" path="res://Scripts/camera_scroll.gd" id="8_hin0j"]
+[ext_resource type="Script" uid="uid://d3r4ucokepd5n" path="res://Scenes/Scenes_In_Game/v_scroll_bar.gd" id="9_y405g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t7gs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -355,6 +355,13 @@ offset_right = 642.0
 offset_bottom = 364.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_liulw")
 
+[node name="VScrollBar" type="VScrollBar" parent="CanvasLayer"]
+offset_left = 586.0
+offset_top = 113.0
+offset_right = 616.0
+offset_bottom = 341.0
+script = ExtResource("9_y405g")
+
 [node name="Backgrounds" type="Node" parent="."]
 
 [node name="PanelGradiand" type="Panel" parent="Backgrounds"]
@@ -640,9 +647,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_0vnob")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
-script = ExtResource("8_hin0j")
-max_y = 2500.0
-smooth_factor = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
