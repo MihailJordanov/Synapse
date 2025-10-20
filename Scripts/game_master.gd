@@ -120,7 +120,6 @@ func _on_human_closed_cycle(player_lost: int, ai_lost: int) -> void:
 	player_lost = max(player_lost, 0)
 	ai_lost = max(ai_lost, 0)
 
-	Input.vibrate_handheld(300, 0.8)
 	if animation_player: animation_player.play("on_player_get_points")
 
 	var delta := float(player_lost) * coefficient_when_destroy_your_card \
@@ -134,7 +133,6 @@ func _on_ai_closed_cycle(player_lost: int, ai_lost: int) -> void:
 	player_lost = max(player_lost, 0)
 	ai_lost = max(ai_lost, 0)
 
-	Input.vibrate_handheld(300, 0.8)
 	if animation_player: animation_player.play("on_enemy_get_points")
 
 	var delta := float(ai_lost) * coefficient_when_destroy_your_card \

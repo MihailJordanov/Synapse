@@ -2,8 +2,8 @@
 class_name Camera2DMoveMap
 extends Camera2D
 
-@export var world_bounds: Rect2 = Rect2(Vector2.ZERO, Vector2(10000, 10000))
-@export var min_zoom: float = 0.25
+@export var world_bounds: Rect2 = Rect2(Vector2.ZERO, Vector2(700, 600))
+@export var min_zoom: float = 1
 @export var max_zoom: float = 3.0
 @export var mouse_drag_button: MouseButton = MOUSE_BUTTON_LEFT
 @export var drag_sensitivity: float = 1.0
