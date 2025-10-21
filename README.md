@@ -74,6 +74,7 @@ Perfect for:
 
   <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%201.png" 
        alt="While playing 1" 
+       align="center"
        width="600" 
        style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
   <br>
