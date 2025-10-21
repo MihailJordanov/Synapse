@@ -100,7 +100,7 @@ Perfect for:
 </p>
 
 <p align="center">
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%202.png" width="600" alt="Level Map 2" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%201.5.png" width="600" alt="Level Map 2" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🌍 Level Map 2 – new areas unlocked</b></sub>
 </p>
 
