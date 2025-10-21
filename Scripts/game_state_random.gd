@@ -61,6 +61,17 @@ func _ready() -> void:
 
 	# Зареди тестето от Resource (AIDeck)
 	if deck and deck.ids.size() > 0:
+		var ids: PackedInt32Array = deck.ids
+		var rng := RandomNumberGenerator.new()
+		rng.randomize()
+
+		for i in range(ids.size() - 1, 0, -1):
+			var j := rng.randi_range(0, i)
+			var tmp := ids[i]
+			ids[i] = ids[j]
+			ids[j] = tmp
+
+		deck.ids = ids
 		init_with_ids(deck.ids)
 		
 	

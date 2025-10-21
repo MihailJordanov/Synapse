@@ -297,6 +297,7 @@ func _first_free_point() -> Node2D:
 
 func _draw_next_card_instance() -> Node2D:
 	var deck := CollectionManager.deck
+	deck.shuffle()
 	if deck_index >= deck.size():
 		return null
 	var id = deck[deck_index]

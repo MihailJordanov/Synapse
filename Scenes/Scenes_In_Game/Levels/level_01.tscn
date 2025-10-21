@@ -1576,6 +1576,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_bx7v5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_mnyh4")
 
 [node name="PausedPanel" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
