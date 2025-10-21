@@ -65,132 +65,94 @@ Perfect for:
 ## 🖼️ Preview
 
 <p align="center">
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%201.png" 
-       alt="The Level Map 1" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%201.png" width="600" alt="Level Map 1" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🗺️ Level Map 1 – Your journey begins</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%201.png" 
-       alt="While playing 1" 
-       align="center"
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%201.png" width="600" alt="Open board" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🎴 Open board – cards in action</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%202.png" 
-       alt="example for cycle" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%202.png" width="600" alt="Creating cycle" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🔁 Creating your first cycle</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%203.png" 
-       alt="more complex cycle" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%203.png" width="600" alt="Complex cycle" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🧩 Building a more complex cycle</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%204.png" 
-       alt="destroying cards after cycle" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%204.png" width="600" alt="Destroying cards" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>💥 Destroying cards after a completed cycle</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%205.png" 
-       alt="casual playing" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%205.png" width="600" alt="Casual play" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🧠 Casual gameplay – thinking ahead</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%207.png" 
-       alt="destroying cards after cycle 2" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%207.png" width="600" alt="Combo cycles" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>⚙️ Chain reactions and combo cycles</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%202.png" 
-       alt="level map 2" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%202.png" width="600" alt="Level Map 2" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🌍 Level Map 2 – new areas unlocked</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%208.png" 
-       alt="casual playing 2" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%208.png" width="600" alt="Mid-game" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🎮 Mid-game – building your perfect path</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%209.png" 
-       alt="casual playing 3" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%209.png" width="600" alt="Multi-link structures" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🧬 Complex multi-link structures</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/on%20victory.png" 
-       alt="victory" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/on%20victory.png" width="600" alt="Victory" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🏆 Victory screen – cycle complete!</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%202.png" 
-       alt="the Level Map 2" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%202.png" width="600" alt="Back to map" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🗺️ Back to the map – next challenge awaits</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%2010.png" 
-       alt="casual playing 4" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%2010.png" width="600" alt="Continuous play" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🃏 Continuous play – chain logic in motion</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/on%20defeat.png" 
-       alt="defeat" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/on%20defeat.png" width="600" alt="Defeat" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>💀 Defeat – time to rethink your strategy</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%203.png" 
-       alt="the Level Map 3" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/The%20Level%20Map%203.png" width="600" alt="Level Map 3" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🗺️ Level Map 3 – advanced missions</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%2012.png" 
-       alt="casual playing 4" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%2012.png" width="600" alt="Expert play" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🧩 High-level play – expert-level logic</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%2013.png" 
-       alt="casual playing 5" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/Plying%2013.png" width="600" alt="Precision" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🎯 Precision connections – mind at work</b></sub>
+</p>
 
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/on%20victory%202.png" 
-       alt="victory 2" 
-       width="600" 
-       style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-  <br>
+<p align="center">
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Screenshots/on%20victory%202.png" width="600" alt="Victory 2" style="border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.3);"><br>
   <sub><b>🏆 Victory 2 – network complete!</b></sub>
 </p>
+
 
 
