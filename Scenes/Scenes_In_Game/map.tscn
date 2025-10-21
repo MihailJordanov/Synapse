@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=44 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
 [ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
 [ext_resource type="PackedScene" uid="uid://dbfp3gbhokqoq" path="res://Scenes/Scenes_In_Game/Levels/level_06.tscn" id="20_xak2p"]
+[ext_resource type="PackedScene" uid="uid://dofelc17i02o4" path="res://Scenes/Scenes_In_Game/Levels/level_07.tscn" id="22_6qsx4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7urs"]
 bg_color = Color(0.256, 0.256, 0.256, 0.74)
@@ -610,6 +611,7 @@ offset_left = -558.0
 offset_top = -56.0
 offset_right = -526.0
 offset_bottom = -14.0
+scene_name = ExtResource("22_6qsx4")
 level_name = "Grinblade"
 enemy_texture = ExtResource("11_b7rwn")
 

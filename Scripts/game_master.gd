@@ -245,7 +245,7 @@ func _check_points_and_end_if_needed() -> void:
 		return
 
 	if ai_points >= float(enemy_points_to_reach):
-		on_lose("Your opponent reached the goal score! (ai: [color=red][b]%d / %d[/b][/color])" % [ai_points, enemy_points_to_reach])
+		on_lose("Your opponent reached the goal score! (ai: [color=red][b]%d / %d[/b][/color])" % [enemy_points_to_reach, enemy_points_to_reach])
 		return
 
 func on_win(reason: String = "") -> void:

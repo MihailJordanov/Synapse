@@ -1072,6 +1072,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="Level_06" type="Node2D"]
 script = ExtResource("1_eujfd")
+player_starts_first = false
 
 [node name="GameStateRandom" type="Node" parent="."]
 script = ExtResource("2_k3pk6")

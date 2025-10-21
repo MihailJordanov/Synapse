@@ -102,8 +102,8 @@ func _hide_panel() -> void:
 		animation_player.play("hide_select_level_menu")
 
 
-func _on_anim_finished(name: StringName) -> void:
-	if name == "hide_select_level_menu":
+func _on_anim_finished(_name: StringName) -> void:
+	if _name == "hide_select_level_menu":
 		panel.visible = false
 		_panel_visible = false
 		# Ако чакаме да покажем нов избор – сега го правим
@@ -113,7 +113,7 @@ func _on_anim_finished(name: StringName) -> void:
 			_next_button = null
 			_pending_show = false
 			_show_panel()
-	elif name == "show_select_level_menu":
+	elif _name == "show_select_level_menu":
 		panel.visible = true
 		_panel_visible = true
 

@@ -413,7 +413,7 @@ func _on_card_dropped_on_slot(card: Node2D, slot: Node2D) -> void:
 		_add_to_board(c)
 		_bind_card_to_slot(c, slot as CardSlot)
 
-		await _check_new_edges(c) # тук може да се отвори цикъл
+		await _check_new_edges(c) 
 
 	_draw_to_full_hand()
 	player_played_this_turn = true
