@@ -1,30 +1,30 @@
-[gd_scene load_steps=60 format=3 uid="uid://d0br6vxncb8f3"]
+[gd_scene load_steps=60 format=3 uid="uid://dofelc17i02o4"]
 
-[ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_bfpom"]
-[ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="2_r0vc1"]
-[ext_resource type="Script" uid="uid://cvxyyaiev5efn" path="res://Scripts/card_manager.gd" id="3_qmait"]
-[ext_resource type="Script" uid="uid://bwvigaxcwlodp" path="res://Scripts/player_hand.gd" id="4_s0bsx"]
-[ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="5_1j050"]
-[ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_amk25"]
-[ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="7_yj86i"]
-[ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scripts/game_state_random.gd" id="8_mfjw7"]
-[ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/deck_01.tres" id="9_rd0fr"]
-[ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="10_qgqr5"]
-[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="11_i8brt"]
-[ext_resource type="Script" uid="uid://cjcrddd46qs8f" path="res://Scripts/UI_controllerr.gd" id="12_7wmak"]
-[ext_resource type="Texture2D" uid="uid://be6nkpc7lx8dh" path="res://Images/Buttons/pause_button.png" id="13_8uorg"]
-[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="14_lps51"]
-[ext_resource type="Texture2D" uid="uid://dr6xl10yer3fm" path="res://Images/Enemies_Points_Icons/enemy_points_icon_2.png" id="15_bfpom"]
-[ext_resource type="Texture2D" uid="uid://dru3llnsl4xhc" path="res://Images/Enemies_Points_Icons/enemy_points_icon_1.png" id="15_rryoj"]
-[ext_resource type="Texture2D" uid="uid://fqd6bi16fbrg" path="res://Images/Enemies_Points_Icons/player_Points_Icon.png" id="16_b2mfi"]
-[ext_resource type="AudioStream" uid="uid://bxqg8ktep7vs3" path="res://Sounds/Hurts/player_hurt_1.mp3" id="17_r43l6"]
-[ext_resource type="AudioStream" uid="uid://bad8ywaxtl18s" path="res://Sounds/EndLevel/defeat.mp3" id="18_m1l8e"]
-[ext_resource type="AudioStream" uid="uid://cvyydutqxt3f1" path="res://Sounds/EndLevel/plasma_explosion_2.mp3" id="19_08pap"]
-[ext_resource type="AudioStream" uid="uid://c88vxay7p5vee" path="res://Sounds/Hurts/enemy_hurt_1.mp3" id="20_jymyp"]
-[ext_resource type="AudioStream" uid="uid://drk3pl1bnbiaf" path="res://Sounds/EndLevel/victory.mp3" id="21_wadha"]
-[ext_resource type="AudioStream" uid="uid://ctncqamvfhcxx" path="res://Sounds/EndLevel/plasma_explosion.mp3" id="22_jj8ag"]
-[ext_resource type="Texture2D" uid="uid://chhb36b7fqkjk" path="res://Images/Explosions/win_anim.png" id="23_82mql"]
-[ext_resource type="Texture2D" uid="uid://b4r3ye5wxdrhu" path="res://Images/Explosions/lose_anim.png" id="24_ixbt0"]
+[ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_rmifd"]
+[ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scripts/game_state_random.gd" id="2_s2yy1"]
+[ext_resource type="Texture2D" uid="uid://oae00sck2wmv" path="res://Images/Enemies_Points_Icons/enemy_points_icon_6.png" id="3_rmifd"]
+[ext_resource type="Resource" uid="uid://bvba5272pxfyn" path="res://Data/AIDecks/deck_07.tres" id="4_s2yy1"]
+[ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="5_636r7"]
+[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="6_ou2re"]
+[ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="7_dgqph"]
+[ext_resource type="Script" uid="uid://cvxyyaiev5efn" path="res://Scripts/card_manager.gd" id="8_4gb5g"]
+[ext_resource type="Script" uid="uid://bwvigaxcwlodp" path="res://Scripts/player_hand.gd" id="9_7cwl5"]
+[ext_resource type="Texture2D" uid="uid://mdhlmcw8mia3" path="res://Images/Card Back/card_back_1.png" id="10_8rehc"]
+[ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="11_gqd4t"]
+[ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="12_35uq0"]
+[ext_resource type="Script" uid="uid://cjcrddd46qs8f" path="res://Scripts/UI_controllerr.gd" id="13_d5cjq"]
+[ext_resource type="Texture2D" uid="uid://be6nkpc7lx8dh" path="res://Images/Buttons/pause_button.png" id="14_2l0qv"]
+[ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="15_mog4u"]
+[ext_resource type="Texture2D" uid="uid://dr6xl10yer3fm" path="res://Images/Enemies_Points_Icons/enemy_points_icon_2.png" id="16_od3c2"]
+[ext_resource type="Texture2D" uid="uid://fqd6bi16fbrg" path="res://Images/Enemies_Points_Icons/player_Points_Icon.png" id="17_acli8"]
+[ext_resource type="AudioStream" uid="uid://bxqg8ktep7vs3" path="res://Sounds/Hurts/player_hurt_1.mp3" id="18_wcm2y"]
+[ext_resource type="AudioStream" uid="uid://bad8ywaxtl18s" path="res://Sounds/EndLevel/defeat.mp3" id="19_kja6t"]
+[ext_resource type="AudioStream" uid="uid://cvyydutqxt3f1" path="res://Sounds/EndLevel/plasma_explosion_2.mp3" id="20_23yw2"]
+[ext_resource type="AudioStream" uid="uid://c88vxay7p5vee" path="res://Sounds/Hurts/enemy_hurt_1.mp3" id="21_qmol5"]
+[ext_resource type="AudioStream" uid="uid://drk3pl1bnbiaf" path="res://Sounds/EndLevel/victory.mp3" id="22_a6nax"]
+[ext_resource type="AudioStream" uid="uid://ctncqamvfhcxx" path="res://Sounds/EndLevel/plasma_explosion.mp3" id="23_5sx7u"]
+[ext_resource type="Texture2D" uid="uid://chhb36b7fqkjk" path="res://Images/Explosions/win_anim.png" id="24_6v7wm"]
+[ext_resource type="Texture2D" uid="uid://b4r3ye5wxdrhu" path="res://Images/Explosions/lose_anim.png" id="25_n8hh3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bp64"]
 bg_color = Color(0.172549, 0.172549, 0.172549, 0.788235)
@@ -131,7 +131,7 @@ corner_radius_bottom_left = 7
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2sk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_085pr"]
-texture = ExtResource("13_8uorg")
+texture = ExtResource("14_2l0qv")
 expand_margin_left = 3.0
 expand_margin_top = 3.0
 expand_margin_right = 3.0
@@ -139,7 +139,7 @@ expand_margin_bottom = 3.0
 modulate_color = Color(0.762404, 0.762404, 0.762404, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bx7v5"]
-texture = ExtResource("13_8uorg")
+texture = ExtResource("14_2l0qv")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
@@ -147,7 +147,7 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.695503, 0.695503, 0.695503, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mnyh4"]
-texture = ExtResource("13_8uorg")
+texture = ExtResource("14_2l0qv")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibeip"]
 bg_color = Color(0, 0, 0, 0.807843)
@@ -200,11 +200,11 @@ corner_radius_bottom_left = 9
 shadow_size = 3
 shadow_offset = Vector2(0, 3)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0vc1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_085pr"]
 bg_color = Color(0, 0, 0, 0.25098)
 corner_radius_bottom_left = 7
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0bsx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx7v5"]
 bg_color = Color(0, 0, 0, 0.25098)
 corner_radius_top_left = 7
 corner_radius_bottom_left = 7
@@ -244,55 +244,55 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Spirets/WinSprite:frame")
+tracks/2/path = NodePath("CanvasLayer/PointsPanel/AI_texture:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Spirets/WinSprite:scale")
+tracks/3/path = NodePath("CanvasLayer/PointsPanel/Player_points_label:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Spirets/WinSprite:visible")
+tracks/4/path = NodePath("CanvasLayer/PointsPanel/Player_points_label:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/WinPanel:theme_override_styles/panel:bg_color")
+tracks/5/path = NodePath("CanvasLayer/PointsPanel/AI_points_label:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.764706)]
+"values": [Vector2(1, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/WinPanel/RichTextLabel:modulate")
+tracks/6/path = NodePath("CanvasLayer/PointsPanel/AI_points_label:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -304,55 +304,55 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/WinPanel/HomeButton:modulate")
+tracks/7/path = NodePath("Spirets/WinSprite:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Spirets/LoseSprite:frame")
+tracks/8/path = NodePath("Spirets/WinSprite:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Spirets/LoseSprite:scale")
+tracks/9/path = NodePath("Spirets/WinSprite:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Spirets/LoseSprite:visible")
+tracks/10/path = NodePath("CanvasLayer/WinPanel:theme_override_styles/panel:bg_color")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(0, 0, 0, 0.764706)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/LosePanel:modulate")
+tracks/11/path = NodePath("CanvasLayer/WinPanel/RichTextLabel:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -364,7 +364,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("CanvasLayer/LosePanel/RichTextLabel:modulate")
+tracks/12/path = NodePath("CanvasLayer/WinPanel/HomeButton:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -376,31 +376,31 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("CanvasLayer/LosePanel/HomeButton:modulate")
+tracks/13/path = NodePath("Spirets/LoseSprite:frame")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("CanvasLayer/LosePanel:visible")
+tracks/14/path = NodePath("Spirets/LoseSprite:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("CanvasLayer/WinPanel:visible")
+tracks/15/path = NodePath("Spirets/LoseSprite:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -412,46 +412,106 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("AnimatingParts/Panel:size")
+tracks/16/path = NodePath("CanvasLayer/LosePanel:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(693, 403)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("AnimatingParts/Panel:position")
+tracks/17/path = NodePath("CanvasLayer/LosePanel/RichTextLabel:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-27, -25)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("AnimatingParts/Panel:rotation")
+tracks/18/path = NodePath("CanvasLayer/LosePanel/HomeButton:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("AnimatingParts/Panel:visible")
+tracks/19/path = NodePath("CanvasLayer/LosePanel:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("CanvasLayer/WinPanel:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AnimatingParts/Panel:size")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(693, 403)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("AnimatingParts/Panel:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27, -25)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("AnimatingParts/Panel:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("AnimatingParts/Panel:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -536,7 +596,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.321144,
 "start_offset": 0.19963,
-"stream": ExtResource("17_r43l6")
+"stream": ExtResource("18_wcm2y")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -552,6 +612,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/PointsPanel/AI_points_label:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/PointsPanel/AI_points_label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.933333, 0.113725, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_0wyhg"]
@@ -592,7 +676,7 @@ tracks/2/keys = {
 "clips": [{
 "end_offset": 1.11876,
 "start_offset": 0.47676,
-"stream": ExtResource("18_m1l8e")
+"stream": ExtResource("19_kja6t")
 }],
 "times": PackedFloat32Array(1.05)
 }
@@ -607,7 +691,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 1.0429,
 "start_offset": 0.0,
-"stream": ExtResource("19_08pap")
+"stream": ExtResource("20_23yw2")
 }],
 "times": PackedFloat32Array(1.65)
 }
@@ -723,7 +807,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.466527,
 "start_offset": 0.274096,
-"stream": ExtResource("20_jymyp")
+"stream": ExtResource("21_qmol5")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -739,6 +823,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/PointsPanel/AI_texture:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/PointsPanel/Player_points_label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.435294, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/PointsPanel/Player_points_label:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vxfw5"]
@@ -815,7 +935,7 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.964444,
 "start_offset": 0.122781,
-"stream": ExtResource("21_wadha")
+"stream": ExtResource("22_a6nax")
 }],
 "times": PackedFloat32Array(1.05)
 }
@@ -830,7 +950,7 @@ tracks/6/keys = {
 "clips": [{
 "end_offset": 3.4199,
 "start_offset": 0.647206,
-"stream": ExtResource("22_jj8ag")
+"stream": ExtResource("23_5sx7u")
 }],
 "times": PackedFloat32Array(1.73293)
 }
@@ -950,22 +1070,66 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmait"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Level_01" type="Node2D"]
-script = ExtResource("1_bfpom")
+[node name="Level_07" type="Node2D"]
+script = ExtResource("1_rmifd")
+
+[node name="GameStateRandom" type="Node" parent="."]
+script = ExtResource("2_s2yy1")
+enemy_texture = ExtResource("3_rmifd")
+level_path = NodePath("..")
+enemy_slots_root_path = NodePath("../Slots/EnemySlots")
+think_time_ms = 600
+ai_points_root_path = NodePath("../AIHand/Points")
+deck = ExtResource("4_s2yy1")
+
+[node name="GameMaster" type="Node" parent="."]
+script = ExtResource("5_636r7")
+player_points_to_reach = 14
+enemy_points_to_reach = 14
+points_ai_get_when_slots_full = 4.0
+points_player_get_when_slots_full = 1.0
+cur_level = "7"
+levels_to_unlock_on_win = Array[String](["6"])
+cards_to_unlock_on_win = Array[int]([38, 39, 40])
+
+[node name="PlayerDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
+offset_left = 26.0
+offset_top = 339.0
+offset_right = 82.0
+offset_bottom = 354.0
+theme_override_fonts/normal_font = ExtResource("6_ou2re")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "22 /  30
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AIDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
+offset_left = 26.0
+offset_top = 55.0
+offset_right = 78.0
+offset_bottom = 70.0
+theme_override_fonts/normal_font = ExtResource("6_ou2re")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "15 / 20"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
 position = Vector2(320, 180)
 scale = Vector2(0.677734, 0.392578)
-texture = ExtResource("2_r0vc1")
+texture = ExtResource("7_dgqph")
 
 [node name="CardManager" type="Node2D" parent="."]
-script = ExtResource("3_qmait")
+script = ExtResource("8_4gb5g")
 picked_card_show_path = NodePath("../PlayerHand/PickedCardShow")
 
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(320, 360)
-script = ExtResource("4_s0bsx")
+script = ExtResource("9_7cwl5")
 
 [node name="Deck" type="Node2D" parent="PlayerHand"]
 position = Vector2(-270, -65)
@@ -980,22 +1144,22 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6bp64")
 [node name="Sprite2D" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(25, 40)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Sprite2D2" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(26, 39)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Sprite2D3" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(27, 38)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Sprite2D4" type="Sprite2D" parent="PlayerHand/Deck/Panel"]
 position = Vector2(28, 37)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Points" type="Node" parent="PlayerHand"]
 
@@ -1022,12 +1186,12 @@ position = Vector2(155, 315)
 
 [node name="PickedCardShow" type="Node2D" parent="PlayerHand"]
 position = Vector2(232, -141)
-script = ExtResource("6_amk25")
+script = ExtResource("11_gqd4t")
 
 [node name="MainPanel" type="Panel" parent="PlayerHand/PickedCardShow"]
-offset_left = -18.0
+offset_left = -17.0
 offset_top = -42.0
-offset_right = 82.0
+offset_right = 83.0
 offset_bottom = 136.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rwy6q")
@@ -1322,67 +1486,58 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6bp64")
 [node name="Sprite2D" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(25, 40)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Sprite2D2" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(26, 39)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Sprite2D3" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(27, 38)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Sprite2D4" type="Sprite2D" parent="AIHand/Deck/Panel"]
 position = Vector2(28, 37)
 scale = Vector2(0.125, 0.141071)
-texture = ExtResource("5_1j050")
+texture = ExtResource("10_8rehc")
 
 [node name="Slots" type="Node" parent="."]
 
 [node name="PlayerSlots" type="Node" parent="Slots"]
 
-[node name="CardSlot" parent="Slots/PlayerSlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot" parent="Slots/PlayerSlots" instance=ExtResource("12_35uq0")]
 position = Vector2(320, 220)
 
-[node name="CardSlot2" parent="Slots/PlayerSlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot2" parent="Slots/PlayerSlots" instance=ExtResource("12_35uq0")]
 position = Vector2(380, 220)
 
-[node name="CardSlot3" parent="Slots/PlayerSlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot3" parent="Slots/PlayerSlots" instance=ExtResource("12_35uq0")]
 position = Vector2(260, 220)
 
-[node name="CardSlot4" parent="Slots/PlayerSlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot4" parent="Slots/PlayerSlots" instance=ExtResource("12_35uq0")]
 position = Vector2(200, 222)
 
-[node name="CardSlot5" parent="Slots/PlayerSlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot5" parent="Slots/PlayerSlots" instance=ExtResource("12_35uq0")]
 position = Vector2(440, 220)
 
 [node name="EnemySlots" type="Node" parent="Slots"]
 
-[node name="CardSlot6" parent="Slots/EnemySlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot6" parent="Slots/EnemySlots" instance=ExtResource("12_35uq0")]
 position = Vector2(320, 120)
 
-[node name="CardSlot7" parent="Slots/EnemySlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot7" parent="Slots/EnemySlots" instance=ExtResource("12_35uq0")]
 position = Vector2(380, 120)
 
-[node name="CardSlot8" parent="Slots/EnemySlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot8" parent="Slots/EnemySlots" instance=ExtResource("12_35uq0")]
 position = Vector2(260, 120)
 
-[node name="CardSlot9" parent="Slots/EnemySlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot9" parent="Slots/EnemySlots" instance=ExtResource("12_35uq0")]
 position = Vector2(200, 120)
 
-[node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("7_yj86i")]
+[node name="CardSlot10" parent="Slots/EnemySlots" instance=ExtResource("12_35uq0")]
 position = Vector2(440, 120)
-
-[node name="GameStateRandom" type="Node" parent="."]
-script = ExtResource("8_mfjw7")
-enemy_texture = ExtResource("15_rryoj")
-level_path = NodePath("..")
-enemy_slots_root_path = NodePath("../Slots/EnemySlots")
-think_time_ms = 750
-ai_points_root_path = NodePath("../AIHand/Points")
-deck = ExtResource("9_rd0fr")
 
 [node name="EndTurnButton" type="Button" parent="."]
 offset_left = 40.0
@@ -1413,40 +1568,8 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameMaster" type="Node" parent="."]
-script = ExtResource("10_qgqr5")
-player_points_to_reach = 5
-cur_level = "1"
-levels_to_unlock_on_win = Array[String](["2"])
-cards_to_unlock_on_win = Array[int]([11, 12, 13, 14])
-
-[node name="PlayerDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
-offset_left = 26.0
-offset_top = 339.0
-offset_right = 82.0
-offset_bottom = 354.0
-theme_override_fonts/normal_font = ExtResource("11_i8brt")
-theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "22 /  30
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AIDeckCountLabel" type="RichTextLabel" parent="GameMaster"]
-offset_left = 26.0
-offset_top = 55.0
-offset_right = 78.0
-offset_bottom = 70.0
-theme_override_fonts/normal_font = ExtResource("11_i8brt")
-theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "15 / 20"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("12_7wmak")
+script = ExtResource("13_d5cjq")
 
 [node name="PauseButton" type="Button" parent="CanvasLayer"]
 offset_left = 5.0
@@ -1510,7 +1633,7 @@ offset_top = -7.0
 offset_right = 500.0
 offset_bottom = 112.0
 theme_override_colors/default_color = Color(0.784314, 0.52549, 0.858824, 1)
-theme_override_fonts/normal_font = ExtResource("14_lps51")
+theme_override_fonts/normal_font = ExtResource("15_mog4u")
 theme_override_font_sizes/normal_font_size = 100
 text = "Paused"
 horizontal_alignment = 1
@@ -1520,7 +1643,7 @@ vertical_alignment = 1
 offset_left = 516.0
 offset_right = 640.0
 offset_bottom = 101.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_r0vc1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_085pr")
 
 [node name="AI_texture" type="TextureRect" parent="CanvasLayer/PointsPanel"]
 layout_mode = 0
@@ -1528,7 +1651,7 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 37.0
 offset_bottom = 36.0
-texture = ExtResource("15_bfpom")
+texture = ExtResource("16_od3c2")
 expand_mode = 2
 
 [node name="Player_texture" type="TextureRect" parent="CanvasLayer/PointsPanel"]
@@ -1537,7 +1660,7 @@ offset_left = 5.0
 offset_top = 53.0
 offset_right = 37.0
 offset_bottom = 85.0
-texture = ExtResource("16_b2mfi")
+texture = ExtResource("17_acli8")
 expand_mode = 2
 
 [node name="AI_points_label" type="RichTextLabel" parent="CanvasLayer/PointsPanel"]
@@ -1587,7 +1710,7 @@ offset_left = 515.0
 offset_top = 104.0
 offset_right = 640.0
 offset_bottom = 173.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_s0bsx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bx7v5")
 
 [node name="CoefficientRichTextLabel" type="RichTextLabel" parent="CanvasLayer/LevelRulesPanel"]
 layout_mode = 0
@@ -1623,7 +1746,7 @@ offset_left = -0.279999
 offset_right = 0.279968
 offset_bottom = -0.12001
 theme_override_colors/default_color = Color(0.513726, 1, 0.807843, 1)
-theme_override_fonts/normal_font = ExtResource("14_lps51")
+theme_override_fonts/normal_font = ExtResource("15_mog4u")
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[wave]VICTORY"
@@ -1680,7 +1803,7 @@ offset_left = -0.279999
 offset_right = 0.279968
 offset_bottom = -0.12001
 theme_override_colors/default_color = Color(0.563001, 0.0424189, 0.0496487, 1)
-theme_override_fonts/normal_font = ExtResource("14_lps51")
+theme_override_fonts/normal_font = ExtResource("15_mog4u")
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "Defeat"
@@ -1712,7 +1835,7 @@ offset_top = 285.0
 offset_right = 589.0
 offset_bottom = 344.0
 theme_override_colors/default_color = Color(0.843137, 0.462745, 0, 1)
-theme_override_fonts/normal_font = ExtResource("14_lps51")
+theme_override_fonts/normal_font = ExtResource("15_mog4u")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1729,14 +1852,14 @@ libraries = {
 [node name="WinSprite" type="Sprite2D" parent="Spirets"]
 visible = false
 position = Vector2(320, 170)
-texture = ExtResource("23_82mql")
+texture = ExtResource("24_6v7wm")
 hframes = 7
 vframes = 2
 
 [node name="LoseSprite" type="Sprite2D" parent="Spirets"]
 visible = false
 position = Vector2(320, 170)
-texture = ExtResource("24_ixbt0")
+texture = ExtResource("25_n8hh3")
 hframes = 5
 vframes = 2
 

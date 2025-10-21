@@ -286,13 +286,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0t7gs")
 
 [node name="CardCountRichTextLabel" type="RichTextLabel" parent="CanvasLayer/BorderPanel"]
 layout_mode = 0
-offset_left = 538.0
+offset_left = 520.0
 offset_top = 3.0
-offset_right = 632.0
+offset_right = 636.0
 offset_bottom = 56.0
 theme_override_fonts/normal_font = ExtResource("1_avwso")
 theme_override_font_sizes/normal_font_size = 28
-text = "x23"
+text = "x23 / 30"
 vertical_alignment = 1
 
 [node name="PanelBG" type="Panel" parent="CanvasLayer/BorderPanel"]
@@ -307,9 +307,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hrx6y")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BorderPanel"]
 layout_mode = 0
-offset_left = 480.0
+offset_left = 464.0
 offset_top = 3.0
-offset_right = 532.0
+offset_right = 516.0
 offset_bottom = 55.0
 texture = ExtResource("3_ycjcu")
 expand_mode = 2
@@ -348,19 +348,19 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ycjcu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_avwso")
 text = "Sort"
 
-[node name="AnimationParts" type="Node2D" parent="CanvasLayer"]
-
-[node name="Panel" type="Panel" parent="CanvasLayer/AnimationParts"]
-offset_right = 642.0
-offset_bottom = 364.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_liulw")
-
 [node name="VScrollBar" type="VScrollBar" parent="CanvasLayer"]
 offset_left = 586.0
 offset_top = 113.0
 offset_right = 616.0
 offset_bottom = 341.0
 script = ExtResource("9_y405g")
+
+[node name="AnimationParts" type="Node2D" parent="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="CanvasLayer/AnimationParts"]
+offset_right = 642.0
+offset_bottom = 364.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_liulw")
 
 [node name="Backgrounds" type="Node" parent="."]
 
@@ -385,6 +385,7 @@ theme_override_constants/h_separation = 120
 theme_override_constants/v_separation = 180
 columns = 4
 script = ExtResource("5_0ce80")
+deck_limit = 30
 
 [node name="Card_Visualisation" type="Control" parent="."]
 visible = false

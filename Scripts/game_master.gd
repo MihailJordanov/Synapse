@@ -22,7 +22,6 @@ extends Node
 @onready var player_deck_count_label: RichTextLabel = $PlayerDeckCountLabel
 @onready var ai_deck_count_label: RichTextLabel = $AIDeckCountLabel
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
-
 # UI
 @onready var ai_points_label: RichTextLabel = $"../CanvasLayer/PointsPanel/AI_points_label"
 @onready var player_points_label: RichTextLabel = $"../CanvasLayer/PointsPanel/Player_points_label"
@@ -56,6 +55,7 @@ func _ready() -> void:
 	player_points_label.bbcode_enabled = true
 	ai_points_label.bbcode_enabled = true
 	coefficient_rich_text_label.bbcode_enabled = true
+	
 
 	# signals
 	level.card_is_drawed.connect(_on_level_card_is_drawed)
@@ -204,10 +204,37 @@ func _update_deck_labels() -> void:
 	]
 
 func _update_coefficient_label() -> void:
+	var player_points_info := ""
+	var ai_points_info := ""
+
+	if points_player_get_when_slots_full > 0:
+		player_points_info = "[color=#00ff7f]You: +%d pts[/color]" % points_player_get_when_slots_full
+	elif points_player_get_when_slots_full < 0:
+		player_points_info = "[color=#ff5555]You: %d pts[/color]" % points_player_get_when_slots_full
+	else:
+		player_points_info = "[color=gray]You: no points[/color]"
+
+	if points_ai_get_when_slots_full > 0:
+		ai_points_info = "[color=#ff5555]Enemy: +%d pts[/color]" % points_ai_get_when_slots_full
+	elif points_ai_get_when_slots_full < 0:
+		ai_points_info = "[color=#00ff7f]Enemy: %d pts[/color]" % points_ai_get_when_slots_full
+	else:
+		ai_points_info = "[color=gray]Enemy: no points[/color]"
+
 	coefficient_rich_text_label.text = (
 		"[center][b]Coefficient:[/b]\n"
-		+ "[color=#00ff7f]Your:[/color] x%.1f | [color=#ff5555]Enemy:[/color] x%.1f[/center]"
-	) % [coefficient_when_destroy_your_card, coefficient_when_destroy_enemy_card]
+		+ "[color=#00ff7f]Your:[/color] x%.1f | [color=#ff5555]Enemy:[/color] x%.1f\n\n"
+		+ "[font_size=6][b]Board Full Bonus:[/b]\n"
+		+ "%s\n%s[/font_size][/center]"
+	) % [
+		coefficient_when_destroy_your_card,
+		coefficient_when_destroy_enemy_card,
+		player_points_info,
+		ai_points_info
+	]
+
+
+
 
 # === ENDING LOGIC ===
 func _check_points_and_end_if_needed() -> void:

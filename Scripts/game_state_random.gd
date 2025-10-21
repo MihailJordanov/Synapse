@@ -8,6 +8,8 @@ signal ai_slots_full
 
 
 # === КОНФИГ ===
+@export_category("Enemy")
+@export var enemy_texture : Texture
 @export var level_path: NodePath             # посочи Level нода
 @export var enemy_slots_root_path: NodePath           # посочи .../Slots/EnemySlots
 @export var max_hand: int = 5                         # можеш да го сетнеш на 5 от инспектора
@@ -21,7 +23,7 @@ signal ai_slots_full
 
 
 @onready var deckAI_pos: Node2D = $"../AIHand/Deck"
-
+@onready var ai_texture: TextureRect = $"../CanvasLayer/PointsPanel/AI_texture"
 
 # === ВЪТРЕШНО СЪСТОЯНИЕ ===
 const CARD_SCENE := preload("res://Scenes/card.tscn")
@@ -42,6 +44,9 @@ signal turn_finished
 func _ready() -> void:
 	_rng.randomize()
 	_level = get_node(level_path)
+	
+	#UI
+	ai_texture.texture = enemy_texture
 
 	# Enemy slots
 	_enemy_slots = []

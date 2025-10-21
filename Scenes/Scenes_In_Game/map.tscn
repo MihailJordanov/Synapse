@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=43 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
@@ -17,8 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://dreaa6igp7ebe" path="res://Images/Enemies_Points_Icons/enemy_points_icon_4.png" id="9_uxesv"]
 [ext_resource type="Texture2D" uid="uid://bkf1th4cls4wg" path="res://Images/Enemies_Points_Icons/enemy_points_icon_10.png" id="10_moljf"]
 [ext_resource type="Texture2D" uid="uid://oae00sck2wmv" path="res://Images/Enemies_Points_Icons/enemy_points_icon_6.png" id="11_b7rwn"]
+[ext_resource type="PackedScene" uid="uid://wxowaehay6h3" path="res://Scenes/Scenes_In_Game/Levels/level_02.tscn" id="14_gojlf"]
+[ext_resource type="PackedScene" uid="uid://cwjelsp1bxa5o" path="res://Scenes/Scenes_In_Game/Levels/level_03.tscn" id="14_ilbj0"]
+[ext_resource type="PackedScene" uid="uid://bp17sf2cevdc2" path="res://Scenes/Scenes_In_Game/Levels/level_04.tscn" id="16_oo8lt"]
+[ext_resource type="PackedScene" uid="uid://bud11sst5y2p6" path="res://Scenes/Scenes_In_Game/Levels/level_05.tscn" id="18_g7dyv"]
 [ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
 [ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
+[ext_resource type="PackedScene" uid="uid://dbfp3gbhokqoq" path="res://Scenes/Scenes_In_Game/Levels/level_06.tscn" id="20_xak2p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7urs"]
 bg_color = Color(0.256, 0.256, 0.256, 0.74)
@@ -551,6 +556,7 @@ offset_top = 17.0
 offset_right = -863.0
 offset_bottom = 59.0
 scene_name = ExtResource("6_8ew20")
+level_name = "Sir Valorion"
 enemy_texture = ExtResource("5_ijeka")
 
 [node name="LevelButton_2" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
@@ -558,6 +564,8 @@ offset_left = -836.0
 offset_top = -56.0
 offset_right = -804.0
 offset_bottom = -14.0
+scene_name = ExtResource("14_gojlf")
+level_name = "Dame Astra"
 enemy_texture = ExtResource("6_forc4")
 
 [node name="LevelButton_3" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
@@ -565,6 +573,8 @@ offset_left = -680.0
 offset_top = 44.0
 offset_right = -648.0
 offset_bottom = 86.0
+scene_name = ExtResource("14_ilbj0")
+level_name = "Lord Cedric"
 enemy_texture = ExtResource("7_lxa30")
 
 [node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
@@ -572,6 +582,8 @@ offset_left = -828.0
 offset_top = -163.0
 offset_right = -796.0
 offset_bottom = -121.0
+scene_name = ExtResource("16_oo8lt")
+level_name = "Sir Leoric"
 enemy_texture = ExtResource("8_8ew20")
 
 [node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
@@ -579,6 +591,8 @@ offset_left = -723.0
 offset_top = -219.0
 offset_right = -691.0
 offset_bottom = -177.0
+scene_name = ExtResource("18_g7dyv")
+level_name = "Sir Rothelm"
 enemy_texture = ExtResource("9_uxesv")
 
 [node name="LevelButton_6" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
@@ -586,6 +600,9 @@ offset_left = -703.0
 offset_top = -108.0
 offset_right = -671.0
 offset_bottom = -66.0
+scene_name = ExtResource("20_xak2p")
+level_name = "Doomspire"
+make_cooler = true
 enemy_texture = ExtResource("10_moljf")
 
 [node name="LevelButton_7" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
@@ -593,6 +610,7 @@ offset_left = -558.0
 offset_top = -56.0
 offset_right = -526.0
 offset_bottom = -14.0
+level_name = "Grinblade"
 enemy_texture = ExtResource("11_b7rwn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

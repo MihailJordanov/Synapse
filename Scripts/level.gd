@@ -84,6 +84,8 @@ var uid_to_card: Dictionary = {}          # uid(int) -> Card
 var edges: Dictionary = {}                # "a_uid->b_uid" -> Edge
 
 func _ready() -> void:
+	CollectionManager.deck.shuffle()
+	
 	points = [point_1, point_2, point_3, point_4, point_5, point_6, point_7]
 
 	all_slots = [
@@ -215,9 +217,9 @@ func _on_ai_playing() -> void:
 
 
 func _switch_turn() -> void:
-	last_card_owner = current_player        # кой ТЪКМО приключи своя ход
 	current_player = PlayerID.AI if current_player == PlayerID.HUMAN else PlayerID.HUMAN
 	_enter_state(TurnState.TURN_START)
+
 
 
 # =========================
@@ -297,7 +299,6 @@ func _first_free_point() -> Node2D:
 
 func _draw_next_card_instance() -> Node2D:
 	var deck := CollectionManager.deck
-	deck.shuffle()
 	if deck_index >= deck.size():
 		return null
 	var id = deck[deck_index]
@@ -910,7 +911,6 @@ func _on_end_turn_pressed() -> void:
 				_info("You must place one card before ending your turn.", false, INFO_COLOR_WARNING)
 				return
 
-			last_card_owner = PlayerID.HUMAN
 			_switch_turn()
 		_:
 			return
