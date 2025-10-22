@@ -1741,7 +1741,6 @@ hframes = 5
 vframes = 2
 
 [node name="AnimatingParts" type="Node2D" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="AnimatingParts"]
 offset_left = -27.0

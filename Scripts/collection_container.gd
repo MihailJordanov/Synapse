@@ -13,6 +13,10 @@ extends GridContainer
 
 signal deck_changed(card_id, in_deck: bool)
 
+const TAP_SLOP := 10.0
+var _touch_start_pos := Vector2.ZERO
+var _had_drag := false
+
 var _id_to_ui: Dictionary[String, Control] = {}  # <- типизиран речник
 
 const KIND_DISPLAY := {
@@ -68,7 +72,7 @@ func _make_card_visual(data: Dictionary) -> Control:
 		push_error("CollectionContainer: missing Card_Visualisation template.")
 		return null
 
-	var inst: Control = template.duplicate() as Control
+	var inst: Control = template.duplicate() as Control	
 	inst.visible = true
 	inst.mouse_filter = Control.MOUSE_FILTER_STOP
 	inst.name = "Card_%s" % str(data.get("id", "X"))
@@ -82,7 +86,11 @@ func _make_card_visual(data: Dictionary) -> Control:
 	var locked_panel_inst: Panel = inst.get_node_or_null("LockedPanel")
 	if locked_panel_inst:
 		locked_panel_inst.visible = not is_unlocked
-		locked_panel_inst.mouse_filter = Control.MOUSE_FILTER_STOP
+		locked_panel_inst.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	var in_deck_panel: Panel = inst.get_node_or_null("InDeckPanel")
+	if in_deck_panel:
+		in_deck_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE 
 
 	_update_in_deck_badge(inst, cid)
 	_wire_toggle_only(inst, data, is_unlocked)
@@ -165,18 +173,38 @@ func _wire_toggle_only(ui: Control, data: Dictionary, is_unlocked: bool) -> void
 		ui.gui_input.connect(func(_ev): pass)
 		return
 
-	ui.gui_input.connect(func(ev):
-		# Mouse
+	var handler := func(ev):
+		if ev is InputEventScreenTouch:
+			if ev.pressed:
+				_touch_start_pos = ev.position
+				_had_drag = false
+			else:
+				if not _had_drag and ev.position.distance_to(_touch_start_pos) <= TAP_SLOP:
+					_click_animation(ui)
+					_toggle_for_card_id(data)
+					ui.accept_event()
+			return
+		if ev is InputEventScreenDrag:
+			if ev.position.distance_to(_touch_start_pos) > TAP_SLOP:
+				_had_drag = true
+			return
 		if ev is InputEventMouseButton and ev.pressed and ev.button_index == MOUSE_BUTTON_LEFT:
 			_click_animation(ui)
 			_toggle_for_card_id(data)
+			ui.accept_event()
 			return
-		# Touch
-		if ev is InputEventScreenTouch and ev.pressed:
-			_click_animation(ui)
-			_toggle_for_card_id(data)
-			return
-	)
+
+	ui.gui_input.connect(handler)
+
+	# Осигури, че overlay-ите няма да спират евента (или директно им вържи handler-а)
+	for pth in ["LockedPanel", "InDeckPanel"]:
+		var p := ui.get_node_or_null(pth)
+		if p and p is Control:
+			p.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			# Алтернатива, ако искаш клик върху тях да работи самостоятелно:
+			# p.mouse_filter = Control.MOUSE_FILTER_PASS
+			# p.gui_input.connect(handler)
+
 
 func _toggle_for_card_id(data: Dictionary) -> void:
 	var cid = data.get("id", null)
@@ -212,9 +240,10 @@ func _update_in_deck_badge(ui: Control, cid) -> void:
 
 func _set_children_mouse_pass(n: Node) -> void:
 	for ch in n.get_children():
-		if ch is Control:
+		if ch is Control and ch.name not in ["LockedPanel", "InDeckPanel"]:
 			(ch as Control).mouse_filter = Control.MOUSE_FILTER_PASS
 		_set_children_mouse_pass(ch)
+
 
 # --- брояч/лимит ---
 func _deck_size() -> int:
