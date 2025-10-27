@@ -48,6 +48,7 @@ const PLAYER_TEXT := "#00ffb7"
 const AI_TEXT := "#ff5555"
 
 func _ready() -> void:
+	print("3")
 	animation_player.play("open_scene")
 	# allow BBCode
 	player_deck_count_label.bbcode_enabled = true
@@ -143,7 +144,7 @@ func _on_ai_closed_cycle(player_lost: int, ai_lost: int) -> void:
 	_add_points(false, delta, AI_FLASH, "ai_closed_cycle")
 
 # Centralized add-points + UI + win-check
-func _add_points(is_player: bool, delta: float, flash: Color, reason: String) -> void:
+func _add_points(is_player: bool, delta: float, flash: Color, _reason: String) -> void:
 	if _phase != GamePhase.PLAYING:
 		return
 	if delta == 0.0:

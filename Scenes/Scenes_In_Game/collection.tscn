@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d0r4btya68m7n" path="res://Scripts/collection_container.gd" id="5_0ce80"]
 [ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="6_phcif"]
 [ext_resource type="Texture2D" uid="uid://u0m008ixbbic" path="res://Images/Card_Slot_Images/in_use_icon.png" id="7_xege3"]
-[ext_resource type="Script" uid="uid://d3r4ucokepd5n" path="res://Scenes/Scenes_In_Game/v_scroll_bar.gd" id="9_y405g"]
+[ext_resource type="Script" uid="uid://d3r4ucokepd5n" path="res://Scripts/v_scroll_bar.gd" id="9_y405g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t7gs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -429,7 +429,7 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 2
+expand_mode = 4
 
 [node name="ConnectingPanel" type="Panel" parent="Card_Visualisation/MainPanel"]
 layout_mode = 1

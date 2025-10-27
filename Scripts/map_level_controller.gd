@@ -88,7 +88,7 @@ func _apply_button_info(btn: LevelButton) -> void:
 	cooler_texture_rect.visible = btn.make_cooler
 
 
-	enemy_texture_rect.texture = btn.enemy_texture
+	enemy_texture_rect.texture = btn.config.enemy_texture
 
 
 func _show_panel() -> void:
@@ -121,19 +121,15 @@ func _on_anim_finished(_name: StringName) -> void:
 func _on_play_pressed() -> void:
 	if _selected_button == null:
 		return
-	
 	if CollectionManager.deck.size() < 5:
 		info_rich_text_label.text = "Your deck must contain at least 5 cards."
 		_pulse_button(go_to_collection)
 		return
-	else:
-		info_rich_text_label.text = ""
-	# Зареждаме сцената, ако е зададена (PackedScene)
-	if _selected_button.scene_name != null:
-		animation_player.play("closeScene")
-		get_tree().change_scene_to_packed(_selected_button.scene_name)
-	else:
-		push_warning("There is no scene for selected LevelButton.")
+
+	LevelRuntime.config = _selected_button.config.duplicate(true) 
+	animation_player.play("closeScene")
+	get_tree().change_scene_to_file("res://Scenes/Scenes_In_Game/Levels/level_00.tscn") 
+
 
 
 

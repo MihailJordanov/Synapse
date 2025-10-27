@@ -2,19 +2,21 @@ class_name LevelButton
 extends Button
 
 @export_category("About Level")
-@export var scene_name : PackedScene
 @export var level_name : String  = ""
 @export var make_cooler : bool = false
+@export var config : LevelConfig
 
 @export_category("About Button")
 @export var is_unlock : bool = false
 @export var is_clear : bool = false
-@export var enemy_texture : Texture
+
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var enemy_texture_rect: TextureRect = $EnemyTextureRect
 @onready var mystery_texture_rect: TextureRect = $MysteryTextureRect
 @onready var finished_texture_rect: TextureRect = $FinishedTextureRect
+
+
 
 func _ready() -> void:
 
@@ -47,8 +49,8 @@ func _update_textures() -> void:
 	else:
 		finished_texture_rect.visible = false
 		
-	if enemy_texture:
-		enemy_texture_rect.texture = enemy_texture
+	if config:
+		enemy_texture_rect.texture = config.enemy_texture
 	
 	if not is_clear and is_unlock:
 		animation_player.play("default")

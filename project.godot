@@ -14,12 +14,13 @@ config/name="Synapse"
 run/main_scene="uid://dye7h3iwsbaj4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="uid://b5ex2u57pjlrg"
-config/icon="uid://doyw4avwe06xn"
+config/icon="uid://cc7tw16wwfgll"
 
 [autoload]
 
-CollectionManager="*res://Scripts/collection_manager.gd"
-LevelManager="*res://Scripts/level_manager.gd"
+CollectionManager="*res://Globals/collection_manager.gd"
+LevelManager="*res://Globals/level_manager.gd"
+LevelRuntime="*res://Globals/level_runtime.gd"
 
 [display]
 

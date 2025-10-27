@@ -291,8 +291,8 @@ func on_destroy() -> void:
 	if animation_player and animation_player.has_animation(anim):
 		animation_player.play(anim)
 		animation_player.animation_finished.connect(
-			func(name):
-				if name == anim:
+			func(_name):
+				if _name == anim:
 					emit_signal("destroyed", self) 
 					queue_free(),
 			CONNECT_ONE_SHOT
@@ -316,7 +316,7 @@ func _get_destroy_anim_for_element(el: int) -> String:
 			# дефолтна/резервна
 			return destroy_air_anim
 			
-func _input_event(viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			emit_signal("hovered", self)

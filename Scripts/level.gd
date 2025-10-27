@@ -475,9 +475,6 @@ func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
 	if not neigh.has(b_uid):
 		neigh.append(b_uid)
 
-		var a_tpl := "?" if not ("id" in a) else str(a.id)
-		var b_tpl := "?" if not ("id" in b) else str(b.id)
-		#print("LINK: %s(#%d) -> %s(#%d)" % [a_tpl, a_uid, b_tpl, b_uid])
 		print("%d %d" % [a_uid, b_uid])
 
 		var edge: Edge = _spawn_edge(a, b, labels)
@@ -876,7 +873,7 @@ func _reset_board_due_to_stalemate() -> void:
 
 
 
-func can_player_drop_on_slot(card: Node2D, slot: Node2D) -> bool:
+func can_player_drop_on_slot(_card: Node2D, slot: Node2D) -> bool:
 	if waiting_cycle_ack:
 		_info("A cycle is being resolved. Press [b]Go next[/b].", false, INFO_COLOR_WARNING)
 		return false
@@ -984,9 +981,9 @@ func _tween_to(node: Node2D, to_pos: Vector2, dur: float) -> void:
 	await tw.finished
 
 # --- UI helpers ---
-func _set_go_next_ui(show: bool) -> void:
-	waiting_cycle_ack = show
-	if show:
+func _set_go_next_ui(_show: bool) -> void:
+	waiting_cycle_ack = _show
+	if _show:
 		_set_end_turn_enabled(true, "Go next")
 		_set_player_input_enabled(false)
 	else:

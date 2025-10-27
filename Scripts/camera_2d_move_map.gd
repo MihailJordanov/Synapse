@@ -74,7 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		global_position -= pg.delta / zoom.x
 		_clamp_to_bounds()
 
-func _handle_touch_gestures(sd: InputEventScreenDrag) -> void:
+func _handle_touch_gestures(_sd: InputEventScreenDrag) -> void:
 	var keys: Array = _touches.keys()
 	if keys.size() == 1:
 		# one-finger pan

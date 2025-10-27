@@ -42,6 +42,7 @@ signal turn_finished
 
 
 func _ready() -> void:
+	print("2")
 	_rng.randomize()
 	_level = get_node(level_path)
 	

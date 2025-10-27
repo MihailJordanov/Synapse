@@ -141,6 +141,7 @@ func _make_card_visual(data: Dictionary) -> Control:
 		_display_for_style(_norm_key(data.get("connect_attack_style", null)))
 	)
 
+
 	return inst
 
 # --- помощни за попълване ---
@@ -368,3 +369,12 @@ func _deck_index(id_str: String) -> int:
 
 
 #==============================================
+
+func _debug_check_clipping(card: Control, blk: Control, label: String) -> void:
+	await get_tree().process_frame  # изчакай лейаута
+	var r_card := card.get_global_rect()
+	var r_blk  := blk.get_global_rect()
+	if not r_card.encloses(r_blk):
+		push_warning("%s of %s is clipped/outside (blk=%s, card=%s)" % [
+			label, card.name, str(r_blk), str(r_card)
+		])
