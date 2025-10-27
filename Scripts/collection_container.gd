@@ -21,7 +21,7 @@ var _id_to_ui: Dictionary[String, Control] = {}  # <- типизиран реч�
 
 const KIND_DISPLAY := {
 	"HERO":   {"icon": "res://Images/Type_Icons/Kind/knight_icon.png", "color": Color("#9c7e00")},
-	"ORG":    {"icon": "res://Images/Type_Icons/Kind/orc_icon.png",    "color": Color("#84994F")},
+	"ORC":    {"icon": "res://Images/Type_Icons/Kind/orc_icon.png",    "color": Color("#84994F")},
 	"WIZARD": {"icon": "res://Images/Type_Icons/Kind/wizard_icon.png", "color": Color("#640D5F")},
 	"SKELETON": {"icon": "res://Images/Type_Icons/Kind/skeleton_icon.png", "color": Color("#f6f6f6")},
 }
@@ -41,6 +41,7 @@ func _ready() -> void:
 	animation_player.play("openScene")
 	_build_collection()
 	_update_deck_labels()
+
 
 
 func refresh_in_deck_icons() -> void:
@@ -362,3 +363,8 @@ func _id_a_precedes_b(a: String, b: String) -> bool:
 func _deck_index(id_str: String) -> int:
 	var idx := CollectionManager.deck.find(id_str)
 	return idx if idx != -1 else 999999
+
+
+
+
+#==============================================

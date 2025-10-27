@@ -223,12 +223,18 @@ func _to_element(v) -> int:
 	return Card.Element.AIR
 
 func _to_kind(v) -> int:
-	if v is int: return v
-	if v is float: return int(v)
+	if v is int:
+		return v
+	if v is float:
+		return int(v)
 	if v is String:
-		if v == "ORC": v = "ORG"
-		if Card.CardKind.has(v): return Card.CardKind[v]
+		var key: String = (v as String).strip_edges().to_upper()
+		if Card.CardKind.has(key):
+			return Card.CardKind[key]
+	push_warning("Unknown kind value: %s, defaulting to HERO" % str(v))
 	return Card.CardKind.HERO
+
+
 
 func _to_style(v) -> int:
 	if v is int: return v
