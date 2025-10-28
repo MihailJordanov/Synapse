@@ -42,7 +42,6 @@ signal turn_finished
 
 
 func _ready() -> void:
-	print("2")
 	_rng.randomize()
 	_level = get_node(level_path)
 	
@@ -125,9 +124,16 @@ func take_turn() -> void:
 				_level.last_card_owner = _level.PlayerID.AI
 
 			
-			if _level.has_method("_add_to_board"):      _level._add_to_board(card)
-			if _level.has_method("_bind_card_to_slot"): _level._bind_card_to_slot(card, slot)
-			if _level.has_method("_check_new_edges"):   _level._check_new_edges(card)
+			if _level.has_method("_add_to_board"):
+				_level._add_to_board(card)
+			if _level.has_method("_bind_card_to_slot"):
+				_level._bind_card_to_slot(card, slot)
+			if _level.has_method("_check_new_edges"):
+				_level._check_new_edges(card)	
+				
+			if is_instance_valid(_level) and "waiting_cycle_ack" in _level and _level.waiting_cycle_ack:
+				emit_signal("turn_finished")
+				return
 
 		_ai_hand.remove_at(card_idx)
 

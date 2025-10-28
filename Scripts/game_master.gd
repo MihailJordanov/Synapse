@@ -48,7 +48,6 @@ const PLAYER_TEXT := "#00ffb7"
 const AI_TEXT := "#ff5555"
 
 func _ready() -> void:
-	print("3")
 	animation_player.play("open_scene")
 	# allow BBCode
 	player_deck_count_label.bbcode_enabled = true

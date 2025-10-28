@@ -84,7 +84,10 @@ var uid_to_card: Dictionary = {}          # uid(int) -> Card
 var edges: Dictionary = {}                # "a_uid->b_uid" -> Edge
 
 func _ready() -> void:
+	print(CollectionManager.deck)
 	CollectionManager.deck.shuffle()
+	
+	print(CollectionManager.deck)
 	
 	points = [point_1, point_2, point_3, point_4, point_5, point_6, point_7]
 
@@ -194,6 +197,10 @@ func _on_ai_playing() -> void:
 	_set_player_input_enabled(false)
 	_set_end_turn_enabled(false, "AI turn…")
 
+	# Ако сме в/около резолюция на цикъл, не пипай хода.
+	if waiting_cycle_ack or resolving_links or state == TurnState.WAIT_GO_NEXT or state == TurnState.RESOLVE_CYCLE:
+		return
+
 	if _is_ai_out_of_cards():
 		emit_signal("ai_out_of_cards")
 		_info("AI has no cards left. Your turn.", false, INFO_COLOR_AI)
@@ -210,9 +217,13 @@ func _on_ai_playing() -> void:
 	ai.take_turn()
 	await ai.turn_finished
 
+	if waiting_cycle_ack or resolving_links or state == TurnState.WAIT_GO_NEXT or state == TurnState.RESOLVE_CYCLE:
+		return
+
 	if current_player == PlayerID.HUMAN:
 		return
 	_switch_turn()
+
 
 
 
@@ -436,6 +447,7 @@ func _add_to_board(c: Card) -> void:
 	if not graph.has(uid):
 		graph[uid] = []
 	uid_to_card[uid] = c
+	print(c.id)
 
 func _check_new_edges(c: Card) -> void:
 	for other in placed_cards:
@@ -475,6 +487,7 @@ func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
 	if not neigh.has(b_uid):
 		neigh.append(b_uid)
 
+
 		print("%d %d" % [a_uid, b_uid])
 
 		var edge: Edge = _spawn_edge(a, b, labels)
@@ -497,12 +510,14 @@ func _to_element(v) -> int:
 	return Card.Element.AIR
 
 func _to_kind(v) -> int:
-	if v is int: return v
-	if v is float: return int(v)
-	if v is String:
-		if v == "ORC": v = "ORG"
-		if Card.CardKind.has(v): return Card.CardKind[v]
+	if v is int:
+		return v
+	if v is float:
+		return int(v)
+	if v is String and Card.CardKind.has(v):
+		return Card.CardKind[v]
 	return Card.CardKind.HERO
+
 
 func _to_style(v) -> int:
 	if v is int: return v
@@ -562,11 +577,9 @@ func _check_cycle_and_destroy(a_uid: int, b_uid: int) -> void:
 			if last_card_owner == PlayerID.HUMAN:
 				_enter_state(TurnState.WAIT_END_TURN)
 			else:
-				# Ако още "официално" е ИИ на ход, прехвърли го към човека.
-				if current_player == PlayerID.AI:
-					_switch_turn()
-				else:
-					_enter_state(TurnState.TURN_START)
+				current_player = PlayerID.HUMAN
+				_enter_state(TurnState.TURN_START)
+
 
 
 # Търси път от start до target с поне min_nodes възли (мин. цикъл = min_nodes).
