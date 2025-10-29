@@ -1,14 +1,14 @@
-[gd_scene load_steps=37 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=38 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
-[ext_resource type="Texture2D" uid="uid://cpvyl4blecsd5" path="res://Images/Map/Synapse_Map.jpg" id="2_1xnci"]
 [ext_resource type="Script" uid="uid://h6o0sd3yiicg" path="res://Scripts/camera_2d_move_map.gd" id="3_ijeka"]
 [ext_resource type="Texture2D" uid="uid://bkyucjwobn1js" path="res://Images/Buttons/show_level.png" id="3_uxesv"]
 [ext_resource type="PackedScene" uid="uid://v3525e5fn7dq" path="res://Scenes/level_button.tscn" id="4_1xnci"]
 [ext_resource type="FontFile" uid="uid://d1yahlnho8lp3" path="res://Fonts/WANTED.ttf" id="4_moljf"]
 [ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="5_b7rwn"]
 [ext_resource type="Texture2D" uid="uid://1n1w310cbu03" path="res://Images/Buttons/finished_enemy.png" id="5_mvypx"]
+[ext_resource type="Texture2D" uid="uid://d22ll7okmawhl" path="res://Images/Map/Synapse 2.jpg" id="7_ay0fg"]
 [ext_resource type="Resource" uid="uid://dd8nma10h4wb7" path="res://Data/Levels/level01.tres" id="11_iht84"]
 [ext_resource type="Resource" uid="uid://bm4gb4pyl7veu" path="res://Data/Levels/level02.tres" id="11_sdts0"]
 [ext_resource type="Resource" uid="uid://ceyacv28hhx3b" path="res://Data/Levels/level03.tres" id="12_ay0fg"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://bun3otguqx3sq" path="res://Data/Levels/level07.tres" id="16_g7dyv"]
 [ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
 [ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
+[ext_resource type="Script" uid="uid://c3mqor6y0xlrs" path="res://Scripts/world_bounds_debug.gd" id="19_gojlf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7urs"]
 bg_color = Color(0.256, 0.256, 0.256, 0.74)
@@ -535,71 +536,76 @@ offset_bottom = 359.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gojlf")
 
 [node name="MapSprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_1xnci")
+position = Vector2(-6, -41)
+texture = ExtResource("7_ay0fg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-687, -1)
 script = ExtResource("3_ijeka")
-world_bounds = Rect2(-1000, -400, 700, 600)
+world_bounds = Rect2(-4000, -3000, 8000, 6000)
+min_zoom = 0.25
 
 [node name="ButtonLevels" type="Node" parent="."]
 
 [node name="LevelButton_1" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -895.0
-offset_top = 17.0
-offset_right = -863.0
-offset_bottom = 59.0
+offset_left = -223.0
+offset_top = 321.0
+offset_right = -191.0
+offset_bottom = 363.0
 level_name = "Sir Valorion"
 config = ExtResource("11_iht84")
 
 [node name="LevelButton_2" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -836.0
-offset_top = -56.0
-offset_right = -804.0
-offset_bottom = -14.0
+offset_left = -268.0
+offset_top = 211.0
+offset_right = -236.0
+offset_bottom = 253.0
 level_name = "Dame Astra"
 config = ExtResource("11_sdts0")
 
 [node name="LevelButton_3" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -680.0
-offset_top = 44.0
-offset_right = -648.0
-offset_bottom = 86.0
+offset_left = -374.0
+offset_top = 96.0
+offset_right = -342.0
+offset_bottom = 138.0
 level_name = "Lord Cedric"
 config = ExtResource("12_ay0fg")
 
 [node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -828.0
-offset_top = -163.0
-offset_right = -796.0
-offset_bottom = -121.0
+offset_left = -566.0
+offset_top = 543.0
+offset_right = -534.0
+offset_bottom = 585.0
 level_name = "Sir Leoric"
 config = ExtResource("13_gojlf")
 
 [node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -723.0
-offset_top = -219.0
-offset_right = -691.0
-offset_bottom = -177.0
+offset_left = -516.0
+offset_top = 233.0
+offset_right = -484.0
+offset_bottom = 275.0
 level_name = "Sir Rothelm"
 config = ExtResource("14_ilbj0")
 
 [node name="LevelButton_6" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -703.0
-offset_top = -108.0
-offset_right = -671.0
-offset_bottom = -66.0
+offset_left = -771.0
+offset_top = 285.0
+offset_right = -739.0
+offset_bottom = 327.0
 level_name = "Doomspire"
 make_cooler = true
 config = ExtResource("15_oo8lt")
 
 [node name="LevelButton_7" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -558.0
-offset_top = -56.0
-offset_right = -526.0
-offset_bottom = -14.0
+offset_left = -993.0
+offset_top = 550.0
+offset_right = -961.0
+offset_bottom = 592.0
 level_name = "Grinblade"
 config = ExtResource("16_g7dyv")
+
+[node name="LevelButton" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+is_unlock = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -607,5 +613,13 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="WorldBoundsDebug" type="Node2D" parent="."]
+z_index = 4096
+script = ExtResource("19_gojlf")
+world_bounds = Rect2(-4000, -3000, 8000, 6000)
+color = Color(0, 1, 0.188235, 0.8)
+line_width = 10.0
+draw_in_game = false
 
 [connection signal="button_down" from="CanvasLayer/DownPanel/GoToCollection" to="." method="_on_go_to_collection_button_down"]

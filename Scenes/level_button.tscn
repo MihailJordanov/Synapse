@@ -1,28 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://v3525e5fn7dq"]
+[gd_scene load_steps=13 format=3 uid="uid://v3525e5fn7dq"]
 
 [ext_resource type="Texture2D" uid="uid://cq84e26ffekvs" path="res://Images/Buttons/level_button_4.png" id="1_iapje"]
 [ext_resource type="Script" uid="uid://0hgh4meqm1kf" path="res://Scripts/level_button.gd" id="2_hsxrf"]
+[ext_resource type="Texture2D" uid="uid://870hfrt730qv" path="res://Images/Buttons/Exclamation mark.png" id="3_j6rai"]
 [ext_resource type="Texture2D" uid="uid://1n1w310cbu03" path="res://Images/Buttons/finished_enemy.png" id="4_j6rai"]
 [ext_resource type="Texture2D" uid="uid://dusabblrxfybd" path="res://Images/Buttons/question_mark.png" id="4_j8cp3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_34smg"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsxrf"]
-texture = ExtResource("1_iapje")
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8cp3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(1, 0.862745, 0, 0.596078)
+shadow_size = 3
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j8cp3"]
-texture = ExtResource("1_iapje")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7ics"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0.933333, 0.705882, 0, 0.6)
+shadow_size = 2
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6rai"]
-texture = ExtResource("1_iapje")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6rai"]
+bg_color = Color(1, 0.729412, 0, 0)
+shadow_color = Color(1, 0.863185, 0.527058, 0.6)
 
 [sub_resource type="Animation" id="Animation_34smg"]
 length = 0.001
@@ -63,14 +61,33 @@ _data = {
 
 [node name="LevelButton" type="Button"]
 offset_left = -16.0
-offset_top = -21.0
+offset_top = -20.0
 offset_right = 16.0
-offset_bottom = 21.0
+offset_bottom = 20.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_34smg")
-theme_override_styles/hover = SubResource("StyleBoxTexture_hsxrf")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_j8cp3")
-theme_override_styles/normal = SubResource("StyleBoxTexture_j6rai")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j8cp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a7ics")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j6rai")
 script = ExtResource("2_hsxrf")
+max_up_offset = -270.0
+max_down_offset = -80.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 20)
+scale = Vector2(0.108434, 0.0946237)
+texture = ExtResource("1_iapje")
+
+[node name="WaitingForBeatingTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = -105.0
+offset_right = 52.0
+offset_bottom = -1.0
+texture = ExtResource("3_j6rai")
+expand_mode = 2
 
 [node name="EnemyTextureRect" type="TextureRect" parent="."]
 visible = false
