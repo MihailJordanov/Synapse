@@ -12,6 +12,7 @@ extends Button
 @export var is_clear : bool = false
 @export var _is_visible : bool = false
 
+
 @export_category("Camera zoom")
 @onready var cam: Camera2D = get_viewport().get_camera_2d()
 @export var base_scale: float = 1.0         
@@ -28,10 +29,19 @@ extends Button
 @onready var waiting_for_beating_texture_rect: TextureRect = $WaitingForBeatingTextureRect
 @onready var debug_panel: Panel = $DebugPanel
 @onready var show_level_name_label: Label = $DebugPanel/ShowLevelNameLabel
-
+#@onready var unlocking_next_levels_area_2d: Area2D = $UnlockingNextLevelsArea2D
 
 
 func _ready() -> void:
+	#unlocking_next_levels_area_2d.monitoring = true
+	#unlocking_next_levels_area_2d.monitorable = true
+	
+	if Engine.is_editor_hint():
+		call_deferred("_update_unlocks_from_overlap")
+	else:
+		await get_tree().physics_frame
+#		_update_unlocks_from_overlap()
+
 	waiting_for_beating_texture_rect.visible = false
 	debug_panel.visible = Engine.is_editor_hint()
 	if config:
@@ -118,3 +128,22 @@ func _update_textures() -> void:
 	
 	if not is_clear and is_unlock:
 		animation_player.play("default")
+		
+
+
+#func _update_unlocks_from_overlap() -> void:
+#	if not config:
+#		return
+#	var to_add: Array[String] = []
+#	for a in unlocking_next_levels_area_2d.get_overlapping_areas():
+#		# очакваме Area2D да е дете на друг LevelButton
+#		var other_btn := a.get_parent() as LevelButton
+#		if other_btn and other_btn != self and other_btn.config:
+#			var lvl := other_btn.config.cur_level
+#			if lvl != "" and not config.levels_to_unlock_on_win.has(lvl):
+#				to_add.append(lvl)
+#
+#	if to_add.size() > 0:
+#		config.levels_to_unlock_on_win.append_array(to_add)
+#		if Engine.is_editor_hint():
+#			config.emit_changed()

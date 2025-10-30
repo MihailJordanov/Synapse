@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ciu12i55xk6v6"]
+[gd_scene load_steps=18 format=3 uid="uid://ciu12i55xk6v6"]
 
 [ext_resource type="Script" uid="uid://c4nvnrcdp0pjj" path="res://Scenes/Scenes_In_Game/better_collection.gd" id="1_tj20f"]
 [ext_resource type="PackedScene" uid="uid://bvoo35ew5r61n" path="res://Scenes/button_card_for_collection.tscn" id="2_4l0j1"]
@@ -63,6 +63,167 @@ corner_radius_bottom_left = 7
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qw0f"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_lyn8s"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/AnimationParts/Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(642, 364)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AnimationParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/AnimationParts/Panel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/AnimationParts/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b4yu2"]
+resource_name = "closeScene"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/AnimationParts/Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(922, 0), Vector2(642, 364), Vector2(642, 364)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AnimationParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-48, -31), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/AnimationParts/Panel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.506145, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/AnimationParts/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_ouuol"]
+resource_name = "openScene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/AnimationParts/Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(642, 364), Vector2(642, 364), Vector2(922, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/AnimationParts/Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-48, -31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/AnimationParts/Panel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.506145]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/AnimationParts/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyn8s"]
+_data = {
+&"RESET": SubResource("Animation_lyn8s"),
+&"closeScene": SubResource("Animation_b4yu2"),
+&"openScene": SubResource("Animation_ouuol")
+}
+
 [node name="BetterCollection" type="Node2D"]
 script = ExtResource("1_tj20f")
 button_card_scene = ExtResource("2_4l0j1")
@@ -80,8 +241,9 @@ offset_bottom = 40.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 0
-offset_left = 115.0
-offset_right = 640.0
+offset_left = 82.0
+offset_top = -95.0
+offset_right = 629.0
 offset_bottom = 360.0
 
 [node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
@@ -164,9 +326,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tjeaj")
 text = "Sort"
 
 [node name="AnimationParts" type="Node2D" parent="CanvasLayer"]
-visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer/AnimationParts"]
 offset_right = 642.0
 offset_bottom = 364.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2qw0f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lyn8s")
+}
+
+[connection signal="button_down" from="CanvasLayer/GoMenuButton" to="." method="_on_go_menu_button_button_down"]

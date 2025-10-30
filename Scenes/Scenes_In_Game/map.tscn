@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=40 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://0a5fjhnww8au" path="res://Data/Levels/level06.tres" id="15_oo8lt"]
 [ext_resource type="Resource" uid="uid://bun3otguqx3sq" path="res://Data/Levels/level07.tres" id="16_g7dyv"]
 [ext_resource type="Resource" uid="uid://bx4m377602fpl" path="res://Data/Levels/level08.tres" id="17_gojlf"]
+[ext_resource type="Resource" uid="uid://dd28bwmvtk8ii" path="res://Data/Levels/level09.tres" id="18_ilbj0"]
 [ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
 [ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
 [ext_resource type="Script" uid="uid://c3mqor6y0xlrs" path="res://Scripts/world_bounds_debug.gd" id="19_gojlf"]
@@ -574,18 +575,18 @@ level_name = "Lord Cedric"
 config = ExtResource("12_ay0fg")
 
 [node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -373.0
-offset_top = 387.0
-offset_right = -341.0
-offset_bottom = 429.0
+offset_left = -367.0
+offset_top = 385.0
+offset_right = -335.0
+offset_bottom = 427.0
 level_name = "Sir Leoric"
 config = ExtResource("13_gojlf")
 
 [node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -549.0
-offset_top = 187.0
-offset_right = -517.0
-offset_bottom = 229.0
+offset_left = -486.0
+offset_top = 184.0
+offset_right = -454.0
+offset_bottom = 226.0
 level_name = "Sir Rothelm"
 config = ExtResource("14_ilbj0")
 
@@ -613,6 +614,14 @@ offset_right = -461.0
 offset_bottom = 33.0
 level_name = "Grinblade"
 config = ExtResource("17_gojlf")
+
+[node name="LevelButton_9" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -771.0
+offset_top = -38.0
+offset_right = -739.0
+offset_bottom = 4.0
+level_name = "Grinblade"
+config = ExtResource("18_ilbj0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

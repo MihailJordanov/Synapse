@@ -6,14 +6,27 @@ signal card_pressed(card_id, card_data, button_ref)
 @export var collection_manager_path: NodePath
 @export var button_card_scene: PackedScene
 @export var filler_min_size: Vector2 = Vector2(180, 240)
+@export var deck_limit : int = 30
+@export_file("*.tscn") var menu_scene_path: String = "res://Scenes/Scenes_In_Game/map.tscn"
+
 
 @onready var grid: GridContainer = $Control/ScrollContainer/GridContainer
+@onready var card_count_rich_text_label: RichTextLabel = $CanvasLayer/BorderPanel/CardCountRichTextLabel
+@onready var info_rich_text_label: RichTextLabel = $CanvasLayer/BorderPanel/InfoRichTextLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var _cm: Node = null
 
 func _ready() -> void:
+	animation_player.play("openScene")
 	_resolve_collection_manager()
+	if _cm:
+		if not _cm.is_connected("deck_changed", Callable(self, "_update_deck_labels")):
+			_cm.deck_changed.connect(_update_deck_labels)
 	refresh()
+	_update_deck_labels()  
+
+
 
 # -----------------------
 # Публично API
@@ -120,7 +133,8 @@ func _make_button_for_card(card: Dictionary) -> Button:
 
 	btn.text = str(cid)
 	btn.tooltip_text = "Card ID: %s" % [str(cid)]
-
+	btn.deck_limit = deck_limit          
+	btn.set_collection_manager(_cm)
 	# ВАЖНО: не свързваме pressed/pressed_down тук – бутонът се грижи сам.
 	return btn
 
@@ -179,5 +193,26 @@ func _add_leading_fillers(count: int, cell_size: Vector2) -> void:
 		grid.add_child(filler)  # добавяме преди бутоните (в refresh())
 
 
-	
-	
+func _update_deck_labels() -> void:
+	if is_instance_valid(card_count_rich_text_label):
+		card_count_rich_text_label.bbcode_enabled = true
+		card_count_rich_text_label.text = "[center][b]Deck:[/b]\n%d / %d[/center]" % [_deck_size(), deck_limit]
+
+	if is_instance_valid(info_rich_text_label):
+		info_rich_text_label.bbcode_enabled = true
+		if _deck_size() > deck_limit:
+			var over := _deck_size() - deck_limit
+			info_rich_text_label.text = "[color=red][b]Limit exceeded! Remove %d cards.[/b][/color]" % over
+		elif _deck_size() == deck_limit:
+			info_rich_text_label.text = "[color=yellow][b]The limit has been reached.[/b][/color]"
+		else:
+			info_rich_text_label.text = ""
+
+func _deck_size() -> int:
+	return CollectionManager.deck.size()
+
+
+func _on_go_menu_button_button_down() -> void:
+	animation_player.play("closeScene")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file(menu_scene_path)

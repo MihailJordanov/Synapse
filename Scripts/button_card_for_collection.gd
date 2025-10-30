@@ -35,7 +35,7 @@ const ELEMENT_DISPLAY := {
 }
 
 @export var card_id: int = -1
-
+@export var deck_limit: int = 30 
 # --- UI refs ---
 @onready var card_texture_rect: TextureRect = $MainPanel/ImagePanel/TextureRect
 
@@ -359,22 +359,30 @@ func _maybe_long_press() -> void:
 
 
 func _on_button_down() -> void:
-	# заключена карта → само анимация за lock
 	if not is_unlcok:
 		if is_instance_valid(animation_player):
 			animation_player.play("click_on_lock")
 		return
 
-	# добавяне/махане от deck + анимация
+	# ако е в deck → махни
 	if is_in_deck:
 		if _cm and _cm.has_method("remove_from_deck"):
 			_cm.remove_from_deck(card_id)
 		is_in_deck = false
 		if is_instance_valid(animation_player):
 			animation_player.play("on_remove")
-	else:
-		if _cm and _cm.has_method("add_to_deck"):
-			_cm.add_to_deck(card_id)
+		return
+
+	if _cm and "deck" in _cm and _cm.has_method("add_to_deck"):
+		var current_size: int = _cm.deck.size()
+		var limit: int = deck_limit  
+
+		if current_size >= limit:
+			if is_instance_valid(animation_player):
+				animation_player.play("add_limit_reached") 
+			return
+
+		_cm.add_to_deck(card_id)
 		is_in_deck = true
 		if is_instance_valid(animation_player):
 			animation_player.play("on_add")

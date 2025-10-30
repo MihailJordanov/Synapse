@@ -1,5 +1,7 @@
 extends Node
 
+signal deck_changed
+
 const RES_PATH  := "res://Data/collection_data.json"
 const USER_PATH := "user://collection_data.json"
 
@@ -48,7 +50,6 @@ func unlock(id) -> bool:
 	unlocked.append(id)
 	_save_user()
 	return true
-
 func add_to_deck(id) -> bool:
 	id = _norm_id(id)
 	if not is_unlocked(id):
@@ -58,6 +59,7 @@ func add_to_deck(id) -> bool:
 		return true
 	deck.append(id)
 	_save_user()
+	emit_signal("deck_changed")   # <— НОВО
 	return true
 
 func remove_from_deck(id) -> bool:
@@ -65,8 +67,10 @@ func remove_from_deck(id) -> bool:
 	if deck.has(id):
 		deck.erase(id)
 		_save_user()
+		emit_signal("deck_changed")   # <— НОВО
 		return true
 	return false
+
 
 func reload() -> void:
 	_load_all()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvoo35ew5r61n"]
+[gd_scene load_steps=17 format=3 uid="uid://bvoo35ew5r61n"]
 
 [ext_resource type="Script" uid="uid://dptq5sculgb1p" path="res://Scripts/button_card_for_collection.gd" id="1_bf26e"]
 [ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="2_dlb22"]
@@ -26,47 +26,6 @@ bg_color = Color(0.152941, 0.152941, 0.152941, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlb22"]
 bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_bf26e"]
-resource_name = "on_add"
-length = 0.1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainPanel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1.8, 1.8), Vector2(2, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0.8, 0.8), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_5gcx7"]
 length = 0.001
@@ -178,9 +137,21 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MainPanel:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_dlb22"]
-resource_name = "on_remove"
+[sub_resource type="Animation" id="Animation_fidvc"]
+resource_name = "add_limit_reached"
 length = 0.1
 step = 0.05
 tracks/0/type = "value"
@@ -193,31 +164,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(2, 2), Vector2(1.8, 1.8), Vector2(2, 2)]
+"values": [Vector2(2, 2), Vector2(1.9, 1.9), Vector2(2, 2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
+tracks/1/path = NodePath("MainPanel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_y67vf"]
@@ -309,9 +268,92 @@ tracks/6/keys = {
 "values": [Vector2(0, 0), Vector2(22, -15), Vector2(0, 0), Vector2(-22, -7), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_bf26e"]
+resource_name = "on_add"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.8, 1.8), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dlb22"]
+resource_name = "on_remove"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.8, 1.8), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5gcx7"]
 _data = {
 &"RESET": SubResource("Animation_5gcx7"),
+&"add_limit_reached": SubResource("Animation_fidvc"),
 &"click_on_lock": SubResource("Animation_y67vf"),
 &"on_add": SubResource("Animation_bf26e"),
 &"on_remove": SubResource("Animation_dlb22")

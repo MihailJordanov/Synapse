@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://v3525e5fn7dq"]
+[gd_scene load_steps=14 format=3 uid="uid://v3525e5fn7dq"]
 
 [ext_resource type="Texture2D" uid="uid://cq84e26ffekvs" path="res://Images/Buttons/level_button_4.png" id="1_iapje"]
 [ext_resource type="Script" uid="uid://0hgh4meqm1kf" path="res://Scripts/level_button.gd" id="2_hsxrf"]
@@ -21,6 +21,9 @@ shadow_size = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6rai"]
 bg_color = Color(1, 0.729412, 0, 0)
 shadow_color = Color(1, 0.863185, 0.527058, 0.6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6rai"]
+radius = 180.0
 
 [sub_resource type="Animation" id="Animation_34smg"]
 length = 0.001
@@ -71,6 +74,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_j6rai")
 script = ExtResource("2_hsxrf")
 max_up_offset = -270.0
 max_down_offset = -80.0
+
+[node name="UnlockingNextLevelsArea2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnlockingNextLevelsArea2D"]
+shape = SubResource("CircleShape2D_j6rai")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 20)
