@@ -1,0 +1,612 @@
+[gd_scene load_steps=16 format=3 uid="uid://bvoo35ew5r61n"]
+
+[ext_resource type="Script" uid="uid://dptq5sculgb1p" path="res://Scripts/button_card_for_collection.gd" id="1_bf26e"]
+[ext_resource type="Texture2D" uid="uid://cq73ft2ifolbj" path="res://Images/Card_Slot_Images/locked_1.png" id="2_dlb22"]
+[ext_resource type="Texture2D" uid="uid://u0m008ixbbic" path="res://Images/Card_Slot_Images/in_use_icon.png" id="3_y67vf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf26e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03dug"]
+bg_color = Color(0.215902, 0.215902, 0.215902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf26e"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gcx7"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlb22"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_bf26e"]
+resource_name = "on_add"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.8, 1.8), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5gcx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainPanel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainPanel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationgPanels/LockedPanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationgPanels/LockedPanel:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationgPanels/LockedPanel:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationgPanels/LockedPanel:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dlb22"]
+resource_name = "on_remove"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.8, 1.8), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationgPanels/InDeckPanel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationgPanels/InDeckPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y67vf"]
+resource_name = "click_on_lock"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainPanel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10035, 0.151177, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.122173, 0.0, -0.122173, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainPanel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10035, 0.1512, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.9, 1.9), Vector2(2, 2), Vector2(1.9, 1.9), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10035, 0.151177, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(22, -15), Vector2(0, 0), Vector2(-22, -7), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationgPanels/LockedPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationgPanels/LockedPanel:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10035, 0.151177, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.122173, 0.0, -0.122173, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationgPanels/LockedPanel:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10035, 0.1512, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationgPanels/LockedPanel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.10035, 0.151177, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(22, -15), Vector2(0, 0), Vector2(-22, -7), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gcx7"]
+_data = {
+&"RESET": SubResource("Animation_5gcx7"),
+&"click_on_lock": SubResource("Animation_y67vf"),
+&"on_add": SubResource("Animation_bf26e"),
+&"on_remove": SubResource("Animation_dlb22")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fidvc"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.972549)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qi0bv"]
+texture = ExtResource("3_y67vf")
+
+[node name="ButtonCardForCollection" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 100.0
+offset_bottom = 160.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bf26e")
+script = ExtResource("1_bf26e")
+
+[node name="MainPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 80.0
+scale = Vector2(2, 2)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_03dug")
+
+[node name="ImagePanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.237
+anchor_right = 0.92
+anchor_bottom = 0.762
+offset_top = 0.039999
+offset_bottom = 0.0399971
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_bf26e")
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/ImagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="ConnectingPanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.05
+anchor_right = 0.92
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_5gcx7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/ConnectingPanel"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 12.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="MainPanel/ConnectingPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 12.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlb22")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/ConnectingPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="MainPanel/ConnectingPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 12.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlb22")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/ConnectingPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="MainPanel/ConnectingPanel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 12.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlb22")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/ConnectingPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+expand_mode = 2
+
+[node name="CardTypesPanel" type="Panel" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.812
+anchor_right = 0.92
+anchor_bottom = 0.962
+offset_left = 0.45
+offset_top = 0.0400009
+offset_bottom = 0.0400009
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_5gcx7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/CardTypesPanel"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 12.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ElementControl" type="Control" parent="MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="MainPanel/CardTypesPanel/HBoxContainer/ElementControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 12.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlb22")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/CardTypesPanel/HBoxContainer/ElementControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+expand_mode = 2
+
+[node name="KindControl" type="Control" parent="MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="MainPanel/CardTypesPanel/HBoxContainer/KindControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 12.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlb22")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/CardTypesPanel/HBoxContainer/KindControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+expand_mode = 2
+
+[node name="AttackStyleControl" type="Control" parent="MainPanel/CardTypesPanel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl"]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 12.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dlb22")
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/CardTypesPanel/HBoxContainer/AttackStyleControl/Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+expand_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5gcx7")
+}
+
+[node name="AnimationgPanels" type="Node2D" parent="."]
+
+[node name="LockedPanel" type="Panel" parent="AnimationgPanels"]
+visible = false
+offset_right = 100.0
+offset_bottom = 160.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_fidvc")
+
+[node name="TextureRect" type="TextureRect" parent="AnimationgPanels/LockedPanel"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 100.0
+offset_bottom = 126.0
+texture = ExtResource("2_dlb22")
+expand_mode = 2
+
+[node name="InDeckPanel" type="Panel" parent="AnimationgPanels"]
+visible = false
+offset_left = 83.0
+offset_top = -15.0
+offset_right = 113.0
+offset_bottom = 15.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_qi0bv")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

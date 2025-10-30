@@ -380,6 +380,7 @@ _data = {
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_lxa30")
+collection_scene_path = "uid://ciu12i55xk6v6"
 buttons = Array[NodePath]([NodePath("ButtonLevels/LevelButton_1"), NodePath("ButtonLevels/LevelButton_2"), NodePath("ButtonLevels/LevelButton_3"), NodePath("ButtonLevels/LevelButton_4"), NodePath("ButtonLevels/LevelButton_5"), NodePath("ButtonLevels/LevelButton_6"), NodePath("ButtonLevels/LevelButton_7")])
 level_ids = Array[String](["1", "2", "3", "4", "5", "6", "7"])
 

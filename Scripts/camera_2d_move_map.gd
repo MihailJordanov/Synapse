@@ -15,7 +15,7 @@ var _dragging: bool = false
 var _last_mouse_pos: Vector2 = Vector2.ZERO
 
 # touch state
-var _touches: Dictionary = {}              # int -> Vector2
+var _touches: Dictionary = {}             
 var _last_pinch_dist: float = 0.0
 var _one_finger_active: bool = false
 var _one_finger_prev: Vector2 = Vector2.ZERO
