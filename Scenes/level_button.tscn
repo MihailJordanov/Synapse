@@ -78,14 +78,18 @@ scale = Vector2(0.108434, 0.0946237)
 texture = ExtResource("1_iapje")
 
 [node name="WaitingForBeatingTextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -52.0
-offset_top = -105.0
+offset_top = -125.0
 offset_right = 52.0
-offset_bottom = -1.0
+offset_bottom = -21.0
+pivot_offset = Vector2(52, 52)
 texture = ExtResource("3_j6rai")
 expand_mode = 2
 
@@ -142,3 +146,18 @@ expand_mode = 2
 libraries = {
 &"": SubResource("AnimationLibrary_hsxrf")
 }
+
+[node name="DebugPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -30.5099
+offset_top = -32.4782
+offset_right = 9.49013
+offset_bottom = 7.52175
+
+[node name="ShowLevelNameLabel" type="Label" parent="DebugPanel"]
+layout_mode = 0
+offset_top = 8.8577
+offset_right = 40.0
+offset_bottom = 31.8577
+horizontal_alignment = 1
+vertical_alignment = 1

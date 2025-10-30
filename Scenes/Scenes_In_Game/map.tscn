@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=39 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://gkhbeufig7mr" path="res://Data/Levels/level05.tres" id="14_ilbj0"]
 [ext_resource type="Resource" uid="uid://0a5fjhnww8au" path="res://Data/Levels/level06.tres" id="15_oo8lt"]
 [ext_resource type="Resource" uid="uid://bun3otguqx3sq" path="res://Data/Levels/level07.tres" id="16_g7dyv"]
+[ext_resource type="Resource" uid="uid://bx4m377602fpl" path="res://Data/Levels/level08.tres" id="17_gojlf"]
 [ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
 [ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
 [ext_resource type="Script" uid="uid://c3mqor6y0xlrs" path="res://Scripts/world_bounds_debug.gd" id="19_gojlf"]
@@ -540,18 +541,18 @@ position = Vector2(-6, -41)
 texture = ExtResource("7_ay0fg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-687, -1)
+position = Vector2(-154, 231)
 script = ExtResource("3_ijeka")
 world_bounds = Rect2(-4000, -3000, 8000, 6000)
-min_zoom = 0.25
+min_zoom = 0.5
 
 [node name="ButtonLevels" type="Node" parent="."]
 
 [node name="LevelButton_1" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -223.0
-offset_top = 321.0
-offset_right = -191.0
-offset_bottom = 363.0
+offset_left = -171.0
+offset_top = 258.0
+offset_right = -139.0
+offset_bottom = 300.0
 level_name = "Sir Valorion"
 config = ExtResource("11_iht84")
 
@@ -564,48 +565,53 @@ level_name = "Dame Astra"
 config = ExtResource("11_sdts0")
 
 [node name="LevelButton_3" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -374.0
-offset_top = 96.0
-offset_right = -342.0
-offset_bottom = 138.0
+offset_left = -360.0
+offset_top = 97.0
+offset_right = -328.0
+offset_bottom = 139.0
 level_name = "Lord Cedric"
 config = ExtResource("12_ay0fg")
 
 [node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -566.0
-offset_top = 543.0
-offset_right = -534.0
-offset_bottom = 585.0
+offset_left = -373.0
+offset_top = 387.0
+offset_right = -341.0
+offset_bottom = 429.0
 level_name = "Sir Leoric"
 config = ExtResource("13_gojlf")
 
 [node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -516.0
-offset_top = 233.0
-offset_right = -484.0
-offset_bottom = 275.0
+offset_left = -549.0
+offset_top = 187.0
+offset_right = -517.0
+offset_bottom = 229.0
 level_name = "Sir Rothelm"
 config = ExtResource("14_ilbj0")
 
 [node name="LevelButton_6" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -771.0
-offset_top = 285.0
-offset_right = -739.0
-offset_bottom = 327.0
+offset_left = -772.0
+offset_top = 268.0
+offset_right = -740.0
+offset_bottom = 310.0
 level_name = "Doomspire"
 make_cooler = true
 config = ExtResource("15_oo8lt")
 
 [node name="LevelButton_7" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-offset_left = -993.0
-offset_top = 550.0
-offset_right = -961.0
-offset_bottom = 592.0
+offset_left = -547.0
+offset_top = 515.0
+offset_right = -515.0
+offset_bottom = 557.0
 level_name = "Grinblade"
 config = ExtResource("16_g7dyv")
 
-[node name="LevelButton" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
-is_unlock = true
+[node name="LevelButton_8" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+offset_left = -493.0
+offset_top = -9.0
+offset_right = -461.0
+offset_bottom = 33.0
+level_name = "Grinblade"
+config = ExtResource("17_gojlf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -618,7 +624,7 @@ libraries = {
 z_index = 4096
 script = ExtResource("19_gojlf")
 world_bounds = Rect2(-4000, -3000, 8000, 6000)
-color = Color(0, 1, 0.188235, 0.8)
+color = Color(0, 1, 0.188235, 0)
 line_width = 10.0
 draw_in_game = false
 

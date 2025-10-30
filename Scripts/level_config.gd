@@ -20,4 +20,5 @@ class_name LevelConfig
 @export_category("On Win")
 @export var cur_level : String
 @export var levels_to_unlock_on_win : Array[String] = []
+@export var levels_to_visible_on_win : Array[String] = []
 @export var cards_to_unlock_on_win  : Array[int] = []

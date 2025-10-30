@@ -447,7 +447,7 @@ func _add_to_board(c: Card) -> void:
 	if not graph.has(uid):
 		graph[uid] = []
 	uid_to_card[uid] = c
-	print(c.id)
+	#print(c.id)
 
 func _check_new_edges(c: Card) -> void:
 	for other in placed_cards:
@@ -464,13 +464,27 @@ func _check_new_edges(c: Card) -> void:
 
 func _matches(from: Card, to: Card) -> Array[String]:
 	var res: Array[String] = []
-	if from.use_element_target and from.target_element == to.element:
+
+	# Element
+	if from.use_element_target \
+		and to.use_self_element \
+		and from.target_element == to.element:
 		res.append("Element")
-	if from.use_kind_target and from.target_kind == to.kind:
+
+	# Kind
+	if from.use_kind_target \
+		and to.use_self_kind \
+		and from.target_kind == to.kind:
 		res.append("Kind")
-	if from.use_attack_style_target and from.target_attack_style == to.attack_style:
+
+	# AttackStyle
+	if from.use_attack_style_target \
+		and to.use_self_attack_style \
+		and from.target_attack_style == to.attack_style:
 		res.append("AttackStyle")
+
 	return res
+
 
 func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
 	if not is_instance_valid(a) or not is_instance_valid(b):
@@ -488,7 +502,28 @@ func _add_edge(a: Card, b: Card, labels: Array[String]) -> void:
 		neigh.append(b_uid)
 
 
-		print("%d %d" % [a_uid, b_uid])
+		#print("%d %d" % [a_uid, b_uid])
+		#print("%d : %d - Self: %s %s %s\nAttack: %s %s %s" % [
+		#	a_uid,
+		#	a.id,
+		#	a.get_self_element(),
+		#	a.get_self_kind(),
+		#	a.get_self_attack_style(),
+		#	a.get_connect_element(),
+		#	a.get_connect_kind(),
+		#	a.get_connect_attack_style()
+		#])
+
+		#print("%d : %d - Self: %s %s %s\nAttack: %s %s %s" % [
+		#	b_uid,
+		#	a.id,
+		#	b.get_self_element(),
+		#	b.get_self_kind(),
+		#	b.get_self_attack_style(),
+		#	b.get_connect_element(),
+		#	b.get_connect_kind(),
+		#	b.get_connect_attack_style()
+		#])
 
 		var edge: Edge = _spawn_edge(a, b, labels)
 

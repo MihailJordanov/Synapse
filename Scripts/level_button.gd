@@ -1,3 +1,4 @@
+@tool
 class_name LevelButton
 extends Button
 
@@ -9,6 +10,7 @@ extends Button
 @export_category("About Button")
 @export var is_unlock : bool = false
 @export var is_clear : bool = false
+@export var _is_visible : bool = false
 
 @export_category("Camera zoom")
 @onready var cam: Camera2D = get_viewport().get_camera_2d()
@@ -24,10 +26,16 @@ extends Button
 @onready var mystery_texture_rect: TextureRect = $MysteryTextureRect
 @onready var finished_texture_rect: TextureRect = $FinishedTextureRect
 @onready var waiting_for_beating_texture_rect: TextureRect = $WaitingForBeatingTextureRect
+@onready var debug_panel: Panel = $DebugPanel
+@onready var show_level_name_label: Label = $DebugPanel/ShowLevelNameLabel
 
 
 
 func _ready() -> void:
+	waiting_for_beating_texture_rect.visible = false
+	debug_panel.visible = Engine.is_editor_hint()
+	if config:
+		show_level_name_label.text = str(config.cur_level)
 	waiting_for_beating_texture_rect.set_anchors_preset(Control.PRESET_CENTER)
 	waiting_for_beating_texture_rect.pivot_offset = waiting_for_beating_texture_rect.size * 0.5
 
@@ -35,6 +43,7 @@ func _ready() -> void:
 	connect("mouse_entered", Callable(self, "_on_mouse_entered"))
 	connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 	
+
 
 
 func _process(_dt: float) -> void:
@@ -81,6 +90,13 @@ func _on_mouse_exited() -> void:
 		animation_player.play("default")
 
 func _update_textures() -> void:
+	
+	#if not is_visible:
+	#	self.visible = false
+	#	return
+	#else:
+	#	self.visible = true
+	
 	if is_unlock:
 		enemy_texture_rect.visible = true
 		mystery_texture_rect.visible = false

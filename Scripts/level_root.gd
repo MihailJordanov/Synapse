@@ -30,4 +30,5 @@ func _apply_config(cfg: LevelConfig) -> void:
 
 	gm.cur_level                = cfg.cur_level
 	gm.levels_to_unlock_on_win  = cfg.levels_to_unlock_on_win
+	gm.levels_to_visible_on_win = cfg.levels_to_visible_on_win
 	gm.cards_to_unlock_on_win   = cfg.cards_to_unlock_on_win

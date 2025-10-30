@@ -186,6 +186,28 @@ func set_use_self_attack_style(v: bool) -> void:
 	use_self_attack_style = v
 	_update_style_ui()
 
+# --- getters (Self) ---
+func get_self_element() -> Element:
+	return element
+
+func get_self_kind() -> CardKind:
+	return kind
+
+func get_self_attack_style() -> AttackStyle:
+	return attack_style
+
+
+# --- getters (Connecting / Targets) ---
+func get_connect_element() -> Element:
+	return target_element
+
+func get_connect_kind() -> CardKind:
+	return target_kind
+
+func get_connect_attack_style() -> AttackStyle:
+	return target_attack_style
+
+
 
 # --- UI updates ---
 func _update_element_ui() -> void:

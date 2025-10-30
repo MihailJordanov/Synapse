@@ -15,7 +15,9 @@ extends Node
 @export_category("On Win")
 @export var cur_level : String
 @export var levels_to_unlock_on_win : Array[String]
+@export var levels_to_visible_on_win : Array[String]
 @export var cards_to_unlock_on_win : Array[int]
+
 # === NODES ===
 @onready var level: Level = $".."
 @onready var game_state_random: GameStateRandom = $"../GameStateRandom"
@@ -290,6 +292,8 @@ func _rewards_gain() -> void:
 		if not CollectionManager.is_unlocked(i):
 			new_cards_count += 1
 			CollectionManager.unlock(i)
+			
+			
 	
 	var level_text := ""
 	if new_level_count > 0:

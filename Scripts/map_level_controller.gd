@@ -38,6 +38,7 @@ func _ready() -> void:
 		var level_id := level_ids[i]
 		btn.is_unlock = LevelManager.is_unlocked(level_id)
 		btn.is_clear  = LevelManager.is_cleared(level_id)
+		btn._is_visible = LevelManager.is_visible(level_id)
 		if btn.has_method("_update_textures"):
 			btn._update_textures()
 
