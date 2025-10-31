@@ -36,11 +36,11 @@ func _ready() -> void:
 	#unlocking_next_levels_area_2d.monitoring = true
 	#unlocking_next_levels_area_2d.monitorable = true
 	
-	if Engine.is_editor_hint():
-		call_deferred("_update_unlocks_from_overlap")
-	else:
-		await get_tree().physics_frame
-#		_update_unlocks_from_overlap()
+	#if Engine.is_editor_hint():
+	#	call_deferred("_update_unlocks_from_overlap")
+	#else:
+	#	await get_tree().physics_frame
+#	#	_update_unlocks_from_overlap()
 
 	waiting_for_beating_texture_rect.visible = false
 	debug_panel.visible = Engine.is_editor_hint()

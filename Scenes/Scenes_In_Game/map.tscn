@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=71 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
@@ -9,18 +9,49 @@
 [ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="5_b7rwn"]
 [ext_resource type="Texture2D" uid="uid://1n1w310cbu03" path="res://Images/Buttons/finished_enemy.png" id="5_mvypx"]
 [ext_resource type="Texture2D" uid="uid://d22ll7okmawhl" path="res://Images/Map/Synapse 2.jpg" id="7_ay0fg"]
-[ext_resource type="Resource" uid="uid://dd8nma10h4wb7" path="res://Data/Levels/level01.tres" id="11_iht84"]
-[ext_resource type="Resource" uid="uid://bm4gb4pyl7veu" path="res://Data/Levels/level02.tres" id="11_sdts0"]
-[ext_resource type="Resource" uid="uid://ceyacv28hhx3b" path="res://Data/Levels/level03.tres" id="12_ay0fg"]
-[ext_resource type="Resource" uid="uid://c10oplxgvpd81" path="res://Data/Levels/level04.tres" id="13_gojlf"]
-[ext_resource type="Resource" uid="uid://gkhbeufig7mr" path="res://Data/Levels/level05.tres" id="14_ilbj0"]
-[ext_resource type="Resource" uid="uid://0a5fjhnww8au" path="res://Data/Levels/level06.tres" id="15_oo8lt"]
-[ext_resource type="Resource" uid="uid://bun3otguqx3sq" path="res://Data/Levels/level07.tres" id="16_g7dyv"]
-[ext_resource type="Resource" uid="uid://bx4m377602fpl" path="res://Data/Levels/level08.tres" id="17_gojlf"]
-[ext_resource type="Resource" uid="uid://dd28bwmvtk8ii" path="res://Data/Levels/level09.tres" id="18_ilbj0"]
+[ext_resource type="Resource" uid="uid://dd8nma10h4wb7" path="res://Data/Levels/MidEarth - Heros/level01.tres" id="11_iht84"]
+[ext_resource type="Resource" uid="uid://bm4gb4pyl7veu" path="res://Data/Levels/MidEarth - Heros/level02.tres" id="11_sdts0"]
+[ext_resource type="Resource" uid="uid://ceyacv28hhx3b" path="res://Data/Levels/MidEarth - Heros/level03.tres" id="12_ay0fg"]
+[ext_resource type="Resource" uid="uid://c10oplxgvpd81" path="res://Data/Levels/MidEarth - Heros/level04.tres" id="13_gojlf"]
+[ext_resource type="Resource" uid="uid://gkhbeufig7mr" path="res://Data/Levels/MidEarth - Heros/level05.tres" id="14_ilbj0"]
+[ext_resource type="Resource" uid="uid://0a5fjhnww8au" path="res://Data/Levels/MidEarth - Heros/level06.tres" id="15_oo8lt"]
+[ext_resource type="Resource" uid="uid://bun3otguqx3sq" path="res://Data/Levels/MidEarth - Heros/level07.tres" id="16_g7dyv"]
+[ext_resource type="Resource" uid="uid://bx4m377602fpl" path="res://Data/Levels/MidEarth - Heros/level08.tres" id="17_gojlf"]
+[ext_resource type="Resource" uid="uid://dd28bwmvtk8ii" path="res://Data/Levels/MidEarth - Heros/level09.tres" id="18_ilbj0"]
 [ext_resource type="AudioStream" uid="uid://begcjf3cmciav" path="res://Sounds/scroll.wav" id="18_sdts0"]
 [ext_resource type="AudioStream" uid="uid://bj5xtytbevgur" path="res://Sounds/scroll_out.wav" id="19_ay0fg"]
 [ext_resource type="Script" uid="uid://c3mqor6y0xlrs" path="res://Scripts/world_bounds_debug.gd" id="19_gojlf"]
+[ext_resource type="Resource" uid="uid://sfm4kd188lsx" path="res://Data/Levels/MidEarth - Heros/level10.tres" id="19_oo8lt"]
+[ext_resource type="Resource" uid="uid://b50b4mlgcxhev" path="res://Data/Levels/MidEarth - Heros/level11.tres" id="20_rmxy6"]
+[ext_resource type="Resource" uid="uid://dc1vngmia6lw2" path="res://Data/Levels/MidEarth - Heros/level12.tres" id="21_1b3nf"]
+[ext_resource type="Resource" uid="uid://bfyn3xtldsn2u" path="res://Data/Levels/MidEarth - Heros/level13.tres" id="22_ioygx"]
+[ext_resource type="Resource" uid="uid://bq51awqglom72" path="res://Data/Levels/MidEarth - Heros/level14.tres" id="23_oox77"]
+[ext_resource type="Resource" uid="uid://cvob8a4pq0t4f" path="res://Data/Levels/MidEarth - Heros/level15.tres" id="24_xcoxy"]
+[ext_resource type="Resource" uid="uid://dus18e1i18jvt" path="res://Data/Levels/MidEarth - Heros/level16.tres" id="25_aeb5c"]
+[ext_resource type="Resource" uid="uid://b2w5p12w0utmd" path="res://Data/Levels/MidEarth - Heros/level17.tres" id="26_7f3fb"]
+[ext_resource type="Resource" uid="uid://bm4e6nc6nuuti" path="res://Data/Levels/MidEarth - Heros/level18.tres" id="27_oox77"]
+[ext_resource type="Resource" uid="uid://eqqbjj2rm681" path="res://Data/Levels/MidEarth - Heros/level19.tres" id="28_xcoxy"]
+[ext_resource type="Resource" uid="uid://do22pd1t28b6e" path="res://Data/Levels/MidEarth - Heros/level20.tres" id="29_aeb5c"]
+[ext_resource type="Resource" uid="uid://bhcigl846n8kr" path="res://Data/Levels/MidEarth - Heros/level21.tres" id="30_hl0hu"]
+[ext_resource type="Resource" uid="uid://dnc5duuo8ciia" path="res://Data/Levels/MidEarth - Heros/level22.tres" id="31_or4l7"]
+[ext_resource type="Resource" uid="uid://cjvc4wtadt45a" path="res://Data/Levels/MidEarth - Heros/level23.tres" id="32_ms6hc"]
+[ext_resource type="Resource" uid="uid://d1c1kadroluip" path="res://Data/Levels/MidEarth - Heros/level24.tres" id="33_lbv7e"]
+[ext_resource type="Resource" uid="uid://b5rabmwl7kldp" path="res://Data/Levels/MidEarth - Heros/level25.tres" id="34_nv7q6"]
+[ext_resource type="Resource" uid="uid://cy506m4lssuth" path="res://Data/Levels/MidEarth - Heros/level26.tres" id="35_ffdv4"]
+[ext_resource type="Resource" uid="uid://jms00qiffoiq" path="res://Data/Levels/MidEarth - Heros/level27.tres" id="36_j1svq"]
+[ext_resource type="Resource" uid="uid://c3yg7ukdh3icc" path="res://Data/Levels/MidEarth - Heros/level28.tres" id="37_cl30w"]
+[ext_resource type="Resource" uid="uid://bdvrphogvanpt" path="res://Data/Levels/MidEarth - Heros/level29.tres" id="38_myro6"]
+[ext_resource type="Resource" uid="uid://dul58eirk3n0f" path="res://Data/Levels/MidEarth - Heros/level30.tres" id="39_bgs3i"]
+[ext_resource type="Resource" uid="uid://df52ms1m35kks" path="res://Data/Levels/MidEarth - Heros/level31.tres" id="40_bn1c7"]
+[ext_resource type="Resource" uid="uid://bsiciyhnf22k8" path="res://Data/Levels/MidEarth - Heros/level32.tres" id="41_pyhtt"]
+[ext_resource type="Resource" uid="uid://dhcb1d3wqdt2g" path="res://Data/Levels/MidEarth - Heros/level33.tres" id="42_qoce2"]
+[ext_resource type="Resource" uid="uid://cttejww102hv6" path="res://Data/Levels/MidEarth - Heros/level34.tres" id="43_wad6j"]
+[ext_resource type="Resource" uid="uid://ypwwynm1tnsi" path="res://Data/Levels/MidEarth - Heros/level35.tres" id="44_1vqfi"]
+[ext_resource type="Resource" uid="uid://mrrmxngnstb2" path="res://Data/Levels/MidEarth - Heros/level36.tres" id="45_pel25"]
+[ext_resource type="Resource" uid="uid://7jve8xsngwpt" path="res://Data/Levels/MidEarth - Heros/level37.tres" id="46_qduss"]
+[ext_resource type="Resource" uid="uid://cadj5v7bwlj5h" path="res://Data/Levels/MidEarth - Heros/level38.tres" id="47_x5el4"]
+[ext_resource type="Resource" uid="uid://ck2at6gn0rpir" path="res://Data/Levels/MidEarth - Heros/level39.tres" id="48_kdgrw"]
+[ext_resource type="Resource" uid="uid://vu3ul46bj8ay" path="res://Data/Levels/MidEarth - Heros/level40.tres" id="49_67lth"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7urs"]
 bg_color = Color(0.256, 0.256, 0.256, 0.74)
@@ -551,6 +582,7 @@ min_zoom = 0.5
 [node name="ButtonLevels" type="Node" parent="."]
 
 [node name="LevelButton_1" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -171.0
 offset_top = 258.0
 offset_right = -139.0
@@ -559,6 +591,7 @@ level_name = "Sir Valorion"
 config = ExtResource("11_iht84")
 
 [node name="LevelButton_2" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -268.0
 offset_top = 211.0
 offset_right = -236.0
@@ -567,6 +600,7 @@ level_name = "Dame Astra"
 config = ExtResource("11_sdts0")
 
 [node name="LevelButton_3" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -360.0
 offset_top = 97.0
 offset_right = -328.0
@@ -575,6 +609,7 @@ level_name = "Lord Cedric"
 config = ExtResource("12_ay0fg")
 
 [node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -367.0
 offset_top = 385.0
 offset_right = -335.0
@@ -583,6 +618,7 @@ level_name = "Sir Leoric"
 config = ExtResource("13_gojlf")
 
 [node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -486.0
 offset_top = 184.0
 offset_right = -454.0
@@ -591,6 +627,7 @@ level_name = "Sir Rothelm"
 config = ExtResource("14_ilbj0")
 
 [node name="LevelButton_6" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -772.0
 offset_top = 268.0
 offset_right = -740.0
@@ -600,6 +637,7 @@ make_cooler = true
 config = ExtResource("15_oo8lt")
 
 [node name="LevelButton_7" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -547.0
 offset_top = 515.0
 offset_right = -515.0
@@ -608,6 +646,7 @@ level_name = "Grinblade"
 config = ExtResource("16_g7dyv")
 
 [node name="LevelButton_8" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -493.0
 offset_top = -9.0
 offset_right = -461.0
@@ -616,12 +655,296 @@ level_name = "Grinblade"
 config = ExtResource("17_gojlf")
 
 [node name="LevelButton_9" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
 offset_left = -771.0
 offset_top = -38.0
 offset_right = -739.0
 offset_bottom = 4.0
 level_name = "Grinblade"
 config = ExtResource("18_ilbj0")
+
+[node name="LevelButton_10" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -930.0
+offset_top = -12.0
+offset_right = -898.0
+offset_bottom = 30.0
+level_name = "Grinblade"
+make_cooler = true
+config = ExtResource("19_oo8lt")
+
+[node name="LevelButton_11" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -951.0
+offset_top = 148.0
+offset_right = -919.0
+offset_bottom = 190.0
+level_name = "Grinblade"
+config = ExtResource("20_rmxy6")
+
+[node name="LevelButton_12" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1009.0
+offset_top = 245.0
+offset_right = -977.0
+offset_bottom = 287.0
+level_name = "Grinblade"
+config = ExtResource("21_1b3nf")
+
+[node name="LevelButton_13" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1200.0
+offset_top = 24.0
+offset_right = -1168.0
+offset_bottom = 66.0
+level_name = "Grinblade"
+config = ExtResource("22_ioygx")
+
+[node name="LevelButton_14" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1280.0
+offset_top = 241.0
+offset_right = -1248.0
+offset_bottom = 283.0
+level_name = "Grinblade"
+config = ExtResource("23_oox77")
+
+[node name="LevelButton_15" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1436.0
+offset_top = 251.0
+offset_right = -1404.0
+offset_bottom = 293.0
+level_name = "Grinblade"
+config = ExtResource("24_xcoxy")
+
+[node name="LevelButton_16" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1525.0
+offset_top = -51.0
+offset_right = -1493.0
+offset_bottom = -9.0
+level_name = "Grinblade"
+config = ExtResource("25_aeb5c")
+
+[node name="LevelButton_17" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1570.0
+offset_top = 354.0
+offset_right = -1538.0
+offset_bottom = 396.0
+level_name = "Grinblade"
+config = ExtResource("26_7f3fb")
+
+[node name="LevelButton_18" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1798.0
+offset_top = 386.0
+offset_right = -1766.0
+offset_bottom = 428.0
+level_name = "Grinblade"
+config = ExtResource("27_oox77")
+
+[node name="LevelButton_19" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2091.0
+offset_top = 363.0
+offset_right = -2059.0
+offset_bottom = 405.0
+level_name = "Grinblade"
+config = ExtResource("28_xcoxy")
+
+[node name="LevelButton_20" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2144.0
+offset_top = 546.0
+offset_right = -2112.0
+offset_bottom = 588.0
+level_name = "Grinblade"
+make_cooler = true
+config = ExtResource("29_aeb5c")
+
+[node name="LevelButton_21" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -703.0
+offset_top = 606.0
+offset_right = -671.0
+offset_bottom = 648.0
+level_name = "Grinblade"
+config = ExtResource("30_hl0hu")
+
+[node name="LevelButton_22" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1025.0
+offset_top = 423.0
+offset_right = -993.0
+offset_bottom = 465.0
+level_name = "Grinblade"
+config = ExtResource("31_or4l7")
+
+[node name="LevelButton_23" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -728.0
+offset_top = 858.0
+offset_right = -696.0
+offset_bottom = 900.0
+level_name = "Grinblade"
+config = ExtResource("32_ms6hc")
+
+[node name="LevelButton_24" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1396.0
+offset_top = 455.0
+offset_right = -1364.0
+offset_bottom = 497.0
+level_name = "Grinblade"
+config = ExtResource("33_lbv7e")
+
+[node name="LevelButton_25" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1666.0
+offset_top = 491.0
+offset_right = -1634.0
+offset_bottom = 533.0
+level_name = "Grinblade"
+config = ExtResource("34_nv7q6")
+
+[node name="LevelButton_26" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1619.0
+offset_top = 659.0
+offset_right = -1587.0
+offset_bottom = 701.0
+level_name = "Grinblade"
+make_cooler = true
+config = ExtResource("35_ffdv4")
+
+[node name="LevelButton_27" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1324.0
+offset_top = 742.0
+offset_right = -1292.0
+offset_bottom = 784.0
+level_name = "Grinblade"
+config = ExtResource("36_j1svq")
+
+[node name="LevelButton_28" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1396.0
+offset_top = 899.0
+offset_right = -1364.0
+offset_bottom = 941.0
+level_name = "Grinblade"
+config = ExtResource("37_cl30w")
+
+[node name="LevelButton_29" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1552.0
+offset_top = 1041.0
+offset_right = -1520.0
+offset_bottom = 1083.0
+level_name = "Grinblade"
+config = ExtResource("38_myro6")
+
+[node name="LevelButton_30" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1074.0
+offset_top = 969.0
+offset_right = -1042.0
+offset_bottom = 1011.0
+level_name = "Grinblade"
+make_cooler = true
+config = ExtResource("39_bgs3i")
+
+[node name="LevelButton_31" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1801.0
+offset_top = 767.0
+offset_right = -1769.0
+offset_bottom = 809.0
+level_name = "Grinblade"
+config = ExtResource("40_bn1c7")
+
+[node name="LevelButton_32" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1911.0
+offset_top = 755.0
+offset_right = -1879.0
+offset_bottom = 797.0
+level_name = "Grinblade"
+config = ExtResource("41_pyhtt")
+
+[node name="LevelButton_33" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2091.0
+offset_top = 927.0
+offset_right = -2059.0
+offset_bottom = 969.0
+level_name = "Grinblade"
+config = ExtResource("42_qoce2")
+
+[node name="LevelButton_34" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2294.0
+offset_top = 672.0
+offset_right = -2262.0
+offset_bottom = 714.0
+level_name = "Grinblade"
+config = ExtResource("43_wad6j")
+
+[node name="LevelButton_35" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1908.0
+offset_top = 550.0
+offset_right = -1876.0
+offset_bottom = 592.0
+level_name = "Grinblade"
+config = ExtResource("44_1vqfi")
+
+[node name="LevelButton_36" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2221.0
+offset_top = 231.0
+offset_right = -2189.0
+offset_bottom = 273.0
+level_name = "Grinblade"
+config = ExtResource("45_pel25")
+
+[node name="LevelButton_37" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2383.0
+offset_top = 31.0
+offset_right = -2351.0
+offset_bottom = 73.0
+level_name = "Grinblade"
+config = ExtResource("46_qduss")
+
+[node name="LevelButton_38" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2040.0
+offset_top = -10.0
+offset_right = -2008.0
+offset_bottom = 32.0
+level_name = "Grinblade"
+config = ExtResource("47_x5el4")
+
+[node name="LevelButton_39" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -1802.0
+offset_top = -264.0
+offset_right = -1770.0
+offset_bottom = -222.0
+level_name = "Grinblade"
+config = ExtResource("48_kdgrw")
+
+[node name="LevelButton_40" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+z_index = 1
+offset_left = -2295.0
+offset_top = -259.0
+offset_right = -2263.0
+offset_bottom = -217.0
+level_name = "Grinblade"
+config = ExtResource("49_67lth")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="LevelConfig" load_steps=4 format=3 uid="uid://dus18e1i18jvt"]
+
+[ext_resource type="Script" uid="uid://dv3qx2u3mril3" path="res://Scripts/level_config.gd" id="1_he1i5"]
+[ext_resource type="Resource" uid="uid://c0hkjhv3ilkuo" path="res://Data/AIDecks/deck_13.tres" id="1_o57rf"]
+[ext_resource type="Texture2D" uid="uid://cw3grdyv1nuu4" path="res://Images/Enemies_Points_Icons/Kniights 2/2642243.png" id="2_0wimr"]
+
+[resource]
+script = ExtResource("1_he1i5")
+enemy_texture = ExtResource("2_0wimr")
+max_hand = 5
+think_time_ms = 500
+deck = ExtResource("1_o57rf")
+player_points_to_reach = 25
+enemy_points_to_reach = 18
+coefficient_when_destroy_your_card = 1.0
+coefficient_when_destroy_enemy_card = 1.0
+points_ai_get_when_slots_full = 3.0
+points_player_get_when_slots_full = 3.0
+cur_level = "16"
+levels_to_unlock_on_win = Array[String](["13", "39", "15"])
+levels_to_visible_on_win = Array[String](["10", "14", "17", "24", "38"])
+cards_to_unlock_on_win = Array[int]([15, 16])
+metadata/_custom_type_script = "uid://dv3qx2u3mril3"
