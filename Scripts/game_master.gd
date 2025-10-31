@@ -293,6 +293,10 @@ func _rewards_gain() -> void:
 			new_cards_count += 1
 			CollectionManager.unlock(i)
 			
+	for i in levels_to_visible_on_win:
+		if not LevelManager.is_visible(i):
+			LevelManager.add_visible(i)
+			
 			
 	
 	var level_text := ""

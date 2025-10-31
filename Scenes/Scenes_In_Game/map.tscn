@@ -413,8 +413,8 @@ _data = {
 [node name="Map" type="Node2D"]
 script = ExtResource("1_lxa30")
 collection_scene_path = "uid://ciu12i55xk6v6"
-buttons = Array[NodePath]([NodePath("ButtonLevels/LevelButton_1"), NodePath("ButtonLevels/LevelButton_2"), NodePath("ButtonLevels/LevelButton_3"), NodePath("ButtonLevels/LevelButton_4"), NodePath("ButtonLevels/LevelButton_5"), NodePath("ButtonLevels/LevelButton_6"), NodePath("ButtonLevels/LevelButton_7")])
-level_ids = Array[String](["1", "2", "3", "4", "5", "6", "7"])
+buttons = Array[NodePath]([NodePath("ButtonLevels/LevelButton_1"), NodePath("ButtonLevels/LevelButton_2"), NodePath("ButtonLevels/LevelButton_3"), NodePath("ButtonLevels/LevelButton_4"), NodePath("ButtonLevels/LevelButton_5"), NodePath("ButtonLevels/LevelButton_6"), NodePath("ButtonLevels/LevelButton_7"), NodePath("ButtonLevels/LevelButton_8"), NodePath("ButtonLevels/LevelButton_9"), NodePath("ButtonLevels/LevelButton_10"), NodePath("ButtonLevels/LevelButton_11"), NodePath("ButtonLevels/LevelButton_12"), NodePath("ButtonLevels/LevelButton_13"), NodePath("ButtonLevels/LevelButton_14"), NodePath("ButtonLevels/LevelButton_15"), NodePath("ButtonLevels/LevelButton_16"), NodePath("ButtonLevels/LevelButton_17"), NodePath("ButtonLevels/LevelButton_18"), NodePath("ButtonLevels/LevelButton_19"), NodePath("ButtonLevels/LevelButton_20"), NodePath("ButtonLevels/LevelButton_21"), NodePath("ButtonLevels/LevelButton_22"), NodePath("ButtonLevels/LevelButton_23"), NodePath("ButtonLevels/LevelButton_24"), NodePath("ButtonLevels/LevelButton_25"), NodePath("ButtonLevels/LevelButton_26"), NodePath("ButtonLevels/LevelButton_27"), NodePath("ButtonLevels/LevelButton_28"), NodePath("ButtonLevels/LevelButton_29"), NodePath("ButtonLevels/LevelButton_30"), NodePath("ButtonLevels/LevelButton_31"), NodePath("ButtonLevels/LevelButton_32"), NodePath("ButtonLevels/LevelButton_33"), NodePath("ButtonLevels/LevelButton_34"), NodePath("ButtonLevels/LevelButton_35"), NodePath("ButtonLevels/LevelButton_36"), NodePath("ButtonLevels/LevelButton_37"), NodePath("ButtonLevels/LevelButton_38"), NodePath("ButtonLevels/LevelButton_39"), NodePath("ButtonLevels/LevelButton_40")])
+level_ids = Array[String](["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -589,8 +589,10 @@ offset_right = -139.0
 offset_bottom = 300.0
 level_name = "Sir Valorion"
 config = ExtResource("11_iht84")
+_is_visible = true
 
 [node name="LevelButton_2" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -268.0
 offset_top = 211.0
@@ -600,6 +602,7 @@ level_name = "Dame Astra"
 config = ExtResource("11_sdts0")
 
 [node name="LevelButton_3" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -360.0
 offset_top = 97.0
@@ -609,6 +612,7 @@ level_name = "Lord Cedric"
 config = ExtResource("12_ay0fg")
 
 [node name="LevelButton_4" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -367.0
 offset_top = 385.0
@@ -618,6 +622,7 @@ level_name = "Sir Leoric"
 config = ExtResource("13_gojlf")
 
 [node name="LevelButton_5" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -486.0
 offset_top = 184.0
@@ -627,6 +632,7 @@ level_name = "Sir Rothelm"
 config = ExtResource("14_ilbj0")
 
 [node name="LevelButton_6" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -772.0
 offset_top = 268.0
@@ -637,6 +643,7 @@ make_cooler = true
 config = ExtResource("15_oo8lt")
 
 [node name="LevelButton_7" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -547.0
 offset_top = 515.0
@@ -646,6 +653,7 @@ level_name = "Grinblade"
 config = ExtResource("16_g7dyv")
 
 [node name="LevelButton_8" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -493.0
 offset_top = -9.0
@@ -655,6 +663,7 @@ level_name = "Grinblade"
 config = ExtResource("17_gojlf")
 
 [node name="LevelButton_9" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -771.0
 offset_top = -38.0
@@ -664,6 +673,7 @@ level_name = "Grinblade"
 config = ExtResource("18_ilbj0")
 
 [node name="LevelButton_10" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -930.0
 offset_top = -12.0
@@ -674,6 +684,7 @@ make_cooler = true
 config = ExtResource("19_oo8lt")
 
 [node name="LevelButton_11" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -951.0
 offset_top = 148.0
@@ -683,6 +694,7 @@ level_name = "Grinblade"
 config = ExtResource("20_rmxy6")
 
 [node name="LevelButton_12" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1009.0
 offset_top = 245.0
@@ -692,6 +704,7 @@ level_name = "Grinblade"
 config = ExtResource("21_1b3nf")
 
 [node name="LevelButton_13" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1200.0
 offset_top = 24.0
@@ -701,6 +714,7 @@ level_name = "Grinblade"
 config = ExtResource("22_ioygx")
 
 [node name="LevelButton_14" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1280.0
 offset_top = 241.0
@@ -710,6 +724,7 @@ level_name = "Grinblade"
 config = ExtResource("23_oox77")
 
 [node name="LevelButton_15" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1436.0
 offset_top = 251.0
@@ -719,6 +734,7 @@ level_name = "Grinblade"
 config = ExtResource("24_xcoxy")
 
 [node name="LevelButton_16" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1525.0
 offset_top = -51.0
@@ -728,6 +744,7 @@ level_name = "Grinblade"
 config = ExtResource("25_aeb5c")
 
 [node name="LevelButton_17" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1570.0
 offset_top = 354.0
@@ -737,6 +754,7 @@ level_name = "Grinblade"
 config = ExtResource("26_7f3fb")
 
 [node name="LevelButton_18" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1798.0
 offset_top = 386.0
@@ -746,6 +764,7 @@ level_name = "Grinblade"
 config = ExtResource("27_oox77")
 
 [node name="LevelButton_19" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2091.0
 offset_top = 363.0
@@ -755,6 +774,7 @@ level_name = "Grinblade"
 config = ExtResource("28_xcoxy")
 
 [node name="LevelButton_20" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2144.0
 offset_top = 546.0
@@ -765,6 +785,7 @@ make_cooler = true
 config = ExtResource("29_aeb5c")
 
 [node name="LevelButton_21" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -703.0
 offset_top = 606.0
@@ -774,6 +795,7 @@ level_name = "Grinblade"
 config = ExtResource("30_hl0hu")
 
 [node name="LevelButton_22" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1025.0
 offset_top = 423.0
@@ -783,6 +805,7 @@ level_name = "Grinblade"
 config = ExtResource("31_or4l7")
 
 [node name="LevelButton_23" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -728.0
 offset_top = 858.0
@@ -792,6 +815,7 @@ level_name = "Grinblade"
 config = ExtResource("32_ms6hc")
 
 [node name="LevelButton_24" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1396.0
 offset_top = 455.0
@@ -801,6 +825,7 @@ level_name = "Grinblade"
 config = ExtResource("33_lbv7e")
 
 [node name="LevelButton_25" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1666.0
 offset_top = 491.0
@@ -810,6 +835,7 @@ level_name = "Grinblade"
 config = ExtResource("34_nv7q6")
 
 [node name="LevelButton_26" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1619.0
 offset_top = 659.0
@@ -820,6 +846,7 @@ make_cooler = true
 config = ExtResource("35_ffdv4")
 
 [node name="LevelButton_27" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1324.0
 offset_top = 742.0
@@ -829,6 +856,7 @@ level_name = "Grinblade"
 config = ExtResource("36_j1svq")
 
 [node name="LevelButton_28" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1396.0
 offset_top = 899.0
@@ -838,6 +866,7 @@ level_name = "Grinblade"
 config = ExtResource("37_cl30w")
 
 [node name="LevelButton_29" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1552.0
 offset_top = 1041.0
@@ -847,6 +876,7 @@ level_name = "Grinblade"
 config = ExtResource("38_myro6")
 
 [node name="LevelButton_30" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1074.0
 offset_top = 969.0
@@ -857,6 +887,7 @@ make_cooler = true
 config = ExtResource("39_bgs3i")
 
 [node name="LevelButton_31" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1801.0
 offset_top = 767.0
@@ -866,6 +897,7 @@ level_name = "Grinblade"
 config = ExtResource("40_bn1c7")
 
 [node name="LevelButton_32" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1911.0
 offset_top = 755.0
@@ -875,6 +907,7 @@ level_name = "Grinblade"
 config = ExtResource("41_pyhtt")
 
 [node name="LevelButton_33" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2091.0
 offset_top = 927.0
@@ -884,6 +917,7 @@ level_name = "Grinblade"
 config = ExtResource("42_qoce2")
 
 [node name="LevelButton_34" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2294.0
 offset_top = 672.0
@@ -893,6 +927,7 @@ level_name = "Grinblade"
 config = ExtResource("43_wad6j")
 
 [node name="LevelButton_35" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1908.0
 offset_top = 550.0
@@ -902,6 +937,7 @@ level_name = "Grinblade"
 config = ExtResource("44_1vqfi")
 
 [node name="LevelButton_36" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2221.0
 offset_top = 231.0
@@ -911,6 +947,7 @@ level_name = "Grinblade"
 config = ExtResource("45_pel25")
 
 [node name="LevelButton_37" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2383.0
 offset_top = 31.0
@@ -920,6 +957,7 @@ level_name = "Grinblade"
 config = ExtResource("46_qduss")
 
 [node name="LevelButton_38" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2040.0
 offset_top = -10.0
@@ -929,6 +967,7 @@ level_name = "Grinblade"
 config = ExtResource("47_x5el4")
 
 [node name="LevelButton_39" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -1802.0
 offset_top = -264.0
@@ -938,6 +977,7 @@ level_name = "Grinblade"
 config = ExtResource("48_kdgrw")
 
 [node name="LevelButton_40" parent="ButtonLevels" instance=ExtResource("4_1xnci")]
+visible = false
 z_index = 1
 offset_left = -2295.0
 offset_top = -259.0

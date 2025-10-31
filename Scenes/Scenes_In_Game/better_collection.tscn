@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://ciu12i55xk6v6"]
 
-[ext_resource type="Script" uid="uid://c4nvnrcdp0pjj" path="res://Scenes/Scenes_In_Game/better_collection.gd" id="1_tj20f"]
+[ext_resource type="Script" uid="uid://c4nvnrcdp0pjj" path="res://Scripts/better_collection.gd" id="1_tj20f"]
 [ext_resource type="PackedScene" uid="uid://bvoo35ew5r61n" path="res://Scenes/button_card_for_collection.tscn" id="2_4l0j1"]
 [ext_resource type="Texture2D" uid="uid://dm6vswilrbj3s" path="res://Images/BackGrounds/wood_texture_2.jpg" id="3_wxq0g"]
 [ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="4_ouuol"]
