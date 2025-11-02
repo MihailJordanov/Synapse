@@ -195,3 +195,9 @@ func _pulse_button(button: Button) -> void:
 	tween.parallel().tween_property(button, "modulate", Color(1.3, 1.3, 1.3), 0.05)
 	tween.tween_property(button, "scale", Vector2(1, 1), 0.05)
 	tween.parallel().tween_property(button, "modulate", Color(1, 1, 1), 0.05)
+
+
+func _on_go_to_tutorial_button_down() -> void:
+	animation_player.play("closeScene")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file(tutorial)

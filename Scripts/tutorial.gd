@@ -6,7 +6,10 @@ extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var anim_parts := $AnimParts
-@onready var infot_label: RichTextLabel = $InfotLabel
+@onready var infot_label: RichTextLabel = $InfoPanel/InfotLabel
+@onready var skip_button: Button = $SkipButton
+
+var _skip_locked: bool = false
 
 var EdgeScene := preload("res://Scenes/edge.tscn")
 
@@ -43,6 +46,7 @@ const _CARD_RESET_ANIM := "RESET"
 
 
 func _ready() -> void:
+	_lock_skip()
 	animation_player.play("openScene")
 	
 	edge_pairs = {
@@ -63,17 +67,53 @@ func _ready() -> void:
 	animation_player.animation_finished.connect(_on_animation_finished)
 	_play_open_then_start()
 
+func _lock_skip() -> void:
+	_skip_locked = true
+	if is_instance_valid(skip_button):
+		skip_button.disabled = true
+
+func _unlock_skip() -> void:
+	_skip_locked = false
+	if is_instance_valid(skip_button):
+		skip_button.disabled = false
+
+
 func _on_skip_button_button_down() -> void:
+	if _skip_locked:
+		return
+
 	_edge4_looping = false
 	_edge4_timer = null
 
 	if animation_player.current_animation == "final":
+		_lock_skip()
 		await _play_close_and_go_menu()
+		return
+
+	if animation_player.current_animation == "edge_4":
+		_lock_skip()
+
+		for c in [card_2, card_3, card_4]:
+			_play_card_anim_and_then_reset(c, _CARD_FIRE_ANIM, _CARD_RESET_ANIM)
+
+		_clear_edges(0.2)
+
+		var wait_time := _calc_fire_reset_total_wait([card_2, card_3, card_4])
+		await get_tree().create_timer(wait_time).timeout
+
+		var final_index := animations.find("final")
+		if final_index == -1:
+			final_index = animations.size() - 1
+		current_index = final_index
+		animation_player.play(animations[current_index])
+
+		_unlock_skip()
 		return
 
 	current_index += 1
 	if current_index < animations.size():
 		animation_player.play(animations[current_index])
+
 
 
 func _on_animation_started(anim_name: StringName) -> void:
@@ -153,13 +193,21 @@ func _schedule_edge4_tick() -> void:
 	_edge4_timer.timeout.connect(_edge4_tick, CONNECT_ONE_SHOT)
 
 func _edge4_tick() -> void:
-	if not _edge4_looping or animation_player.current_animation != "edge_4":
+	if not _edge4_looping:
+		return
+	if animation_player.current_animation != "edge_4":
 		return
 
-	for c in [card_2, card_3, card_4]:
-		_play_card_anim_and_then_reset(c, _CARD_FIRE_ANIM, _CARD_RESET_ANIM)
+	await _play_fire_reset_all_and_wait([card_2, card_3, card_4])
 
+	if not _edge4_looping:
+		return
+
+	animation_player.stop(true)
+	animation_player.play("edge_4")
 	_schedule_edge4_tick()
+
+
 
 
 # --- помощници само в Tutorial ---
@@ -184,12 +232,12 @@ func _play_card_anim_and_then_reset(card: Node, fire_anim: String, reset_anim: S
 		)
 		
 func _play_close_and_go_menu() -> void:
+	_lock_skip()
 	LevelManager.add_cleared("0")
 	var close_anim: Animation = animation_player.get_animation("closeScene")
 	if close_anim == null:
 		push_warning("Missing animation: closeScene")
 		if ResourceLoader.exists(menu_scene_path):
-			LevelManager.add_cleared("0")
 			get_tree().change_scene_to_file(menu_scene_path)
 		else:
 			push_error("Menu scene not found: %s" % menu_scene_path)
@@ -208,108 +256,157 @@ func _play_close_and_go_menu() -> void:
 
 
 func _play_open_then_start() -> void:
+	_lock_skip()
 	animation_player.play("openScene")
 	var finished_name: String = await animation_player.animation_finished
 	if finished_name == "openScene":
+		_unlock_skip()
 		animation_player.play(animations[current_index])
+
 		
+
+func _get_anim_length(card: Node, anim_name: String) -> float:
+	if not is_instance_valid(card):
+		return 0.0
+	var ap: AnimationPlayer = card.get_node_or_null("AnimationPlayer") as AnimationPlayer
+	if ap and ap.has_animation(anim_name):
+		var a: Animation = ap.get_animation(anim_name)
+		if a:
+			return a.length / max(ap.speed_scale, 0.0001)
+	return 0.0
+
+func _calc_fire_reset_total_wait(cards: Array) -> float:
+	var max_wait := 0.0
+	for c in cards:
+		var fire_len := _get_anim_length(c, _CARD_FIRE_ANIM)
+		var reset_len := _get_anim_length(c, _CARD_RESET_ANIM)
+		var total := fire_len + reset_len
+		if total > max_wait:
+			max_wait = total
+	if max_wait <= 0.0:
+		max_wait = 0.8  
+	return max_wait
+
+
+func _play_fire_reset_all_and_wait(cards: Array) -> void:
+	# 🔒 Заключваме Skip бутона
+	_lock_skip()
+
+	# Пускаме FIRE → RESET за всички карти
+	for c in cards:
+		_play_card_anim_and_then_reset(c, _CARD_FIRE_ANIM, _CARD_RESET_ANIM)
+
+	# Изчисляваме колко време общо траят (максимум от всички)
+	var wait_time := _calc_fire_reset_total_wait(cards)
+	if wait_time <= 0.0:
+		wait_time = 0.8
+
+	# Изчакваме
+	await get_tree().create_timer(wait_time).timeout
+
+	# 🔓 Отключваме след края
+	_unlock_skip()
+
+
 		
 # --- Tutorial Messages ---
 var tutorial_texts := {
 	"pl_play_first_card": """
-[center][b][color=#00ffb7]Welcome to Synapse![/color][/b][/center]
+[center][b][color=#00ffb7]Welcome to Synapse! ⚡️[/color][/b][/center]
 
-This tutorial will show you the [b]core rules[/b] and [b]flow[/b] of the game.
+This quick guide shows the [b]core flow[/b] of the game.  
+Players take turns placing cards. 🕹️
 
-In Synapse, two players take turns placing cards on the board.
-Each card has its own [color=#7fe9ff]Self Types[/color] and [color=#ff7b7b]Attack On[/color] attributes.
+Each card has [color=#7fe9ff]Self Types[/color] and [color=#ff7b7b]Attack On[/color] —  
+their interaction creates [b]edges[/b]. 🧠
 
-Let's begin — it's your turn to place your first card!
+Your move — place your first card! 🎯
 """,
 
 	"ai_play_first_card": """
-[center][b][color=#ff6961]Enemy’s turn![/color][/b][/center]
+[center][b][color=#ff6961]Enemy’s turn! 🤖[/color][/b][/center]
 
-Now the opponent places their first card.
-Just like you, their card also has [color=#7fe9ff]Self Types[/color] and [color=#ff7b7b]Attack On[/color] —  
-these define how connections are formed between cards.
+The opponent places a card.  
+It also has [color=#7fe9ff]Self Types[/color] and [color=#ff7b7b]Attack On[/color].
+
+When they align, an [color=#00ffb7]edge[/color] sparks! ✨
 """,
 
 	"edge_1": """
-[center][b][color=#00ffb7]Connections![/color][/b][/center]
+[center][b][color=#00ffb7]Edges! 🧩[/color][/b][/center]
 
-Whenever a card’s [b]Attack On[/b] matches another card’s [b]Self Type[/b],  
-a [color=#00ffb7]connection[/color] is formed between them.
+If [b]Attack On[/b] matches a card’s [b]Self Type[/b],  
+an [color=#00ffb7]edge[/color] forms between them. ⚡️
 
-These links are key to creating powerful [b]cycles[/b] on the board.
+Edges weave the game’s [i]neural web[/i] —  
+your path to powerful [b]cycles[/b]. 🔄
 """,
 
 	"pl_play_second_card": """
-[center][b][color=#00ffb7]Your turn again![/color][/b][/center]
+[center][b][color=#00ffb7]Your move again! 🔁[/color][/b][/center]
 
-You’ve placed another card.  
-Connections between cards are [i]invisible[/i] at first — they only become visible once a [b]cycle[/b] is formed.
+You placed another card.  
+Edges stay [i]hidden[/i] until a [b]cycle[/b] forms — then they ignite! ✨
 
-Keep playing strategically to link multiple cards together!
+Keep building smart patterns. 🧠
 """,
 
 	"edge_2": """
-[center][b][color=#FFD166]Forming a Cycle[/color][/b][/center]
+[center][b][color=#FFD166]Cycle Formation 🌀[/color][/b][/center]
 
-New cards bring new connections!  
-Your goal is to [b]form a closed cycle[/b].
+Every new card adds potential edges.  
+Goal: [b]close a full cycle[/b]. 🎯
 
-When a cycle is created, all cards that are part of it are [b]destroyed[/b],  
-and the player who placed the last card in that cycle earns [color=#00ffb7]+1 point[/color] for each card destroyed!
+When it closes, all cards in the loop are [b]destroyed[/b], 💥  
+and you gain [color=#00ffb7]+1 point[/color] per card!
 """,
 
 	"ai_play_second_card": """
-[center][b][color=#ff6961]Enemy plays again![/color][/b][/center]
+[center][b][color=#ff6961]Enemy plays again! ♟️[/color][/b][/center]
 
-The opponent also aims to form cycles —  
-it doesn’t matter whose cards connect,  
-[b]any[/b] matching elements can form a valid link!
+They want cycles too.  
+It doesn’t matter whose cards connect —  
+[b]any matching pair[/b] can make an edge. ⚡️
 
-Stay alert and plan your next move wisely.
+Think ahead and outplay them. 🧭
 """,
 
 	"edge_3": """
-[center][b][color=#7fe9ff]More Links![/color][/b][/center]
+[center][b][color=#7fe9ff]Expanding the Web 🌐[/color][/b][/center]
 
-Connections can form between [b]your own cards[/b] or [b]enemy cards[/b].  
-What matters is the [color=#FFD166]pattern[/color] they create on the board.
+Edges can link [b]your cards[/b], [b]enemy cards[/b], or both.  
+Focus on the [color=#FFD166]pattern[/color] they create. 🧵
 
-Build larger networks — the more complex they become,  
-the higher your chances to form a rewarding cycle.
+Bigger networks = more chances for a cycle! 📈
 """,
 
 	"pl_play_third_card": """
-[center][b][color=#00ffb7]A Cycle Appears![/color][/b][/center]
+[center][b][color=#00ffb7]Cycle Incoming! ⚠️[/color][/b][/center]
 
-You’ve placed a card that almost completes a full connection loop.  
-Keep your eyes open — the next edge might close the cycle!
+Your card almost completes the loop…  
+One more edge and the chain reaction begins! 🔓
 """,
 
 	"edge_4": """
-[center][b][color=#FF5555]Cycle Complete![/color][/b][/center]
+[center][b][color=#FF5555]Cycle Complete! ✅[/color][/b][/center]
 
-A closed network has been formed!  
-The connected cards are now [b]destroyed[/b] in a burst of energy.
+The network closes and ignites! ✨  
+Cards in the loop are [b]obliterated[/b]. 💥
 
-You’ve earned [color=#00ffb7]points[/color] for each card that was part of the loop —  
-well done, Synapse master!
+You score [color=#00ffb7]points[/color] for each —  
+well played, Synapse master! 👑
 """,
 
 	"final": """
-[center][b][color=#00ffb7]Tutorial Complete![/color][/b][/center]
+[center][b][color=#00ffb7]Tutorial Complete! 🏁[/color][/b][/center]
 
-You’ve learned the basics of Synapse:
-• Place cards strategically  
-• Match [color=#7fe9ff]Attack On[/color] with [color=#ff7b7b]Self Types[/color]  
-• Form cycles to score points  
+You’re ready to play Synapse:  
+• Place cards with intent 🧭  
+• Match [color=#ff7b7b]Attack On[/color] ↔ [color=#7fe9ff]Self Types[/color] 🔗  
+• Form [b]cycles[/b] to score points 🌀
 
-That’s all!  
-[b]You’re ready to play the real game.[/b]  
-Press [color=#FFD166]Skip[/color] to finish the tutorial.
+That’s it — simple, elegant, powerful.  
+[b]Enter the real battle![/b] 🚀  
+Press [color=#FFD166]Skip[/color] to begin.
 """
 }
