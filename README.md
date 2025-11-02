@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Game_Icons/Synapse_Icon_4.png" 
+  <img src="https://github.com/MihailJordanov/Synapse/blob/main/Images/Game_Icons/Synapse_icon_5.png"
        alt="Synapse Game Icon" 
        width="180" 
        height="180"
