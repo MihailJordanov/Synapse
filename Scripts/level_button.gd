@@ -42,7 +42,6 @@ func _ready() -> void:
 	#	await get_tree().physics_frame
 #	#	_update_unlocks_from_overlap()
 	await get_tree().process_frame
-	print(self.config.cur_level)
 
 	waiting_for_beating_texture_rect.visible = false
 	debug_panel.visible = Engine.is_editor_hint()

@@ -315,3 +315,7 @@ func _rewards_gain() -> void:
 		level_text + "\n" +
 		card_text
 	)
+
+
+func _on_debbug_on_win_button_button_down() -> void:
+	on_win("DEBUGGING WIN")

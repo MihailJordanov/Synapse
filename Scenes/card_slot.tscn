@@ -22,6 +22,7 @@ shape = SubResource("RectangleShape2D_jjvhh")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 offset_left = -25.0
 offset_top = -41.0
 offset_right = 25.0

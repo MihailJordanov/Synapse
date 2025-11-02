@@ -45,6 +45,11 @@ enum OwnerType   { PLAYER, AI }
 
 @export_category("Card Image")
 @export var card_texture: Texture2D : set = set_card_texture
+@export var is_back: bool = false:
+	set(value):
+		is_back = value
+		show_back(value)
+
 
 
 # --- UI refs ---
@@ -119,6 +124,8 @@ func _ready() -> void:
 	_update_kind_ui()
 	_update_style_ui()
 	_update_targets_ui()
+	
+	show_back(is_back)
 
 
 # --- setters ---

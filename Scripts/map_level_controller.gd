@@ -3,6 +3,8 @@ extends Node2D
 
 @export_category("Go to scenes")
 @export_file("*.tscn") var collection_scene_path: String = "res://Scenes/Scenes_In_Game/collection.tscn"
+@export_file("*.tscn") var tutorial: String = "res://Scenes/Scenes_In_Game/Levels/tutorial.tscn"
+
 
 @export_category("Button -> level")
 @export var buttons: Array[NodePath] = []          
@@ -23,6 +25,11 @@ var _next_button: LevelButton = null
 var _panel_visible := false
 
 func _ready() -> void:
+	if not LevelManager.is_cleared("0"):
+		get_tree().call_deferred("change_scene_to_file", tutorial)
+		return
+
+	
 	
 	animation_player.play("openScene")
 	# 1) Синхронизиране на бутони с LevelManager

@@ -134,7 +134,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "clips": [{
-"end_offset": 0.0,
+"end_offset": 0.0380028,
 "start_offset": 0.0,
 "stream": ExtResource("3_u5wvb")
 }],
@@ -300,7 +300,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "clips": [{
-"end_offset": 6.35496,
+"end_offset": 6.36913,
 "start_offset": 0.223113,
 "stream": ExtResource("6_yvxpl")
 }],
@@ -587,7 +587,6 @@ scale = Vector2(1.62, 1.73196)
 texture = ExtResource("4_bnspj")
 hframes = 8
 vframes = 2
-frame = 14
 
 [node name="DestroySprite2D_Water" type="Sprite2D" parent="."]
 visible = false
@@ -595,7 +594,6 @@ scale = Vector2(1.62, 1.73196)
 texture = ExtResource("4_eumee")
 hframes = 8
 vframes = 2
-frame = 14
 
 [node name="DestroySprite2D_Lighting" type="Sprite2D" parent="."]
 visible = false

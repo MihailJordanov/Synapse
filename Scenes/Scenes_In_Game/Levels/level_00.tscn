@@ -1072,6 +1072,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_xma2k")
+is_edge_visible = true
 
 [node name="LevelRoot" type="Node" parent="."]
 script = ExtResource("7_u8q5y")
@@ -1873,8 +1874,17 @@ offset_right = 666.0
 offset_bottom = 378.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qmait")
 
+[node name="DebbugOnWinButton" type="Button" parent="."]
+visible = false
+offset_left = 532.0
+offset_top = 253.0
+offset_right = 617.0
+offset_bottom = 298.0
+text = "Just Win"
+
 [connection signal="button_down" from="CanvasLayer/PauseButton" to="CanvasLayer" method="_on_pause_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/PausedPanel/PlayButton" to="CanvasLayer" method="_on_play_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/PausedPanel/ExitButton" to="CanvasLayer" method="_on_exit_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/WinPanel/HomeButton" to="CanvasLayer" method="_on_exit_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/LosePanel/HomeButton" to="CanvasLayer" method="_on_exit_button_button_down"]
+[connection signal="button_down" from="DebbugOnWinButton" to="GameMaster" method="_on_debbug_on_win_button_button_down"]
