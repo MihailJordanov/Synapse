@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dye7h3iwsbaj4"]
+[gd_scene load_steps=95 format=3 uid="uid://dye7h3iwsbaj4"]
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
@@ -8,9 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bkyucjwobn1js" path="res://Images/Buttons/show_level.png" id="3_uxesv"]
 [ext_resource type="PackedScene" uid="uid://v3525e5fn7dq" path="res://Scenes/level_button.tscn" id="4_1xnci"]
 [ext_resource type="FontFile" uid="uid://d1yahlnho8lp3" path="res://Fonts/WANTED.ttf" id="4_moljf"]
+[ext_resource type="Texture2D" uid="uid://cq84e26ffekvs" path="res://Images/Buttons/level_button_4.png" id="5_83rt4"]
 [ext_resource type="FontFile" uid="uid://c2xx4dk6wwoiw" path="res://Fonts/AltarGothicDemo-Regular.otf" id="5_b7rwn"]
 [ext_resource type="Texture2D" uid="uid://1n1w310cbu03" path="res://Images/Buttons/finished_enemy.png" id="5_mvypx"]
+[ext_resource type="Texture2D" uid="uid://870hfrt730qv" path="res://Images/Buttons/Exclamation mark.png" id="6_ju621"]
 [ext_resource type="Texture2D" uid="uid://d22ll7okmawhl" path="res://Images/Map/Synapse 2.jpg" id="7_ay0fg"]
+[ext_resource type="Texture2D" uid="uid://c436rf8yodnlt" path="res://Images/Buttons/istockphoto-528069240-612x612-removebg-preview.png" id="8_iciny"]
 [ext_resource type="Resource" uid="uid://dd8nma10h4wb7" path="res://Data/Levels/MidEarth - Heros/level01.tres" id="11_iht84"]
 [ext_resource type="Resource" uid="uid://bm4gb4pyl7veu" path="res://Data/Levels/MidEarth - Heros/level02.tres" id="11_sdts0"]
 [ext_resource type="Resource" uid="uid://ceyacv28hhx3b" path="res://Data/Levels/MidEarth - Heros/level03.tres" id="12_ay0fg"]
@@ -521,12 +524,97 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UpPanel" type="Panel" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.086
+offset_left = 193.0
+offset_right = -193.0
 offset_bottom = 0.039999
 theme_override_styles/panel = SubResource("StyleBoxFlat_cpfjx")
+
+[node name="LevelsInfo" type="Node2D" parent="CanvasLayer/UpPanel"]
+position = Vector2(177, 4)
+
+[node name="LevelIconTextureRect" type="TextureRect" parent="CanvasLayer/UpPanel/LevelsInfo"]
+offset_right = 17.0
+offset_bottom = 20.0
+texture = ExtResource("5_83rt4")
+expand_mode = 3
+
+[node name="LevelIconTextureRect2" type="TextureRect" parent="CanvasLayer/UpPanel/LevelsInfo"]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 15.0
+offset_bottom = 17.0
+texture = ExtResource("5_mvypx")
+expand_mode = 5
+
+[node name="LevelsInfoTextLabel" type="RichTextLabel" parent="CanvasLayer/UpPanel/LevelsInfo"]
+offset_left = 22.0
+offset_right = 73.0
+offset_bottom = 22.0
+theme_override_font_sizes/bold_italics_font_size = 13
+theme_override_font_sizes/italics_font_size = 13
+theme_override_font_sizes/mono_font_size = 13
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+bbcode_enabled = true
+text = "13/55"
+vertical_alignment = 1
+
+[node name="LevelsUnlockInfo" type="Node2D" parent="CanvasLayer/UpPanel"]
+visible = false
+position = Vector2(217, 5)
+
+[node name="UnlockIconTextureRect" type="TextureRect" parent="CanvasLayer/UpPanel/LevelsUnlockInfo"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+texture = ExtResource("6_ju621")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="UnlockInfoTextLabel" type="RichTextLabel" parent="CanvasLayer/UpPanel/LevelsUnlockInfo"]
+offset_left = 14.0
+offset_top = -1.0
+offset_right = 42.0
+offset_bottom = 21.0
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+bbcode_enabled = true
+text = "x3"
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinsInfo" type="Node2D" parent="CanvasLayer/UpPanel"]
+position = Vector2(4, 5)
+
+[node name="CoinIconTextureRect" type="TextureRect" parent="CanvasLayer/UpPanel/CoinsInfo"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+texture = ExtResource("8_iciny")
+expand_mode = 3
+
+[node name="CoinInfoTextLabel" type="RichTextLabel" parent="CanvasLayer/UpPanel/CoinsInfo"]
+offset_left = 20.0
+offset_top = -1.0
+offset_right = 116.0
+offset_bottom = 21.0
+theme_override_font_sizes/bold_italics_font_size = 13
+theme_override_font_sizes/italics_font_size = 13
+theme_override_font_sizes/mono_font_size = 13
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+bbcode_enabled = true
+text = "$312
+"
+vertical_alignment = 1
 
 [node name="SelectLevelPanel2" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
@@ -655,6 +743,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimateParts" type="Node2D" parent="CanvasLayer"]
+visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer/AnimateParts"]
 offset_right = 640.0
