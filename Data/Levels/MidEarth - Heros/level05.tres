@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_twjle")
+name = ""
 enemy_texture = ExtResource("2_h6r5c")
 max_hand = 5
 think_time_ms = 500
@@ -20,4 +21,6 @@ cur_level = "5"
 levels_to_unlock_on_win = Array[String](["6"])
 levels_to_visible_on_win = Array[String](["11", "12"])
 cards_to_unlock_on_win = Array[int]([30, 31])
+coins_min = 1
+coins_max = 3
 metadata/_custom_type_script = "uid://dv3qx2u3mril3"

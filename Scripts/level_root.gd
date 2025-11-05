@@ -17,7 +17,7 @@ func _apply_config(cfg: LevelConfig) -> void:
 	gs.max_hand      = cfg.max_hand
 	gs.think_time_ms = cfg.think_time_ms
 	gs.deck          = cfg.deck
-
+	gs._name         = cfg.name
 
 	# --- GameMaster ---
 	gm.player_points_to_reach = cfg.player_points_to_reach
@@ -32,3 +32,5 @@ func _apply_config(cfg: LevelConfig) -> void:
 	gm.levels_to_unlock_on_win  = cfg.levels_to_unlock_on_win
 	gm.levels_to_visible_on_win = cfg.levels_to_visible_on_win
 	gm.cards_to_unlock_on_win   = cfg.cards_to_unlock_on_win
+	gm.coins_min                = cfg.coins_min
+	gm.coins_max                = cfg.coins_max

@@ -2,6 +2,7 @@ extends Resource
 class_name LevelConfig
 
 @export_category("Enemy / AI")
+@export var name : String = ""
 @export var enemy_texture : Texture
 @export var max_hand : int = 5
 @export var think_time_ms : int = 500
@@ -22,3 +23,5 @@ class_name LevelConfig
 @export var levels_to_unlock_on_win : Array[String] = []
 @export var levels_to_visible_on_win : Array[String] = []
 @export var cards_to_unlock_on_win  : Array[int] = []
+@export var coins_min: int = 1
+@export var coins_max: int = 5

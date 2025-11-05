@@ -18,6 +18,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var info_rich_text_label: RichTextLabel = $CanvasLayer/SelectLevelPanel2/InfoRichTextLabel
 @onready var go_to_collection: Button = $CanvasLayer/DownPanel/GoToCollection
+@onready var show_coins_label: RichTextLabel = $CanvasLayer/SelectLevelPanel2/ShowCoinsLabel
 
 var _selected_button: LevelButton = null
 var _pending_show := false
@@ -103,6 +104,7 @@ func _apply_button_info(btn: LevelButton) -> void:
 	enemy_name_label.clear()
 	enemy_name_label.append_text(btn.level_name)  
 
+	show_coins_label.text = "[b][color=#222222]Possible reward:[/color][/b] [b][color=gold]💰[outline_size=2] $%d–$%d" % [btn.config.coins_min, btn.config.coins_max]
 
 	cooler_texture_rect.visible = btn.make_cooler
 

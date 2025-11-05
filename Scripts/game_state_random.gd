@@ -9,6 +9,7 @@ signal ai_slots_full
 
 # === КОНФИГ ===
 @export_category("Enemy")
+@export var _name : String = ""
 @export var enemy_texture : Texture
 @export var level_path: NodePath             # посочи Level нода
 @export var enemy_slots_root_path: NodePath           # посочи .../Slots/EnemySlots

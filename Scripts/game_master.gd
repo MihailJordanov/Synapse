@@ -17,7 +17,8 @@ extends Node
 @export var levels_to_unlock_on_win : Array[String]
 @export var levels_to_visible_on_win : Array[String]
 @export var cards_to_unlock_on_win : Array[int]
-
+@export var coins_min: int = 1
+@export var coins_max: int = 5
 # === NODES ===
 @onready var level: Level = $".."
 @onready var game_state_random: GameStateRandom = $"../GameStateRandom"
@@ -256,7 +257,7 @@ func on_win(reason: String = "") -> void:
 	print("[GameMaster] WIN! Reason: %s" % reason)
 	emit_signal("game_over", "player")
 	if animation_player: animation_player.play("on_win")
-	
+
 	_rewards_gain()
 
 
@@ -280,25 +281,31 @@ func _animate_points_gain(label: Control, flash: Color) -> void:
 
 func _rewards_gain() -> void:
 	LevelManager.add_cleared(cur_level)
-	var new_level_count : int = 0
-	var new_cards_count : int = 0
+	var new_level_count: int = 0
+	var new_cards_count: int = 0
 
+	# --- Нива за отключване ---
 	for i in levels_to_unlock_on_win:
 		if not LevelManager.is_unlocked(i):
 			new_level_count += 1
 			LevelManager.add_unlocked(i)
-		
+	
+	# --- Карти за отключване ---
 	for i in cards_to_unlock_on_win:
 		if not CollectionManager.is_unlocked(i):
 			new_cards_count += 1
 			CollectionManager.unlock(i)
 			
+	# --- Нива за видимост ---
 	for i in levels_to_visible_on_win:
 		if not LevelManager.is_visible(i):
 			LevelManager.add_visible(i)
-			
-			
-	
+
+	# --- Пари (наградата) ---
+	var coins_reward := randi_range(coins_min, coins_max)
+	ItemManager.add_money(coins_reward)
+
+	# --- Текст за наградите ---
 	var level_text := ""
 	if new_level_count > 0:
 		level_text = "+[b]%d[/b] new level%s unlocked" % [new_level_count, "" if new_level_count == 1 else "s"]
@@ -311,10 +318,15 @@ func _rewards_gain() -> void:
 	else:
 		card_text = "No new cards"
 
+	var coins_text := "[color=yellow]+%d[/color] coins earned!" % coins_reward
+
+	# --- Обединен текст ---
 	reward_info_text_label.text = (
 		level_text + "\n" +
-		card_text
+		card_text + "\n" +
+		coins_text
 	)
+
 
 
 func _on_debbug_on_win_button_button_down() -> void:

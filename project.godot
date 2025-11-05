@@ -21,6 +21,7 @@ config/icon="uid://cc7tw16wwfgll"
 CollectionManager="*res://Globals/collection_manager.gd"
 LevelManager="*res://Globals/level_manager.gd"
 LevelRuntime="*res://Globals/level_runtime.gd"
+ItemManager="*res://Globals/item_manager.gd"
 
 [display]
 
