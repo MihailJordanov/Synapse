@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AIDeck" load_steps=2 format=3 uid="uid://c1xo2x7lnfps3"]
+
+[ext_resource type="Script" uid="uid://cduhtj416eb8q" path="res://Scripts/ai_deck.gd" id="1_n0o2m"]
+
+[resource]
+script = ExtResource("1_n0o2m")
+name = "Deck20"
+ids = [80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 50, 52, 53, 54, 55, 56, 57, 58, 59]
+metadata/_custom_type_script = "uid://cduhtj416eb8q"

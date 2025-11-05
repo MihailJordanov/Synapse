@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bem4dyoohmryt" path="res://Scripts/picked_card_show.gd" id="6_amk25"]
 [ext_resource type="PackedScene" uid="uid://cstpt4qe1v3ap" path="res://Scenes/card_slot.tscn" id="7_yj86i"]
 [ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scripts/game_state_random.gd" id="8_mfjw7"]
-[ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/deck_01.tres" id="9_rd0fr"]
+[ext_resource type="Resource" uid="uid://db3ahg1ash8ro" path="res://Data/AIDecks/Heros/deck_01.tres" id="9_rd0fr"]
 [ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="10_qgqr5"]
 [ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="11_i8brt"]
 [ext_resource type="Script" uid="uid://cjcrddd46qs8f" path="res://Scripts/UI_controllerr.gd" id="12_7wmak"]

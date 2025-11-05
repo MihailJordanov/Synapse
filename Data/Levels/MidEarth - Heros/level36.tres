@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelConfig" load_steps=4 format=3 uid="uid://mrrmxngnstb2"]
 
-[ext_resource type="Resource" uid="uid://dc0sfsppc0tvl" path="res://Data/AIDecks/deck_14.tres" id="1_d757p"]
+[ext_resource type="Resource" uid="uid://dc0sfsppc0tvl" path="res://Data/AIDecks/Heros/deck_14.tres" id="1_d757p"]
 [ext_resource type="Script" uid="uid://dv3qx2u3mril3" path="res://Scripts/level_config.gd" id="1_n474j"]
 [ext_resource type="Texture2D" uid="uid://b56dmvivoqtew" path="res://Images/Enemies_Points_Icons/Kniights 2/2146616.png" id="2_oohs6"]
 

@@ -50,6 +50,15 @@ func _ready() -> void:
 		btn._is_visible = LevelManager.is_visible(level_id)
 		if btn.has_method("_update_textures"):
 			btn._update_textures()
+	
+		if btn.is_clear:
+			for unlcok_level in btn.config.levels_to_unlock_on_win:
+				if not LevelManager.is_unlocked(unlcok_level):
+					LevelManager.add_unlocked(unlcok_level)
+			
+			for visible_level in btn.config.levels_to_visible_on_win:
+				if not LevelManager.is_visible(visible_level):
+					LevelManager.add_visible(visible_level)
 
 		# 2) Връзка: натискане на бутон -> селекция/панел
 		btn.pressed.connect(func(): _on_level_button_pressed(btn))
@@ -201,3 +210,4 @@ func _on_go_to_tutorial_button_down() -> void:
 	animation_player.play("closeScene")
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(tutorial)
+	

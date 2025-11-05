@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LevelConfig" load_steps=4 format=3 uid="uid://sfm4kd188lsx"]
 
 [ext_resource type="Script" uid="uid://dv3qx2u3mril3" path="res://Scripts/level_config.gd" id="1_jd1m3"]
-[ext_resource type="Resource" uid="uid://cwobg1m4k3qi" path="res://Data/AIDecks/deck_10.tres" id="1_n1ct7"]
+[ext_resource type="Resource" uid="uid://cwobg1m4k3qi" path="res://Data/AIDecks/Heros/deck_10.tres" id="1_n1ct7"]
 [ext_resource type="Texture2D" uid="uid://bf2x2k03o8glb" path="res://Images/Enemies_Points_Icons/enemy_points_icon_12.png" id="2_p0lt5"]
 
 [resource]

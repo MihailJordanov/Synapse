@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://duavrixsy3uc8" path="res://Scripts/level.gd" id="1_xma2k"]
 [ext_resource type="Script" uid="uid://do1bmv25rxnu8" path="res://Scripts/game_state_random.gd" id="2_u8q5y"]
 [ext_resource type="Texture2D" uid="uid://dr6xl10yer3fm" path="res://Images/Enemies_Points_Icons/enemy_points_icon_2.png" id="3_fhvbx"]
-[ext_resource type="Resource" uid="uid://b6047cye62hux" path="res://Data/AIDecks/deck_02.tres" id="4_pbtr7"]
+[ext_resource type="Resource" uid="uid://b6047cye62hux" path="res://Data/AIDecks/Heros/deck_02.tres" id="4_pbtr7"]
 [ext_resource type="Script" uid="uid://0323kx562pxh" path="res://Scripts/game_master.gd" id="5_5mjr8"]
 [ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="6_rlml5"]
 [ext_resource type="Texture2D" uid="uid://362fbbiit364" path="res://Images/Boards/knight_board_1.png" id="7_u1ybi"]
@@ -1072,7 +1072,6 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="Level_00" type="Node2D"]
 script = ExtResource("1_xma2k")
-is_edge_visible = true
 
 [node name="LevelRoot" type="Node" parent="."]
 script = ExtResource("7_u8q5y")
