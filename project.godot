@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Synapse"
 run/main_scene="uid://dye7h3iwsbaj4"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/image="uid://b5ex2u57pjlrg"
 config/icon="uid://cc7tw16wwfgll"
 

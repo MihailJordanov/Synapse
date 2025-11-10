@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://du4dcvhegjnbx" path="res://Images/Map/chest_collection.png" id="1_87dg0"]
 [ext_resource type="Script" uid="uid://diyg7sqaaqyw1" path="res://Scripts/map_level_controller.gd" id="1_lxa30"]
-[ext_resource type="Script" uid="uid://djluauc1p4vki" path="res://Scenes/Scenes_In_Game/item_show_system.gd" id="2_tk2j3"]
+[ext_resource type="Script" uid="uid://djluauc1p4vki" path="res://Scripts/item_show_system.gd" id="2_tk2j3"]
 [ext_resource type="Script" uid="uid://h6o0sd3yiicg" path="res://Scripts/camera_2d_move_map.gd" id="3_ijeka"]
 [ext_resource type="Texture2D" uid="uid://dk1f62u3erqkj" path="res://Images/tutorail/tutorial_button.png" id="3_pyhtt"]
 [ext_resource type="Texture2D" uid="uid://bkyucjwobn1js" path="res://Images/Buttons/show_level.png" id="3_uxesv"]
@@ -743,7 +743,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimateParts" type="Node2D" parent="CanvasLayer"]
-visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer/AnimateParts"]
 offset_right = 640.0

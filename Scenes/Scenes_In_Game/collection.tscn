@@ -337,6 +337,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_avwso")
 text = "Menu"
 
 [node name="SortButton" type="Button" parent="CanvasLayer"]
+visible = false
 offset_left = 574.0
 offset_top = 71.0
 offset_right = 630.0

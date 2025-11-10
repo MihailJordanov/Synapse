@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmtqe3inq0rny"]
+
+[ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="1_37got"]
+[ext_resource type="Script" uid="uid://dk2vrmghvtnlc" path="res://Scripts/upgrade_panel.gd" id="1_gersm"]
+[ext_resource type="Script" uid="uid://cwo8rulqjql5o" path="res://Scenes/upgrades_levels.gd" id="2_wortc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wltld"]
+bg_color = Color(0, 0.847059, 0.921569, 0.227451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.921569, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37got"]
+bg_color = Color(0.8627451, 0.8392157, 0.2901961, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.7607843, 0.39215687, 0.8745098)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gersm"]
+bg_color = Color(0.43185714, 0.41826594, 0.10522968, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.7607843, 0.39215687, 0.8745098)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wortc"]
+bg_color = Color(0.563886, 0.5465587, 0.14758071, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.7607843, 0.39215687, 0.8745098)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gersm"]
+
+[node name="UpgradePanel" type="Control"]
+custom_minimum_size = Vector2(80, 180)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gersm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wltld")
+script = ExtResource("2_wortc")
+
+[node name="TexturePanel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 76.0
+offset_bottom = 99.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/TexturePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameRichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 27.0
+theme_override_fonts/normal_font = ExtResource("1_37got")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoRichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 103.0
+offset_right = 77.0
+offset_bottom = 156.0
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+bbcode_enabled = true
+
+[node name="CurlevelRichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 91.0
+offset_right = 77.0
+offset_bottom = 107.0
+theme_override_font_sizes/normal_font_size = 9
+theme_override_font_sizes/bold_font_size = 9
+theme_override_font_sizes/bold_italics_font_size = 9
+theme_override_font_sizes/italics_font_size = 9
+theme_override_font_sizes/mono_font_size = 9
+bbcode_enabled = true
+text = "LV: 5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="UpgradeButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 160.0
+offset_right = 76.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_37got")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gersm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wortc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gersm")
+
+[node name="PriceTextLabel" type="RichTextLabel" parent="Panel/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
+bbcode_enabled = true
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 1
