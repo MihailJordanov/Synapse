@@ -2,19 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dv3qx2u3mril3" path="res://Scripts/level_config.gd" id="1_g35m7"]
 [ext_resource type="Resource" uid="uid://b28mvos2womvl" path="res://Data/AIDecks/Heros/deck_12.tres" id="1_hb375"]
-[ext_resource type="Texture2D" uid="uid://cr80dau4v4dt6" path="res://Images/Enemies_Points_Icons/Kniights 2/2845408.png" id="2_ijrux"]
+[ext_resource type="Texture2D" uid="uid://brebaluqxi7ng" path="res://Images/Enemies_Points_Icons/Kniights 2/8622967.png" id="2_7q03l"]
 
 [resource]
 script = ExtResource("1_g35m7")
-name = ""
-enemy_texture = ExtResource("2_ijrux")
-max_hand = 5
-think_time_ms = 500
+enemy_texture = ExtResource("2_7q03l")
 deck = ExtResource("1_hb375")
 player_points_to_reach = 25
 enemy_points_to_reach = 20
-coefficient_when_destroy_your_card = 1.0
-coefficient_when_destroy_enemy_card = 1.0
 points_ai_get_when_slots_full = 5.0
 points_player_get_when_slots_full = 5.0
 cur_level = "15"
@@ -22,5 +17,4 @@ levels_to_unlock_on_win = Array[String](["14", "17", "24", "16"])
 levels_to_visible_on_win = Array[String](["18", "25", "22", "39", "13"])
 cards_to_unlock_on_win = Array[int]([41, 42])
 coins_min = 3
-coins_max = 5
 metadata/_custom_type_script = "uid://dv3qx2u3mril3"
