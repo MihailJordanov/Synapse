@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmtqe3inq0rny"]
+[gd_scene load_steps=15 format=3 uid="uid://bmtqe3inq0rny"]
 
 [ext_resource type="FontFile" uid="uid://3y0irccyhx25" path="res://Fonts/Heraldic Shadows.otf" id="1_37got"]
 [ext_resource type="Script" uid="uid://dk2vrmghvtnlc" path="res://Scripts/upgrade_panel.gd" id="1_gersm"]
-[ext_resource type="Script" uid="uid://cwo8rulqjql5o" path="res://Scenes/upgrades_levels.gd" id="2_wortc"]
+[ext_resource type="Script" uid="uid://cwo8rulqjql5o" path="res://Scripts/upgrades_levels.gd" id="2_wortc"]
+[ext_resource type="Script" uid="uid://5f8x5qe2x028" path="res://Scripts/upgrade_button_in_shop.gd" id="4_4kt86"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wltld"]
 bg_color = Color(0, 0.847059, 0.921569, 0.227451)
@@ -11,6 +12,13 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0.921569, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kt86"]
+bg_color = Color(0.75158876, 1, 0.8494162, 0.619)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -58,6 +66,98 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gersm"]
 
+[sub_resource type="Animation" id="Animation_4kt86"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_okr1d"]
+resource_name = "no_money"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9999929, 0.4709885, 0.3886288, 0.1882353), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.96, 0.96), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wortc"]
+resource_name = "upgrade"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.8039216, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kt86"]
+_data = {
+&"RESET": SubResource("Animation_4kt86"),
+&"no_money": SubResource("Animation_okr1d"),
+&"upgrade": SubResource("Animation_wortc")
+}
+
 [node name="UpgradePanel" type="Control"]
 custom_minimum_size = Vector2(80, 180)
 layout_mode = 3
@@ -80,6 +180,7 @@ offset_left = 4.0
 offset_top = 27.0
 offset_right = 76.0
 offset_bottom = 99.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4kt86")
 
 [node name="TextureRect" type="TextureRect" parent="Panel/TexturePanel"]
 layout_mode = 1
@@ -92,6 +193,7 @@ offset_right = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 3
 
 [node name="NameRichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
@@ -101,7 +203,7 @@ offset_right = 77.0
 offset_bottom = 27.0
 theme_override_fonts/normal_font = ExtResource("1_37got")
 theme_override_font_sizes/normal_font_size = 10
-theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_font_size = 8
 theme_override_font_sizes/bold_italics_font_size = 10
 theme_override_font_sizes/italics_font_size = 10
 theme_override_font_sizes/mono_font_size = 10
@@ -111,15 +213,15 @@ vertical_alignment = 1
 
 [node name="InfoRichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 5.0
 offset_top = 103.0
-offset_right = 77.0
+offset_right = 75.0
 offset_bottom = 156.0
-theme_override_font_sizes/normal_font_size = 8
-theme_override_font_sizes/bold_font_size = 8
-theme_override_font_sizes/bold_italics_font_size = 8
-theme_override_font_sizes/italics_font_size = 8
-theme_override_font_sizes/mono_font_size = 8
+theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/bold_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
 bbcode_enabled = true
 
 [node name="CurlevelRichTextLabel" type="RichTextLabel" parent="Panel"]
@@ -149,6 +251,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_37got")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gersm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wortc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gersm")
+script = ExtResource("4_4kt86")
 
 [node name="PriceTextLabel" type="RichTextLabel" parent="Panel/UpgradeButton"]
 layout_mode = 1
@@ -167,3 +270,8 @@ bbcode_enabled = true
 text = "$100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4kt86")
+}

@@ -22,6 +22,7 @@ CollectionManager="*res://Globals/collection_manager.gd"
 LevelManager="*res://Globals/level_manager.gd"
 LevelRuntime="*res://Globals/level_runtime.gd"
 ItemManager="*res://Globals/item_manager.gd"
+UpgradesData="*res://Globals/upgrades_data.gd"
 
 [display]
 

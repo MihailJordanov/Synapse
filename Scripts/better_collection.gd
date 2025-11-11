@@ -1,12 +1,10 @@
 extends Node2D
 class_name BetterCollection
 
-signal card_pressed(card_id, card_data, button_ref)
 
 @export var collection_manager_path: NodePath
 @export var button_card_scene: PackedScene
 @export var filler_min_size: Vector2 = Vector2(180, 240)
-@export var deck_limit : int = 30
 @export_file("*.tscn") var menu_scene_path: String = "res://Scenes/Scenes_In_Game/map.tscn"
 
 
@@ -15,10 +13,15 @@ signal card_pressed(card_id, card_data, button_ref)
 @onready var info_rich_text_label: RichTextLabel = $CanvasLayer/BorderPanel/InfoRichTextLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+
+var deck_limit : int = 15
 var _cm: Node = null
 
 func _ready() -> void:
 	animation_player.play("openScene")
+	
+	deck_limit = UpgradesData.get_deck_size()
+	
 	_resolve_collection_manager()
 	if _cm:
 		if not _cm.is_connected("deck_changed", Callable(self, "_update_deck_labels")):

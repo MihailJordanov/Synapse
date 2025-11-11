@@ -18,10 +18,8 @@ border_color = Color(0, 0, 0, 1)
 texture = ExtResource("3_wxq0g")
 modulate_color = Color(1, 1, 1, 0.937255)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyn8s"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnsx0"]
-bg_color = Color(0.398203, 0.296738, 0.0571472, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjeaj"]
+bg_color = Color(0.847059, 0.647059, 0.180392, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -48,8 +46,8 @@ expand_margin_top = 3.0
 expand_margin_right = 3.0
 expand_margin_bottom = 3.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjeaj"]
-bg_color = Color(0.847059, 0.647059, 0.180392, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnsx0"]
+bg_color = Color(0.398203, 0.296738, 0.0571472, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -59,6 +57,8 @@ corner_radius_top_left = 7
 corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyn8s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qw0f"]
 bg_color = Color(0, 0, 0, 1)
@@ -307,10 +307,10 @@ offset_top = 4.0
 offset_right = 128.0
 offset_bottom = 56.0
 theme_override_font_sizes/font_size = 31
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lyn8s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qnsx0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4l2ou")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tjeaj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4l2ou")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qnsx0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lyn8s")
 text = "Menu"
 
 [node name="SortButton" type="Button" parent="CanvasLayer"]
@@ -320,10 +320,10 @@ offset_top = 71.0
 offset_right = 61.0
 offset_bottom = 106.0
 theme_override_font_sizes/font_size = 19
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lyn8s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qnsx0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4l2ou")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tjeaj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4l2ou")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qnsx0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lyn8s")
 text = "Sort"
 
 [node name="AnimationParts" type="Node2D" parent="CanvasLayer"]

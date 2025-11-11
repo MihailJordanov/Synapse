@@ -4,6 +4,8 @@ extends Node2D
 @export_category("Go to scenes")
 @export_file("*.tscn") var collection_scene_path: String = "res://Scenes/Scenes_In_Game/collection.tscn"
 @export_file("*.tscn") var tutorial: String = "res://Scenes/Scenes_In_Game/Levels/tutorial.tscn"
+@export_file("*.tscn") var shop: String = "res://Scenes/Scenes_In_Game/shop.tscn"
+
 
 
 @export_category("Button -> level")
@@ -213,3 +215,9 @@ func _on_go_to_tutorial_button_down() -> void:
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(tutorial)
 	
+
+
+func _on_go_to_shop_button_down() -> void:
+	animation_player.play("closeScene")
+	await animation_player.animation_finished
+	get_tree().change_scene_to_file(shop)
