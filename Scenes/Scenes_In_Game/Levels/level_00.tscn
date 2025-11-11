@@ -63,24 +63,8 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pjfu"]
 bg_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crvlv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnyh4"]
-bg_color = Color(0, 0.458824, 0.647059, 0.619608)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 3
-shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxdfy"]
-bg_color = Color(0, 0.458325, 0.646617, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk00c"]
+bg_color = Color(0, 0.607843, 0.85098, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -107,8 +91,8 @@ corner_radius_bottom_left = 5
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kk00c"]
-bg_color = Color(0, 0.607843, 0.85098, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxdfy"]
+bg_color = Color(0, 0.458325, 0.646617, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -121,6 +105,22 @@ corner_radius_bottom_left = 5
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnyh4"]
+bg_color = Color(0, 0.458824, 0.647059, 0.619608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crvlv"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp2sk"]
 bg_color = Color(0, 0, 0, 0.364706)
 corner_radius_top_left = 7
@@ -128,15 +128,8 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2sk"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_085pr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mnyh4"]
 texture = ExtResource("14_j7lwj")
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
-modulate_color = Color(0.762404, 0.762404, 0.762404, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bx7v5"]
 texture = ExtResource("14_j7lwj")
@@ -146,16 +139,21 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 modulate_color = Color(0.695503, 0.695503, 0.695503, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mnyh4"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_085pr"]
 texture = ExtResource("14_j7lwj")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(0.762404, 0.762404, 0.762404, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp2sk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibeip"]
 bg_color = Color(0, 0, 0, 0.807843)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnyh4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s80cv"]
-bg_color = Color(1, 1, 1, 0.811765)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wqwq"]
+bg_color = Color(1, 1, 1, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -186,8 +184,8 @@ expand_margin_bottom = 3.0
 shadow_size = 3
 shadow_offset = Vector2(0, 3)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wqwq"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s80cv"]
+bg_color = Color(1, 1, 1, 0.811765)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -199,6 +197,8 @@ corner_radius_bottom_right = 9
 corner_radius_bottom_left = 9
 shadow_size = 3
 shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnyh4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_085pr"]
 bg_color = Color(0, 0, 0, 0.25098)
@@ -1087,8 +1087,7 @@ deck = ExtResource("4_pbtr7")
 
 [node name="GameMaster" type="Node" parent="."]
 script = ExtResource("5_5mjr8")
-player_points_to_reach = 69
-enemy_points_to_reach = 12
+player_points_to_reach = 4
 cur_level = "2"
 levels_to_unlock_on_win = Array[String](["3", "4"])
 cards_to_unlock_on_win = Array[int]([17, 18, 19, 20])
@@ -1545,11 +1544,11 @@ offset_left = 40.0
 offset_top = 208.0
 offset_right = 125.0
 offset_bottom = 239.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_crvlv")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_mnyh4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jxdfy")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dow8t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kk00c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dow8t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jxdfy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mnyh4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_crvlv")
 text = "End Turn"
 
 [node name="InfoPanel" type="Panel" parent="."]
@@ -1577,10 +1576,10 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 53.0
 offset_bottom = 53.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hp2sk")
-theme_override_styles/hover = SubResource("StyleBoxTexture_085pr")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_bx7v5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_mnyh4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bx7v5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_085pr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hp2sk")
 
 [node name="PausedPanel" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -1597,16 +1596,16 @@ offset_left = 223.0
 offset_top = 152.0
 offset_right = 417.0
 offset_bottom = 208.0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8wqwq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
 text = "Back and play"
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/PausedPanel"]
@@ -1615,16 +1614,16 @@ offset_left = 260.0
 offset_top = 216.0
 offset_right = 380.0
 offset_bottom = 252.0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8wqwq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
 text = "Exit"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PausedPanel"]
@@ -1641,7 +1640,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PointsPanel" type="Panel" parent="CanvasLayer"]
-offset_left = 516.0
+offset_left = 472.0
 offset_right = 640.0
 offset_bottom = 101.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_085pr")
@@ -1668,10 +1667,10 @@ expand_mode = 2
 layout_mode = 0
 offset_left = 44.0
 offset_top = 6.0
-offset_right = 121.0
+offset_right = 165.0
 offset_bottom = 34.0
 bbcode_enabled = true
-text = "23 / 50"
+text = "23 / [s]50[/s] 55"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1679,7 +1678,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 44.0
 offset_top = 55.0
-offset_right = 120.0
+offset_right = 164.0
 offset_bottom = 83.0
 bbcode_enabled = true
 text = "37 / 50"
@@ -1760,16 +1759,16 @@ offset_left = 155.0
 offset_top = 202.0
 offset_right = 485.0
 offset_bottom = 275.0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8wqwq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
 text = "Continue"
 
 [node name="RewardInfoTextLabel" type="RichTextLabel" parent="CanvasLayer/WinPanel"]
@@ -1817,16 +1816,16 @@ offset_left = 155.0
 offset_top = 202.0
 offset_right = 485.0
 offset_bottom = 275.0
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8wqwq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ge7ob")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s80cv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnyh4")
 text = "Continue"
 
 [node name="LoseInfoRichTextLabel" type="RichTextLabel" parent="CanvasLayer/LosePanel"]
@@ -1865,6 +1864,7 @@ hframes = 5
 vframes = 2
 
 [node name="AnimatingParts" type="Node2D" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="AnimatingParts"]
 offset_left = -27.0

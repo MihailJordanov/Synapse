@@ -33,6 +33,9 @@ extends Node
 @onready var lose_info_rich_text_label: RichTextLabel = $"../CanvasLayer/LosePanel/LoseInfoRichTextLabel"
 
 # === STATE ===
+var pl_original_points_to_reach : int = 0
+var en_original_points_to_reach : int = 0
+
 var max_player_deck_count: int = 0
 var max_AI_deck_count: int = 0
 
@@ -51,13 +54,8 @@ const PLAYER_TEXT := "#00ffb7"
 const AI_TEXT := "#ff5555"
 
 func _ready() -> void:
+	
 	animation_player.play("open_scene")
-	# allow BBCode
-	player_deck_count_label.bbcode_enabled = true
-	ai_deck_count_label.bbcode_enabled = true
-	player_points_label.bbcode_enabled = true
-	ai_points_label.bbcode_enabled = true
-	coefficient_rich_text_label.bbcode_enabled = true
 	
 
 	# signals
@@ -82,7 +80,13 @@ func _ready() -> void:
 	# deck sizes
 	max_player_deck_count = CollectionManager.deck.size()
 	max_AI_deck_count = game_state_random.deck.ids.size()
+	
+	pl_original_points_to_reach = player_points_to_reach
+	en_original_points_to_reach = enemy_points_to_reach
+	player_points_to_reach = max(3, player_points_to_reach - UpgradesData.get_player_points_to_victory_bonus())
+	enemy_points_to_reach = enemy_points_to_reach + UpgradesData.get_enemy_points_to_victory_bonus()
 
+	
 	_update_deck_labels()
 	_update_points_labels()
 	_update_coefficient_label()
@@ -145,12 +149,11 @@ func _on_ai_closed_cycle(player_lost: int, ai_lost: int) -> void:
 
 	_add_points(false, delta, AI_FLASH, "ai_closed_cycle")
 
-# Centralized add-points + UI + win-check
+
 func _add_points(is_player: bool, delta: float, flash: Color, _reason: String) -> void:
 	if _phase != GamePhase.PLAYING:
 		return
 	if delta == 0.0:
-		# дори и при нула – ъпдейтни етикетите, но не анимирай
 		_update_points_labels()
 		return
 
@@ -161,7 +164,6 @@ func _add_points(is_player: bool, delta: float, flash: Color, _reason: String) -
 
 	_update_points_labels()
 
-	# лека анимация за обратна връзка
 	if delta > 0.0:
 		_animate_points_gain((player_points_label if is_player else ai_points_label), flash)
 
@@ -171,8 +173,7 @@ func _add_points(is_player: bool, delta: float, flash: Color, _reason: String) -
 
 # === UI HELPERS ===
 func _update_points_labels() -> void:
-	player_points_label.bbcode_enabled = true
-	ai_points_label.bbcode_enabled = true
+	
 
 	# Ограничаваме показваните точки до максимума
 	var display_player_points : int = min(player_points, player_points_to_reach)
@@ -181,12 +182,25 @@ func _update_points_labels() -> void:
 	var player_points_str := String.num(display_player_points, 2)
 	var ai_points_str := String.num(display_ai_points, 2)
 
-	player_points_label.text = "[center][b][color=%s]%s / %d[/color][/b][/center]" % [
-		PLAYER_TEXT, player_points_str, player_points_to_reach
-	]
-	ai_points_label.text = "[center][b][color=%s]%s / %d[/color][/b][/center]" % [
-		AI_TEXT, ai_points_str, enemy_points_to_reach
-	]
+	if pl_original_points_to_reach == player_points_to_reach:
+		player_points_label.text = "[outline_size=4][center][b][color=%s]%s / %d[/color][/b][/center]" % [
+			PLAYER_TEXT, player_points_str, player_points_to_reach
+		]
+	else:
+		player_points_label.text = "[outline_size=4][center][b][color=%s]%s / [outline_size=6][color=#edc410]%d[/color][/outline_size] ⬅︎ [s]%d[/s][/color][/b][/center][/outline_size]" % [
+			PLAYER_TEXT, player_points_str, player_points_to_reach, pl_original_points_to_reach
+		]
+		
+	if en_original_points_to_reach == enemy_points_to_reach:
+		ai_points_label.text = "[outline_size=4][center][b][color=%s]%s / %d[/color][/b][/center]" % [
+			AI_TEXT, ai_points_str, enemy_points_to_reach
+		]
+	else:
+		ai_points_label.text = "[outline_size=4][center][b][color=%s]%s / [outline_size=6][color=#edc410]%d[/color][/outline_size] ⬅︎ [s]%d[/s][/color][/b][/center][/outline_size]" % [
+			AI_TEXT, ai_points_str, enemy_points_to_reach, en_original_points_to_reach
+		]
+
+		
 
 
 func _update_deck_labels() -> void:
