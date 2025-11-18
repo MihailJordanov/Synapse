@@ -13,13 +13,13 @@ var cur_level: int = 0
 
 var upgrade_data: Dictionary =  {
 	UpgradePanel.UpgradeType.DECK_LEVEL: [
-		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 5,   "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
-		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 10,  "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
+		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 2,   "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
+		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 6,  "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
+		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 12,  "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
 		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 25,  "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
-		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 50,  "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
+		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 50, "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
 		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 100, "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
-		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 300, "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
-		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 500, "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
+		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 200, "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"},
 		{"name": "Deck Size", "info": "Raises your deck size limit.", "price": 1000, "icon": "res://Images/Shop/Upgrades/deck_upgrade_icon_1.png"}
 	],
 	UpgradePanel.UpgradeType.PLAY_POINTS_TO_REACH: [
